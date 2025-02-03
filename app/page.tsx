@@ -53,6 +53,7 @@ function RefineMockUpData(): IMatchData[] {
 export default function Home() {
   return (
     <div className="min-h-screen flex flex-col justify-center p-8 pb-20 gap-4 sm:p-20 font-[family-name:var(--font-geist-sans)]">
+      <div className="flex text-4xl font-bold">BACKSNAPPER - Match History</div>
       {RefineMockUpData()
         .reverse()
         .map((match, index) => (
