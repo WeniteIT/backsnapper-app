@@ -61,11 +61,17 @@ export default function Home() {
             key={index}
             className="flex flex-col gap-4 p-4 border border-gray-300 rounded-md shadow-md"
           >
-            <h3 className="text-lg font-bold">
+            <div className="text-lg">
               {new Date(match.date).toLocaleString()}
-            </h3>
-            <div className="flex gap-4 text-3xl">
-              {`${match.player1.name} ${match.player1.score} / ${match.player2.score} ${match.player2.name}`}
+            </div>
+            <div className="flex gap-4 text-4xl">
+              <span>{match.player1.name}</span>
+              <b>
+                <span>{match.player1.score}</span>
+                <span>-</span>
+                <span>{match.player2.score}</span>
+              </b>
+              <span>{match.player2.name}</span>
             </div>
           </div>
         ))}
