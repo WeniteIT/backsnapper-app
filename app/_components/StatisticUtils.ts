@@ -1,4 +1,9 @@
-import { IFormsPayload, IFormsPayloadAnswers, IMatchData } from "../interfaces";
+import {
+  IFormsPayload,
+  IFormsPayloadAnswers,
+  IMatchData,
+  IResult,
+} from "../interfaces";
 import mockup from "../../data/mockup.json";
 
 export function RefineMockUpData(): IMatchData[] {
@@ -18,6 +23,7 @@ export function RefineMockUpData(): IMatchData[] {
         name: answers[1].answer1,
         score: +answers[3].answer1,
       },
+      comment: answers[4].answer1,
     };
     matchData.push(match);
   });
@@ -57,8 +63,7 @@ export function collectLosses(matchData: IMatchData[]): Record<string, number> {
   return losses;
 }
 
-export function collectMostMatches() {
-  const matchData = RefineMockUpData();
+export function collectMostMatches(matchData: IMatchData[]): IResult {
   const players = matchData.reduce((acc, match) => {
     acc[match.player1.name] = (acc[match.player1.name] || 0) + 1;
     acc[match.player2.name] = (acc[match.player2.name] || 0) + 1;
@@ -72,11 +77,10 @@ export function collectMostMatches() {
     ["", 0]
   );
 
-  return data[0] + " / " + data[1];
+  return { name: data[0], num: data[1] };
 }
 
-export function findMostWins() {
-  const matchData = RefineMockUpData();
+export function findMostWins(matchData: IMatchData[]): IResult {
   const wins = collectWins(matchData);
 
   const result = Object.entries(wins).reduce(
@@ -86,11 +90,10 @@ export function findMostWins() {
     ["", 0]
   );
 
-  return result[0] + " / " + result[1];
+  return { name: result[0], num: result[1] };
 }
 
-export function findMostLosses() {
-  const matchData = RefineMockUpData();
+export function findMostLosses(matchData: IMatchData[]): IResult {
   const losses = collectLosses(matchData);
 
   const result = Object.entries(losses).reduce(
@@ -100,11 +103,10 @@ export function findMostLosses() {
     ["", 0]
   );
 
-  return result[0] + " / " + result[1];
+  return { name: result[0], num: result[1] };
 }
 
-export function findBestWinLoseRatio() {
-  const matchData = RefineMockUpData();
+export function findBestWinLoseRatio(matchData: IMatchData[]): IResult {
   const wins = collectWins(matchData);
   const losses = collectLosses(matchData);
 
@@ -118,11 +120,10 @@ export function findBestWinLoseRatio() {
     }
   });
 
-  return bestPlayer + " / " + bestRatio.toFixed(2);
+  return { name: bestPlayer, num: +bestRatio.toFixed(2) };
 }
 
-export function findWorstWinLoseRatio() {
-  const matchData = RefineMockUpData();
+export function findWorstWinLoseRatio(matchData: IMatchData[]): IResult {
   const wins = collectWins(matchData);
   const losses = collectLosses(matchData);
 
@@ -136,5 +137,5 @@ export function findWorstWinLoseRatio() {
     }
   });
 
-  return worstPlayer + " / " + worstRatio.toFixed(2);
+  return { name: worstPlayer, num: +worstRatio.toFixed(2) };
 }

@@ -1,8 +1,8 @@
-import { JSX } from "react";
+import React, { JSX } from "react";
 
 interface IProps {
   label: string;
-  content: JSX.Element;
+  content: React.ReactNode;
 }
 
 export default function StatisticCard({ label, content }: IProps) {
@@ -13,7 +13,7 @@ export default function StatisticCard({ label, content }: IProps) {
           {label}
         </div>
         <div className="flex text-4xl bg-gray-800 text-gray-200 font-semibold flex-1 px-4 items-center relative justify-between">
-          <div className="flex bg-gray-800 px-4 skew-x-14 absolute -left-4 top-0 bottom-0" />
+          <div className="flex bg-gray-800 px-4 skew-x-16 absolute -left-4 top-0 bottom-0" />
           {content}
         </div>
       </div>
