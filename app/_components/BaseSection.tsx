@@ -1,6 +1,6 @@
 import { PropsWithChildren } from "react";
 
-interface IProps extends PropsWithChildren<{}> {
+interface IProps extends PropsWithChildren {
   label: string;
 }
 
