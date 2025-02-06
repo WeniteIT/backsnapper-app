@@ -43,10 +43,10 @@ export default function StatisticSection({ from, to, infoLabel }: IProps) {
       label={
         <IconText
           icon={<FaChartLine className="text-yellow-500" />}
-          text="Statistics"
+          text={infoLabel}
         />
       }
-      info={infoLabel}
+      info={"Statistics"}
     >
       <StatisticCard
         label="Total Matches"

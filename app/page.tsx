@@ -20,8 +20,20 @@ export default async function Home() {
     month: "long",
   }).format(new Date());
 
+  const todaysData = data.filter(
+    (match) =>
+      new Date(match.date).getDate() === new Date().getDate() &&
+      new Date(match.date).getMonth() === new Date().getMonth()
+  );
+
+  const dataWithoutToday = data.filter(
+    (match) =>
+      new Date(match.date).getDate() !== new Date().getDate() ||
+      new Date(match.date).getMonth() !== new Date().getMonth()
+  );
+
   return (
-    <div className="min-h-screen flex flex-col justify-center p-2 gap-4 sm:p-6 text-gray-800 font-[family-name:var(--font-geist-sans)]">
+    <div className="flex flex-col justify-center p-2 gap-4 sm:p-6 text-gray-800 font-[family-name:var(--font-geist-sans)]">
       <div className="flex gap-6">
         <div className="flex flex-col gap-6 flex-1">
           <StatisticSection
@@ -36,15 +48,33 @@ export default async function Home() {
             label={
               <IconText
                 icon={<IoFootballSharp className="text-yellow-500" />}
+                text="Today's Matches"
+              />
+            }
+            info={`${todaysData.length} matches`}
+          >
+            <>
+              {todaysData
+                .reverse()
+                .slice(0, 13)
+                .map((match, index) => (
+                  <MatchCard key={index} match={match} />
+                ))}
+            </>
+          </BaseSection>
+          <BaseSection
+            label={
+              <IconText
+                icon={<IoFootballSharp className="text-yellow-500" />}
                 text="Match History"
               />
             }
             info={`${data.length} matches`}
           >
             <>
-              {data
+              {dataWithoutToday
                 .reverse()
-                .slice(0, 13)
+                .slice(0, 8)
                 .map((match, index) => (
                   <MatchCard key={index} match={match} />
                 ))}

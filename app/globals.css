@@ -12,6 +12,18 @@
   }
 }
 
+.row {
+  @apply flex flex-row;
+}
+
+.col {
+  @apply flex flex-col;
+}
+
+.primary {
+  @apply bg-blue-500 text-white;
+}
+
 body {
   color: var(--foreground);
   background: var(--foreground);

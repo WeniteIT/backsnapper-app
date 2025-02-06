@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { FaCommentDots, FaTrophy } from "react-icons/fa";
 import { IMatchData } from "../interfaces";
+import AN from "./AN";
 
 interface IProps {
   match: IMatchData;
@@ -48,7 +49,7 @@ export default function MatchCard({ match }: IProps) {
         {match.player2.score < match.player1.score ? (
           <FaTrophy />
         ) : (
-          match.player1.score
+          <AN num={match.player1.score} />
         )}
       </div>
 
@@ -61,7 +62,7 @@ export default function MatchCard({ match }: IProps) {
         {match.player2.score > match.player1.score ? (
           <FaTrophy />
         ) : (
-          match.player2.score
+          <AN num={match.player2.score} />
         )}
       </div>
     </div>

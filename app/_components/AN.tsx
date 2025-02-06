@@ -8,8 +8,9 @@ export default function AN({ num }: { num: number }) {
       <AnimatedNumbers
         animateToNumber={num}
         transitions={(index) => ({
-          type: "keyframes",
-          duration: (index / 1.5) + 0.5,
+          type: "spring",
+          duration: index / 2 + 0.5,
+          ease: "easeInOutQuint",
         })}
       />
     </div>
