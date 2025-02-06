@@ -1,5 +1,8 @@
-import BaseSection from "./BaseSection";
+import Link from "next/link";
+import { FaChartLine } from "react-icons/fa";
 import AN from "./AN";
+import BaseSection from "./BaseSection";
+import IconText from "./IconText";
 import StatisticCard from "./StatisticCard";
 import {
   RefineMockUpData,
@@ -36,13 +39,31 @@ export default function StatisticSection({ from, to, infoLabel }: IProps) {
   const lowestWinLoseRatio = findWorstWinLoseRatio(filteredDataByDate);
 
   return (
-    <BaseSection label="Statistics" info={infoLabel}>
-      <StatisticCard label="Total Matches" content={<AN num={filteredDataByDate.length} />} />
+    <BaseSection
+      label={
+        <IconText
+          icon={<FaChartLine className="text-yellow-500" />}
+          text="Statistics"
+        />
+      }
+      info={infoLabel}
+    >
+      <StatisticCard
+        label="Total Matches"
+        content={<AN num={filteredDataByDate.length} />}
+      />
       <StatisticCard
         label={"Most Wins"}
         content={
           <>
-            <div>{mostWins.name}</div> <AN num={mostWins.num} />
+            <Link
+              href={`/${mostWins.name}`}
+              passHref
+              className={"hover:underline "}
+            >
+              {mostWins.name}
+            </Link>{" "}
+            <AN num={mostWins.num} />
           </>
         }
       />
@@ -50,7 +71,14 @@ export default function StatisticSection({ from, to, infoLabel }: IProps) {
         label={"Most Losses"}
         content={
           <>
-            <div>{mostLoses.name}</div> <AN num={mostLoses.num} />
+            <Link
+              href={`/${mostLoses.name}`}
+              passHref
+              className={"hover:underline "}
+            >
+              {mostLoses.name}
+            </Link>
+            <AN num={mostLoses.num} />
           </>
         }
       />
@@ -58,7 +86,14 @@ export default function StatisticSection({ from, to, infoLabel }: IProps) {
         label={"Most Matches played"}
         content={
           <>
-            <div>{mostMatches.name}</div> <AN num={mostMatches.num} />
+            <Link
+              href={`/${mostMatches.name}`}
+              passHref
+              className={"hover:underline "}
+            >
+              {mostMatches.name}
+            </Link>
+            <AN num={mostMatches.num} />
           </>
         }
       />
@@ -66,7 +101,13 @@ export default function StatisticSection({ from, to, infoLabel }: IProps) {
         label={"Highest W/L Ratio"}
         content={
           <>
-            <div>{highestWinLoseRatio.name}</div>{" "}
+            <Link
+              href={`/${highestWinLoseRatio.name}`}
+              passHref
+              className={"hover:underline "}
+            >
+              {highestWinLoseRatio.name}
+            </Link>
             <AN num={highestWinLoseRatio.num} />
           </>
         }
@@ -75,7 +116,13 @@ export default function StatisticSection({ from, to, infoLabel }: IProps) {
         label={"Lowest W/L Ratio"}
         content={
           <>
-            <div>{lowestWinLoseRatio.name}</div>{" "}
+            <Link
+              href={`/${lowestWinLoseRatio.name}`}
+              passHref
+              className={"hover:underline "}
+            >
+              {lowestWinLoseRatio.name}
+            </Link>
             <AN num={lowestWinLoseRatio.num} />
           </>
         }

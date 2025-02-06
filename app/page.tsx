@@ -1,9 +1,13 @@
+import { IoFootballSharp } from "react-icons/io5";
+import { MdMoreTime } from "react-icons/md";
 import BaseSection from "./_components/BaseSection";
+import IconText from "./_components/IconText";
 import MatchCard from "./_components/MatchCard";
+import RouteButton from "./_components/RouteButton";
 import StatisticSection from "./_components/StatisticSection";
 import { RefineMockUpData } from "./_components/StatisticUtils";
 
-export default function Home() {
+export default async function Home() {
   const data = RefineMockUpData();
 
   const firstDayOfMonth = new Date();
@@ -17,29 +21,49 @@ export default function Home() {
   }).format(new Date());
 
   return (
-    <>
-      <div className="flex text-5xl font-bold text-gray-100 p-4 bg-gray-800">
-        BackSnapper
-      </div>
-      <div className="min-h-screen flex flex-col justify-center p-2 gap-4 sm:p-6 text-gray-800 font-[family-name:var(--font-geist-sans)]">
-        <div className="flex gap-6">
-          <div className="flex flex-col gap-6 flex-1">
-            <StatisticSection
-              from={firstDayOfMonth}
-              to={lastDayOfMonth}
-              infoLabel={currentMonthName}
-            />
-            <StatisticSection infoLabel="All" />
-          </div>
-          <div className="flex flex-col gap-4 flex-1">
-            <BaseSection label="Match History">
-              {data.reverse().map((match, index) => (
-                <MatchCard key={index} match={match} />
-              ))}
-            </BaseSection>
-          </div>
+    <div className="min-h-screen flex flex-col justify-center p-2 gap-4 sm:p-6 text-gray-800 font-[family-name:var(--font-geist-sans)]">
+      <div className="flex gap-6">
+        <div className="flex flex-col gap-6 flex-1">
+          <StatisticSection
+            from={firstDayOfMonth}
+            to={lastDayOfMonth}
+            infoLabel={currentMonthName}
+          />
+          <StatisticSection infoLabel="All" />
+        </div>
+        <div className="flex flex-col gap-4 flex-1">
+          <BaseSection
+            label={
+              <IconText
+                icon={<IoFootballSharp className="text-yellow-500" />}
+                text="Match History"
+              />
+            }
+            info={`${data.length} matches`}
+          >
+            <>
+              {data
+                .reverse()
+                .slice(0, 13)
+                .map((match, index) => (
+                  <MatchCard key={index} match={match} />
+                ))}
+              <div className="flex justify-center">
+                <RouteButton
+                  label={
+                    <>
+                      Show all
+                      <MdMoreTime />
+                    </>
+                  }
+                  route="/history"
+                  width="100"
+                />
+              </div>
+            </>
+          </BaseSection>
         </div>
       </div>
-    </>
+    </div>
   );
 }

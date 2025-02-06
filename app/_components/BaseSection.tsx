@@ -1,8 +1,8 @@
 import { PropsWithChildren } from "react";
 
 interface IProps extends PropsWithChildren {
-  label: string;
-  info?: string;
+  label: string | React.ReactNode;
+  info?: string | React.ReactNode;
 }
 
 export default function BaseSection({ children, label, info }: IProps) {
