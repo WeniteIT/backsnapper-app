@@ -1,7 +1,7 @@
-import { RefineMockUpData } from "../page";
 import BaseSection from "./BaseSection";
 import StatisticCard from "./StatisticCard";
 import {
+  RefineMockUpData,
   collectMostMatches,
   findBestWinLoseRatio,
   findMostLosses,
