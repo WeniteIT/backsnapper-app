@@ -1,5 +1,33 @@
-import { IMatchData } from "../interfaces";
-import { RefineMockUpData } from "../page";
+import { IFormsPayload, IFormsPayloadAnswers, IMatchData } from "../interfaces";
+import mockup from "../../data/mockup.json";
+
+export function RefineMockUpData(): IMatchData[] {
+  const matchData: IMatchData[] = [];
+  const formsPayload: IFormsPayload = mockup;
+
+  formsPayload.value.forEach((item) => {
+    const answers = JSON.parse(item.answers) as IFormsPayloadAnswers[];
+    const match: IMatchData = {
+      id: item.id.toString(),
+      date: item.submitDate,
+      player1: {
+        name: answers[0].answer1,
+        score: +answers[2].answer1,
+      },
+      player2: {
+        name: answers[1].answer1,
+        score: +answers[3].answer1,
+      },
+    };
+    matchData.push(match);
+  });
+
+  return matchData
+    .filter((e) => e.player1.score !== 0 || e.player2.score !== 0)
+    .filter((e) => e.player1.name !== "" && e.player2.name !== "")
+    .filter((e) => e.player1.score !== e.player2.score)
+    .filter((e) => e.player1.name !== e.player2.name);
+}
 
 export function collectWins(matchData: IMatchData[]): Record<string, number> {
   const wins: Record<string, number> = {};
