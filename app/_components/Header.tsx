@@ -2,15 +2,18 @@ import { FaHouse, FaTrophy } from "react-icons/fa6";
 import { IoFootballSharp } from "react-icons/io5";
 import { TbSoccerField } from "react-icons/tb";
 import RouteButton from "./RouteButton";
+import Link from "next/link";
 
 function Title() {
   return (
-    <div className="flex gap-2 items-center">
-      <div className="flex bg-yellow-500 rounded-md text-gray-800 px-2 py-1 gap-4">
-        <TbSoccerField /> Back
+    <Link href="/">
+      <div className="flex gap-2 items-center">
+        <div className="flex bg-yellow-500 rounded-md text-gray-800 px-2 py-1 gap-4">
+          <TbSoccerField /> Back
+        </div>
+        SNAPPER <div className="text-gray-600">v0.4</div>
       </div>
-      SNAPPER
-    </div>
+    </Link>
   );
 }
 
