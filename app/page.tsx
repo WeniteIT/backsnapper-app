@@ -43,25 +43,26 @@ export default async function Home() {
           />
           <StatisticSection infoLabel="All" />
         </div>
-        <div className="flex flex-col gap-4 flex-1">
-          <BaseSection
-            label={
-              <IconText
-                icon={<IoFootballSharp className="text-yellow-500" />}
-                text="Today's Matches"
-              />
-            }
-            info={`${todaysData.length} matches`}
-          >
-            <>
-              {todaysData
-                .reverse()
-                .slice(0, 13)
-                .map((match, index) => (
-                  <MatchCard key={index} match={match} />
-                ))}
-            </>
-          </BaseSection>
+        <div className="flex flex-col gap-6 flex-1">
+          {todaysData.length > 0 && (
+            <BaseSection
+              label={
+                <IconText
+                  icon={<IoFootballSharp className="text-yellow-500" />}
+                  text="Today's Matches"
+                />
+              }
+              info={`${todaysData.length} matches`}
+            >
+              <>
+                {todaysData
+                  .reverse()
+                  .map((match, index) => (
+                    <MatchCard key={index} match={match} />
+                  ))}
+              </>
+            </BaseSection>
+          )}
           <BaseSection
             label={
               <IconText
@@ -74,7 +75,7 @@ export default async function Home() {
             <>
               {dataWithoutToday
                 .reverse()
-                .slice(0, 8)
+                .slice(0, 12)
                 .map((match, index) => (
                   <MatchCard key={index} match={match} />
                 ))}
