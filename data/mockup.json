@@ -1024,6 +1024,22 @@
       "anonymousResponseToken": null,
       "answerExplanation": null,
       "FormsProData": null
+    },
+    {
+      "id": 65,
+      "startDate": "2025-02-07T12:23:04.3138693Z",
+      "submitDate": "2025-02-07T12:23:29.6868693Z",
+      "responder": "anonymous",
+      "responderName": "",
+      "answers": "[{\"answer1\":\"Tomek\",\"questionId\":\"r81a93b1a57ad4b8d8ed245e738ace030\"},{\"answer1\":\"Thore\",\"questionId\":\"ra196da2a5e104390a756cf94cc86eb98\"},{\"answer1\":\"3\",\"questionId\":\"r993501670c2f43129a7ba19268001667\"},{\"answer1\":\"10\",\"questionId\":\"r72676322906347528dc7d45b09700054\"},{\"answer1\":\"Es gab einen eigen-backsnapper\",\"questionId\":\"r6d682a16a5d4444aaac27a929b6bb228\"}]",
+      "releaseDate": "0001-01-01T00:00:00Z",
+      "quizResult": null,
+      "emailReceiptConsent": null,
+      "submitLanguage": null,
+      "msRewardsData": null,
+      "anonymousResponseToken": null,
+      "answerExplanation": null,
+      "FormsProData": null
     }
   ]
 }
