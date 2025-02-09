@@ -6,7 +6,6 @@ import IconText from "./IconText";
 import StatisticCard from "./StatisticCard";
 import {
   RefineMockUpData,
-  collectMostMatches,
   findBestWinLoseRatio,
   findMostLosses,
   findMostWins,
@@ -16,10 +15,16 @@ import {
 interface IProps {
   from?: Date;
   to?: Date;
-  infoLabel?: string;
+  leftLabel?: string;
+  rightLabel?: string;
 }
 
-export default function StatisticSection({ from, to, infoLabel }: IProps) {
+export default function StatisticSection({
+  from,
+  to,
+  leftLabel,
+  rightLabel,
+}: IProps) {
   const data = RefineMockUpData();
 
   const filteredDataByDate = data.filter((match) => {
@@ -35,7 +40,7 @@ export default function StatisticSection({ from, to, infoLabel }: IProps) {
   const mostWins = findMostWins(filteredDataByDate);
   const mostLoses = findMostLosses(filteredDataByDate);
   const highestWinLoseRatio = findBestWinLoseRatio(filteredDataByDate);
-  const mostMatches = collectMostMatches(filteredDataByDate);
+  // const mostMatches = collectMostMatches(filteredDataByDate);
   const lowestWinLoseRatio = findWorstWinLoseRatio(filteredDataByDate);
 
   return (
@@ -43,10 +48,10 @@ export default function StatisticSection({ from, to, infoLabel }: IProps) {
       label={
         <IconText
           icon={<FaChartLine className="primary-text" />}
-          text={infoLabel}
+          text={leftLabel}
         />
       }
-      info={"Statistics"}
+      info={rightLabel}
     >
       <StatisticCard
         label="Total Matches"

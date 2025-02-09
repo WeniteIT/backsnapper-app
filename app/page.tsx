@@ -15,6 +15,10 @@ export default async function Home() {
     month: "long",
   }).format(new Date());
 
+  const currentYear = new Date().getFullYear();
+
+  const DateOfFirstGame = new Date(data[0].date);
+
   return (
     <div className="secondary-text flex flex-col justify-center p-2 gap-4 sm:p-6 font-[family-name:var(--font-geist-sans)]">
       <div className="flex gap-2 md:gap-6 flex-col-reverse 2xl:flex-row">
@@ -22,9 +26,13 @@ export default async function Home() {
           <StatisticSection
             from={firstDayOfMonth}
             to={lastDayOfMonth}
-            infoLabel={currentMonthName}
+            leftLabel="Current Month"
+            rightLabel={currentMonthName + " " + currentYear}
           />
-          <StatisticSection infoLabel="All" />
+          <StatisticSection
+            leftLabel="All entries"
+            rightLabel={"since " + DateOfFirstGame.toLocaleDateString("de-DE")}
+          />
         </div>
         <div className="flex flex-col gap-2 md:gap-6 flex-1">
           <MatchSection matchData={data} />
