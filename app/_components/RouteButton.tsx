@@ -8,7 +8,7 @@ interface IProps {
   route: string;
   width?: string;
   hover?: string;
-  color?: "secondary" | "secondary-light";
+  color?: "secondary" | "secondary-light" | "secondary-no-mode";
 }
 
 export default function RouteButton({

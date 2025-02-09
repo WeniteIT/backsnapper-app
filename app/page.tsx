@@ -17,8 +17,8 @@ export default async function Home() {
 
   return (
     <div className="secondary-text flex flex-col justify-center p-2 gap-4 sm:p-6 font-[family-name:var(--font-geist-sans)]">
-      <div className="flex gap-6 flex-col-reverse 2xl:flex-row">
-        <div className="flex flex-col gap-6 flex-1">
+      <div className="flex gap-2 md:gap-6 flex-col-reverse 2xl:flex-row">
+        <div className="flex flex-col gap-2 md:gap-6 flex-1">
           <StatisticSection
             from={firstDayOfMonth}
             to={lastDayOfMonth}
@@ -26,7 +26,7 @@ export default async function Home() {
           />
           <StatisticSection infoLabel="All" />
         </div>
-        <div className="flex flex-col gap-6 flex-1">
+        <div className="flex flex-col gap-2 md:gap-6 flex-1">
           <MatchSection matchData={data} />
         </div>
       </div>

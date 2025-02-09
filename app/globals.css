@@ -1,17 +1,5 @@
 @import "tailwindcss";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
-}
-
 .primary {
   @apply bg-yellow-500 text-gray-800;
 }
@@ -22,6 +10,14 @@
 
 .primary-text {
   @apply text-yellow-500;
+}
+
+.secondary-root {
+  @apply bg-gray-100 text-gray-800;
+}
+
+.secondary-no-mode {
+  @apply bg-gray-900 text-gray-100;
 }
 
 .secondary {
@@ -50,6 +46,40 @@
 
 .secondary-border {
   @apply border-gray-300;
+}
+
+@media (prefers-color-scheme: dark) {
+  .secondary-root {
+    @apply bg-gray-800 text-gray-100;
+  }
+
+  .secondary {
+    @apply bg-gray-900 text-gray-100;
+  }
+
+  .secondary-light {
+    @apply bg-gray-700 text-gray-100;
+  }
+
+  .secondary-lighter {
+    @apply bg-gray-600 text-gray-100;
+  }
+
+  .secondary-text {
+    @apply text-gray-100;
+  }
+
+  .secondary-text-light {
+    @apply text-gray-300;
+  }
+
+  .secondary-text-lighter {
+    @apply text-gray-600;
+  }
+
+  .secondary-border {
+    @apply border-gray-800;
+  }
 }
 
 body {
