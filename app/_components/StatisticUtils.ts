@@ -1,10 +1,10 @@
+import mockup from "../../data/mockup.json";
 import {
   IFormsPayload,
   IFormsPayloadAnswers,
   IMatchData,
   IResult,
 } from "../interfaces";
-import mockup from "../../data/mockup.json";
 
 export function RefineMockUpData(): IMatchData[] {
   const matchData: IMatchData[] = [];
@@ -63,47 +63,51 @@ export function collectLosses(matchData: IMatchData[]): Record<string, number> {
   return losses;
 }
 
-export function collectMostMatches(matchData: IMatchData[]): IResult {
-  const players = matchData.reduce((acc, match) => {
-    acc[match.player1.name] = (acc[match.player1.name] || 0) + 1;
-    acc[match.player2.name] = (acc[match.player2.name] || 0) + 1;
-    return acc;
-  }, {} as Record<string, number>);
+// export function collectMostMatches(matchData: IMatchData[]): IResult {
+//   const players = matchData.reduce((acc, match) => {
+//     acc[match.player1.name] = (acc[match.player1.name] || 0) + 1;
+//     acc[match.player2.name] = (acc[match.player2.name] || 0) + 1;
+//     return acc;
+//   }, {} as Record<string, number>);
 
-  const data = Object.entries(players).reduce(
-    (acc, [key, value]) => {
-      return value > acc[1] ? [key, value] : acc;
-    },
-    ["", 0]
-  );
+//   const data = Object.entries(players).reduce(
+//     (acc, [key, value]) => {
+//       return value > acc[1] ? [key, value] : acc;
+//     },
+//     ["", 0]
+//   );
 
-  return { name: data[0], num: data[1] };
-}
+//   return { name: data[0], num: data[1] };
+// }
 
 export function findMostWins(matchData: IMatchData[]): IResult {
   const wins = collectWins(matchData);
 
-  const result = Object.entries(wins).reduce(
-    (acc, [key, value]) => {
-      return value > acc[1] ? [key, value] : acc;
-    },
-    ["", 0]
-  );
+  const results: string[][] = [];
+  Object.entries(wins).forEach(([name, value]) => {
+    if (results[value]) results[value].push(name);
+    else results[value] = [name];
+  });
 
-  return { name: result[0], num: result[1] };
+  const names = results[results.length - 1];
+  const score = results.length - 1;
+
+  return { name: names, num: score };
 }
 
 export function findMostLosses(matchData: IMatchData[]): IResult {
   const losses = collectLosses(matchData);
 
-  const result = Object.entries(losses).reduce(
-    (acc, [key, value]) => {
-      return value > acc[1] ? [key, value] : acc;
-    },
-    ["", 0]
-  );
+  const results: string[][] = [];
+  Object.entries(losses).forEach(([name, value]) => {
+    if (results[value]) results[value].push(name);
+    else results[value] = [name];
+  });
 
-  return { name: result[0], num: result[1] };
+  const names = results[results.length - 1];
+  const score = results.length - 1;
+
+  return { name: names, num: score };
 }
 
 export function findBestWinLoseRatio(matchData: IMatchData[]): IResult {
@@ -120,7 +124,7 @@ export function findBestWinLoseRatio(matchData: IMatchData[]): IResult {
     }
   });
 
-  return { name: bestPlayer, num: +bestRatio.toFixed(2) };
+  return { name: [bestPlayer], num: +bestRatio.toFixed(2) };
 }
 
 export function findWorstWinLoseRatio(matchData: IMatchData[]): IResult {
@@ -137,5 +141,5 @@ export function findWorstWinLoseRatio(matchData: IMatchData[]): IResult {
     }
   });
 
-  return { name: worstPlayer, num: +worstRatio.toFixed(2) };
+  return { name: [worstPlayer], num: +worstRatio.toFixed(2) };
 }

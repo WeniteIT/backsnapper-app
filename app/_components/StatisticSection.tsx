@@ -1,6 +1,4 @@
-import Link from "next/link";
 import { FaChartLine } from "react-icons/fa";
-import AN from "./AN";
 import BaseSection from "./BaseSection";
 import IconText from "./IconText";
 import StatisticCard from "./StatisticCard";
@@ -11,6 +9,7 @@ import {
   findMostWins,
   findWorstWinLoseRatio,
 } from "./StatisticUtils";
+import { _AnimatedNumber } from "./_AnimatedNumbers";
 
 interface IProps {
   from?: Date;
@@ -40,7 +39,6 @@ export default function StatisticSection({
   const mostWins = findMostWins(filteredDataByDate);
   const mostLoses = findMostLosses(filteredDataByDate);
   const highestWinLoseRatio = findBestWinLoseRatio(filteredDataByDate);
-  // const mostMatches = collectMostMatches(filteredDataByDate);
   const lowestWinLoseRatio = findWorstWinLoseRatio(filteredDataByDate);
 
   return (
@@ -55,38 +53,10 @@ export default function StatisticSection({
     >
       <StatisticCard
         label="Total Matches"
-        content={<AN num={filteredDataByDate.length} />}
+        content={<_AnimatedNumber num={filteredDataByDate.length} />}
       />
-      <StatisticCard
-        label={"Most Wins"}
-        content={
-          <>
-            <Link
-              href={`/${mostWins.name}`}
-              passHref
-              className={"hover:underline "}
-            >
-              {mostWins.name}
-            </Link>{" "}
-            <AN num={mostWins.num} />
-          </>
-        }
-      />
-      <StatisticCard
-        label={"Most Losses"}
-        content={
-          <>
-            <Link
-              href={`/${mostLoses.name}`}
-              passHref
-              className={"hover:underline "}
-            >
-              {mostLoses.name}
-            </Link>
-            <AN num={mostLoses.num} />
-          </>
-        }
-      />
+      <StatisticCard label={"Most Wins"} result={mostWins} />
+      <StatisticCard label={"Most Losses"} result={mostLoses} />
       {/* <StatisticCard
         label={"Most Matches played"}
         content={
@@ -102,36 +72,8 @@ export default function StatisticSection({
           </>
         }
       /> */}
-      <StatisticCard
-        label={"Highest W/L Ratio"}
-        content={
-          <>
-            <Link
-              href={`/${highestWinLoseRatio.name}`}
-              passHref
-              className={"hover:underline "}
-            >
-              {highestWinLoseRatio.name}
-            </Link>
-            <AN num={highestWinLoseRatio.num} />
-          </>
-        }
-      />
-      <StatisticCard
-        label={"Lowest W/L Ratio"}
-        content={
-          <>
-            <Link
-              href={`/${lowestWinLoseRatio.name}`}
-              passHref
-              className={"hover:underline "}
-            >
-              {lowestWinLoseRatio.name}
-            </Link>
-            <AN num={lowestWinLoseRatio.num} />
-          </>
-        }
-      />
+      <StatisticCard label={"Highest W/L"} result={highestWinLoseRatio} />
+      <StatisticCard label={"Lowest W/L"} result={lowestWinLoseRatio} />
     </BaseSection>
   );
 }

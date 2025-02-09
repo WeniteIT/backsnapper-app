@@ -2,7 +2,7 @@
 
 import AnimatedNumbers from "react-animated-numbers";
 
-export default function AN({ num }: { num: number }) {
+export function _AnimatedNumber({ num }: { num: number }) {
   return (
     <div key={num}>
       <AnimatedNumbers

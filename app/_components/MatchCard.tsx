@@ -1,7 +1,7 @@
 import Link from "next/link";
 import { FaTrophy } from "react-icons/fa";
 import { IMatchData } from "../interfaces";
-import AN from "./AN";
+import { _AnimatedNumber } from "./_AnimatedNumbers";
 
 interface IProps {
   match: IMatchData;
@@ -9,7 +9,7 @@ interface IProps {
 
 export default function MatchCard({ match }: IProps) {
   const names = (
-    <div className="flex gap-1 md:gap-3 flex-1 md:min-w-70">
+    <div className="flex gap-1 md:gap-3 flex-1 md:min-w-70 whitespace-norwrap overflow-hidden">
       <Link
         href={`/${match.player1.name}`}
         passHref
@@ -39,7 +39,7 @@ export default function MatchCard({ match }: IProps) {
   );
 
   const scores = (
-    <div className="secondary flex items-center font-bold gap-1 md:gap-3 justify-center min-w-24 md:min-w-50 text-xl md:text-3xl relative">
+    <div className="secondary flex items-center font-bold gap-1 md:gap-3 justify-center min-w-28 md:min-w-50 text-xl md:text-3xl relative ">
       <div className="flex secondary px-4 skew-x-16 absolute -left-2 top-0 bottom-0" />
       <div
         className={
@@ -49,10 +49,9 @@ export default function MatchCard({ match }: IProps) {
         {match.player2.score < match.player1.score ? (
           <FaTrophy />
         ) : (
-          <AN num={match.player1.score} />
+          <_AnimatedNumber num={match.player1.score} />
         )}
       </div>
-
       <div>-</div>
       <div
         className={
@@ -62,7 +61,7 @@ export default function MatchCard({ match }: IProps) {
         {match.player2.score > match.player1.score ? (
           <FaTrophy />
         ) : (
-          <AN num={match.player2.score} />
+          <_AnimatedNumber num={match.player2.score} />
         )}
       </div>
     </div>

@@ -2,7 +2,7 @@ import Link from "next/link";
 import { FaHouse, FaTrophy } from "react-icons/fa6";
 import { IoFootballSharp } from "react-icons/io5";
 import { TbSoccerField } from "react-icons/tb";
-import RouteButton from "./RouteButton";
+import RouteButton from "./_RouteButton";
 
 function Title() {
   return (

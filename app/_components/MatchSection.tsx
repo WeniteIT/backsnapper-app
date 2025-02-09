@@ -4,7 +4,7 @@ import { IMatchData } from "../interfaces";
 import BaseSection from "./BaseSection";
 import IconText from "./IconText";
 import MatchCard from "./MatchCard";
-import RouteButton from "./RouteButton";
+import RouteButton from "./_RouteButton";
 
 interface IProps {
   matchData: IMatchData[];

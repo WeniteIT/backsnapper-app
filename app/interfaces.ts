@@ -25,6 +25,6 @@ export interface IFormsPayloadAnswers {
 }
 
 export interface IResult {
-  name: string;
+  name: string[];
   num: number;
 }
