@@ -19,21 +19,21 @@ function Title() {
 
 export default function Header() {
   return (
-    <div className="secondary flex text-5xl font-bold p-6 justify-between">
+    <div className="secondary flex flex-col md:flex-row text-xl md:text-5xl font-bold gap-3 p-3 md:p-6 justify-between">
       <Title />
       <div className="flex gap-4">
         <RouteButton
-          label={<IoFootballSharp className="text-4xl" />}
+          label={<IoFootballSharp className="text-xl md:text-4xl" />}
           route="/history"
           hover="Matches"
         />
         <RouteButton
-          label={<FaTrophy className="text-4xl" />}
+          label={<FaTrophy className="text-xl md:text-4xl" />}
           route="/rankings"
           hover="Rankings"
         />
         <RouteButton
-          label={<FaHouse className="text-4xl" />}
+          label={<FaHouse className="text-xl md:text-4xl" />}
           route="/"
           hover="Home"
         />

@@ -9,7 +9,7 @@ interface IProps {
 
 export default function MatchCard({ match }: IProps) {
   const names = (
-    <div className="flex gap-3 flex-1 min-w-70">
+    <div className="flex gap-1 md:gap-3 flex-1 md:min-w-70">
       <Link
         href={`/${match.player1.name}`}
         passHref
@@ -39,7 +39,7 @@ export default function MatchCard({ match }: IProps) {
   );
 
   const scores = (
-    <div className="secondary flex items-center font-bold gap-4 justify-center min-w-50 text-3xl relative">
+    <div className="secondary flex items-center font-bold gap-1 md:gap-3 justify-center min-w-24 md:min-w-50 text:xl md:text-3xl relative">
       <div className="flex secondary px-4 skew-x-16 absolute -left-2 top-0 bottom-0" />
       <div
         className={
@@ -71,16 +71,16 @@ export default function MatchCard({ match }: IProps) {
   const date = (
     <div
       title={match.comment}
-      className="flex text-lg secondary-text-light justify-end flex-1 items-center gap-3 italic whitespace-nowrap text-ellipsis overflow-hidden"
+      className="hidden md:flex text-lg secondary-text-light justify-end flex-1 items-center gap-3 italic whitespace-nowrap text-ellipsis overflow-hidden"
     >
       {match.comment && `"${match.comment}"`}
     </div>
   );
 
   return (
-    <div className="flex flex gap-4 secondary-lighter rounded-lg shadow-md flex-1 relative overflow-hidden justify-between">
-      <div className="flex text-3xl items-center grow p-3 pr-5">
-        <div className="flex pr-8 secondary-text-lighter min-w-20">
+    <div className="flex gap-4 secondary-lighter rounded-lg shadow-md flex-1 relative overflow-hidden justify-between">
+      <div className="flex text-xl md:text-3xl items-center grow p-3 pr-5">
+        <div className="flex pr-3 md:pr-8 secondary-text-lighter md:min-w-20">
           {match.id}
         </div>
         {names}

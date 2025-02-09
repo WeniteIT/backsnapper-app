@@ -8,6 +8,7 @@ interface IProps {
   route: string;
   width?: string;
   hover?: string;
+  color?: "secondary" | "secondary-light";
 }
 
 export default function RouteButton({
@@ -15,11 +16,12 @@ export default function RouteButton({
   route,
   width = "auto",
   hover,
+  color = "secondary",
 }: IProps) {
   return (
     <button
       title={hover}
-      className={`secondary hover-primary flex gap-3 justify-center p-3 rounded-md text-xl w-${width} items-center
+      className={`${color} hover-primary flex gap-3 justify-center p-3 rounded-md text-xl w-${width} items-center
        transition-colors duration-300 ease-in-out focus:outline-none cursor-pointer`}
       onClick={() => redirect(route, RedirectType.push)}
     >

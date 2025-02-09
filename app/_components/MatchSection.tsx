@@ -1,0 +1,77 @@
+import { IoFootballSharp } from "react-icons/io5";
+import { MdMoreTime } from "react-icons/md";
+import { IMatchData } from "../interfaces";
+import BaseSection from "./BaseSection";
+import IconText from "./IconText";
+import MatchCard from "./MatchCard";
+import RouteButton from "./RouteButton";
+
+interface IProps {
+  matchData: IMatchData[];
+}
+
+export default function MatchSection({ matchData }: IProps) {
+  const todaysData = matchData.filter(
+    (match) =>
+      new Date(match.date).getDate() === new Date().getDate() &&
+      new Date(match.date).getMonth() === new Date().getMonth()
+  );
+
+  const dataWithoutToday = matchData.filter(
+    (match) =>
+      new Date(match.date).getDate() !== new Date().getDate() ||
+      new Date(match.date).getMonth() !== new Date().getMonth()
+  );
+  return (
+    <>
+      {todaysData.length > 0 && (
+        <BaseSection
+          label={
+            <IconText
+              icon={<IoFootballSharp className="primary-text" />}
+              text="Today's Matches"
+            />
+          }
+          info={`${todaysData.length} matches`}
+        >
+          <>
+            {todaysData.reverse().map((match, index) => (
+              <MatchCard key={index} match={match} />
+            ))}
+          </>
+        </BaseSection>
+      )}
+      <BaseSection
+        label={
+          <IconText
+            icon={<IoFootballSharp className="primary-text" />}
+            text="Match History"
+          />
+        }
+        info={`${matchData.length} matches`}
+      >
+        <>
+          {dataWithoutToday
+            .reverse()
+            .slice(0, 12)
+            .map((match, index) => (
+              <MatchCard key={index} match={match} />
+            ))}
+          <div className="flex justify-center">
+            <RouteButton
+              label={
+                <>
+                  Show all
+                  <MdMoreTime />
+                </>
+              }
+              route="/history"
+              width="100"
+              color="secondary-light"
+            />
+          </div>
+        </>
+      </BaseSection>
+    </>
+  );
+}
