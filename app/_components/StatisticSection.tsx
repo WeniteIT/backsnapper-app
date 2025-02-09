@@ -42,7 +42,7 @@ export default function StatisticSection({ from, to, infoLabel }: IProps) {
     <BaseSection
       label={
         <IconText
-          icon={<FaChartLine className="text-yellow-500" />}
+          icon={<FaChartLine className="primary-text" />}
           text={infoLabel}
         />
       }
@@ -82,7 +82,7 @@ export default function StatisticSection({ from, to, infoLabel }: IProps) {
           </>
         }
       />
-      <StatisticCard
+      {/* <StatisticCard
         label={"Most Matches played"}
         content={
           <>
@@ -96,7 +96,7 @@ export default function StatisticSection({ from, to, infoLabel }: IProps) {
             <AN num={mostMatches.num} />
           </>
         }
-      />
+      /> */}
       <StatisticCard
         label={"Highest W/L Ratio"}
         content={

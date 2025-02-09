@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { FaCommentDots, FaTrophy } from "react-icons/fa";
+import { FaTrophy } from "react-icons/fa";
 import { IMatchData } from "../interfaces";
 import AN from "./AN";
 
@@ -16,7 +16,7 @@ export default function MatchCard({ match }: IProps) {
         className={
           "hover:underline " +
           (match.player2.score < match.player1.score
-            ? "text-yellow-500 font-semibold"
+            ? "primary-text font-semibold"
             : "")
         }
       >
@@ -29,7 +29,7 @@ export default function MatchCard({ match }: IProps) {
         className={
           "hover:underline " +
           (match.player2.score > match.player1.score
-            ? "text-yellow-500 font-semibold"
+            ? "primary-text font-semibold"
             : "")
         }
       >
@@ -39,11 +39,11 @@ export default function MatchCard({ match }: IProps) {
   );
 
   const scores = (
-    <div className="flex items-center font-bold gap-4 justify-center min-w-50 bg-gray-800 text-3xl text-gray-200 relative">
-      <div className="flex bg-gray-800 px-4 skew-x-16 absolute -left-2 top-0 bottom-0" />
+    <div className="secondary flex items-center font-bold gap-4 justify-center min-w-50 text-3xl relative">
+      <div className="flex secondary px-4 skew-x-16 absolute -left-2 top-0 bottom-0" />
       <div
         className={
-          match.player2.score < match.player1.score ? "text-yellow-500" : ""
+          match.player2.score < match.player1.score ? "primary-text" : ""
         }
       >
         {match.player2.score < match.player1.score ? (
@@ -56,7 +56,7 @@ export default function MatchCard({ match }: IProps) {
       <div>-</div>
       <div
         className={
-          match.player2.score > match.player1.score ? "text-yellow-500" : ""
+          match.player2.score > match.player1.score ? "primary-text" : ""
         }
       >
         {match.player2.score > match.player1.score ? (
@@ -69,21 +69,20 @@ export default function MatchCard({ match }: IProps) {
   );
 
   const date = (
-    <div className="flex text-lg text-gray-400 justify-end flex-1 items-center gap-3">
-      {match.comment && (
-        <FaCommentDots
-          className="pl-2 hover:text-gray-400 cursor-pointer text-gray-800 text-3xl"
-          title={match.comment}
-        />
-      )}
-      {new Date(match.date).toLocaleString("de-DE")}
+    <div
+      title={match.comment}
+      className="flex text-lg secondary-text-light justify-end flex-1 items-center gap-3 italic whitespace-nowrap text-ellipsis overflow-hidden"
+    >
+      {match.comment && `"${match.comment}"`}
     </div>
   );
 
   return (
-    <div className="flex flex gap-4 bg-gray-100 rounded-lg shadow-md flex-1 relative hover:outline-2 outline-gray-400 overflow-hidden justify-between">
+    <div className="flex flex gap-4 secondary-lighter rounded-lg shadow-md flex-1 relative overflow-hidden justify-between">
       <div className="flex text-3xl items-center grow p-3 pr-5">
-        <div className="flex pr-8 text-gray-300 min-w-20">{match.id}</div>
+        <div className="flex pr-8 secondary-text-lighter min-w-20">
+          {match.id}
+        </div>
         {names}
         {date}
       </div>

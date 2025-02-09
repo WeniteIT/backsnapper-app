@@ -33,7 +33,7 @@ export default async function Home() {
   );
 
   return (
-    <div className="flex flex-col justify-center p-2 gap-4 sm:p-6 text-gray-800 font-[family-name:var(--font-geist-sans)]">
+    <div className="secondary-text flex flex-col justify-center p-2 gap-4 sm:p-6 font-[family-name:var(--font-geist-sans)]">
       <div className="flex gap-6">
         <div className="flex flex-col gap-6 flex-1">
           <StatisticSection
@@ -48,25 +48,23 @@ export default async function Home() {
             <BaseSection
               label={
                 <IconText
-                  icon={<IoFootballSharp className="text-yellow-500" />}
+                  icon={<IoFootballSharp className="primary-text" />}
                   text="Today's Matches"
                 />
               }
               info={`${todaysData.length} matches`}
             >
               <>
-                {todaysData
-                  .reverse()
-                  .map((match, index) => (
-                    <MatchCard key={index} match={match} />
-                  ))}
+                {todaysData.reverse().map((match, index) => (
+                  <MatchCard key={index} match={match} />
+                ))}
               </>
             </BaseSection>
           )}
           <BaseSection
             label={
               <IconText
-                icon={<IoFootballSharp className="text-yellow-500" />}
+                icon={<IoFootballSharp className="primary-text" />}
                 text="Match History"
               />
             }

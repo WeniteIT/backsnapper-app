@@ -7,12 +7,12 @@ interface IProps extends PropsWithChildren {
 
 export default function BaseSection({ children, label, info }: IProps) {
   return (
-    <div className="flex flex-col gap-4 bg-gray-200 text-gray-700 rounded-lg p-4 border-3 border-gray-300">
-      <div className="row justify-between items-center">
+    <div className="flex flex-col gap-4 secondary-light rounded-lg p-4 border-3 secondary-border">
+      <div className="flex justify-between items-center">
         <div className="flex text-4xl font-bold">{label}</div>
-        <div className="flex text-3xl text-gray-600">{info}</div>
+        <div className="flex text-3xl secondary-text-light">{info}</div>
       </div>
-      <div className="flex gap-3 flex-col text-gray-700">{children}</div>
+      <div className="flex gap-3 flex-col">{children}</div>
     </div>
   );
 }
