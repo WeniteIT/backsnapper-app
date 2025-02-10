@@ -10,7 +10,7 @@ import {
   findMostWins,
   findWorstWinLoseRatio,
   findHighestScore,
-  findLowestScore
+  findLowestScore,
 } from "./StatisticUtils";
 import { _AnimatedNumber } from "./_AnimatedNumbers";
 
@@ -19,6 +19,7 @@ interface IProps {
   to?: Date;
   leftLabel?: string;
   rightLabel?: string;
+  altIcon?: React.ReactNode;
 }
 
 export default function StatisticSection({
@@ -26,6 +27,7 @@ export default function StatisticSection({
   to,
   leftLabel,
   rightLabel,
+  altIcon
 }: IProps) {
   const data = RefineMockUpData();
 
@@ -52,7 +54,7 @@ export default function StatisticSection({
     <BaseSection
       label={
         <IconText
-          icon={<FaChartLine className="primary-text" />}
+          icon={altIcon || <FaChartLine className="primary-text md:text-4xl" />}
           text={leftLabel}
         />
       }

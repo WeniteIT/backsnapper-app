@@ -1,6 +1,7 @@
 import MatchSection from "./_components/MatchSection";
 import StatisticSection from "./_components/StatisticSection";
 import { RefineMockUpData } from "./_components/StatisticUtils";
+import { IoPieChartSharp } from "react-icons/io5";
 
 export default async function Home() {
   const data = RefineMockUpData();
@@ -20,21 +21,22 @@ export default async function Home() {
   const DateOfFirstGame = new Date(data[0].date);
 
   return (
-    <div className="secondary-text flex flex-col justify-center p-2 gap-4 sm:p-6 font-[family-name:var(--font-geist-sans)]">
-      <div className="flex gap-2 md:gap-6 flex-col-reverse 2xl:flex-row">
-        <div className="flex flex-col gap-2 md:gap-6 flex-1">
+    <div className="secondary-text flex justify-center p-2 gap-4 sm:p-6 font-[family-name:var(--font-geist-sans)]">
+      <div className="flex gap-2 md:gap-4 flex-col-reverse 2xl:flex-row w-500">
+        <div className="flex flex-col gap-2 md:gap-4 flex-1 overflow-hidden">
           <StatisticSection
             from={firstDayOfMonth}
             to={lastDayOfMonth}
             leftLabel="Current Month"
             rightLabel={currentMonthName + " " + currentYear}
+            altIcon={<IoPieChartSharp className="primary-text md:text-4xl" />}
           />
           <StatisticSection
             leftLabel="All entries"
             rightLabel={"since " + DateOfFirstGame.toLocaleDateString("de-DE")}
           />
         </div>
-        <div className="flex flex-col gap-2 md:gap-6 flex-1">
+        <div className="flex flex-col gap-2 md:gap-4 flex-1 overflow-hidden">
           <MatchSection matchData={data} />
         </div>
       </div>

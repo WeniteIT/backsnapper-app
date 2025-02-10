@@ -78,7 +78,7 @@
   }
 
   .secondary-border {
-    @apply border-zinc-800;
+    @apply border-zinc-600;
   }
 }
 
