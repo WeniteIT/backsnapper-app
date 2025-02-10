@@ -1,6 +1,6 @@
 import MatchSection from "./_components/MatchSection";
 import StatisticSection from "./_components/StatisticSection";
-import { RefineMockUpData, collectScores } from "./_components/StatisticUtils";
+import { RefineMockUpData } from "./_components/StatisticUtils";
 
 export default async function Home() {
   const data = RefineMockUpData();
