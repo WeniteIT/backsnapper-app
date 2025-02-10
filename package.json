@@ -9,6 +9,7 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@azure/storage-blob": "^12.26.0",
     "@tailwindcss/postcss": "^4.0.3",
     "next": "15.1.6",
     "nextjs": "file:",

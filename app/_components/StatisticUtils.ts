@@ -1,4 +1,4 @@
-import mockup from "../../data/mockup.json";
+import { BlobServiceClient } from "@azure/storage-blob";
 import {
   IFormsPayload,
   IFormsPayloadAnswers,
@@ -6,9 +6,20 @@ import {
   IResult,
 } from "../interfaces";
 
-export function RefineMockUpData(): IMatchData[] {
+export async function RefineMockUpData(): Promise<IMatchData[]> {
   const matchData: IMatchData[] = [];
-  const formsPayload: IFormsPayload = mockup;
+
+  const connectionString = `DefaultEndpointsProtocol=https;AccountName=backsnapperblobb;AccountKey=Od3lZ5NmWuPZjLhhT9EEhoAVZT7zrlf9eUdnfUmkl0iBfIfRCAgDINcxvjDGMRJZijiO7pxgmsY/+AStV3FNew==;EndpointSuffix=core.windows.net`;
+  const containerName = "results";
+
+  const blobServiceClient =
+    BlobServiceClient.fromConnectionString(connectionString);
+  const containerClient = blobServiceClient.getContainerClient(containerName);
+
+  const blockBlobClient = containerClient.getBlockBlobClient("matchData.json");
+
+  const content = await blockBlobClient.downloadToBuffer();
+  const formsPayload: IFormsPayload = JSON.parse(content.toString());
 
   formsPayload.value.forEach((item) => {
     const answers = JSON.parse(item.answers) as IFormsPayloadAnswers[];
@@ -27,6 +38,26 @@ export function RefineMockUpData(): IMatchData[] {
     };
     matchData.push(match);
   });
+
+  let blobs = containerClient.listBlobsFlat();
+  for await (const blob of blobs) {
+    if (blob.name !== "matchData.json") {
+      const blockBlobClient = containerClient.getBlockBlobClient(blob.name);
+      const content = await blockBlobClient.downloadToBuffer();
+      const matchResult: IMatchData = JSON.parse(content.toString());
+      matchData.push({
+        ...matchResult,
+        player1: {
+          name: matchResult.player1.name,
+          score: +matchResult.player1.score,
+        },
+        player2: {
+          name: matchResult.player2.name,
+          score: +matchResult.player2.score,
+        },
+      });
+    }
+  }
 
   return matchData
     .filter((e) => e.player1.score !== 0 || e.player2.score !== 0)
@@ -76,7 +107,6 @@ export function calculateElo(matchData: IMatchData[]): Record<string, number> {
 }
 
 export function findHighestElo(matchData: Record<string, number>): IResult {
-
   const results = Object.entries(matchData).reduce(
     (acc, [key, value]) => {
       return value > acc[1] ? [key, value] : acc;

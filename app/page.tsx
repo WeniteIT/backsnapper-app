@@ -1,10 +1,10 @@
+import { IoPieChartSharp } from "react-icons/io5";
 import MatchSection from "./_components/MatchSection";
 import StatisticSection from "./_components/StatisticSection";
 import { RefineMockUpData } from "./_components/StatisticUtils";
-import { IoPieChartSharp } from "react-icons/io5";
 
 export default async function Home() {
-  const data = RefineMockUpData();
+  const data = await RefineMockUpData();
 
   const firstDayOfMonth = new Date();
   firstDayOfMonth.setDate(1);
@@ -25,6 +25,7 @@ export default async function Home() {
       <div className="flex gap-2 md:gap-4 flex-col-reverse 2xl:flex-row w-500">
         <div className="flex flex-col gap-2 md:gap-4 flex-1 overflow-hidden">
           <StatisticSection
+            data={data}
             from={firstDayOfMonth}
             to={lastDayOfMonth}
             leftLabel="Current Month"
@@ -32,6 +33,7 @@ export default async function Home() {
             altIcon={<IoPieChartSharp className="primary-text md:text-4xl" />}
           />
           <StatisticSection
+            data={data}
             leftLabel="All entries"
             rightLabel={"since " + DateOfFirstGame.toLocaleDateString("de-DE")}
           />

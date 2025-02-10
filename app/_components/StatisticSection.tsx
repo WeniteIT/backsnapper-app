@@ -1,16 +1,16 @@
 import { FaChartLine } from "react-icons/fa";
+import { IMatchData } from "../interfaces";
 import BaseSection from "./BaseSection";
 import IconText from "./IconText";
 import StatisticCard from "./StatisticCard";
 import {
-  RefineMockUpData,
   calculateElo,
   findBestWinLoseRatio,
+  findHighestElo,
+  findLowestElo,
   findMostLosses,
   findMostWins,
   findWorstWinLoseRatio,
-  findHighestElo,
-  findLowestElo,
 } from "./StatisticUtils";
 import { _AnimatedNumber } from "./_AnimatedNumbers";
 
@@ -20,6 +20,7 @@ interface IProps {
   leftLabel?: string;
   rightLabel?: string;
   altIcon?: React.ReactNode;
+  data: IMatchData[];
 }
 
 export default function StatisticSection({
@@ -27,10 +28,9 @@ export default function StatisticSection({
   to,
   leftLabel,
   rightLabel,
-  altIcon
+  altIcon,
+  data,
 }: IProps) {
-  const data = RefineMockUpData();
-
   const filteredDataByDate = data.filter((match) => {
     if (from && to) {
       return (
