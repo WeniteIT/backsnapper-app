@@ -11,7 +11,7 @@ function Title() {
         <div className="primary flex rounded-md px-2 py-1 gap-1 md:gap-4 items-center">
           <TbSoccerField /> Back
         </div>
-        SNAPPER <div className="secondary-text-light">v0.4</div>
+        SNAPPER <div className="secondary-text-light text-2xl self-end">v0.5e</div>
       </div>
     </Link>
   );
