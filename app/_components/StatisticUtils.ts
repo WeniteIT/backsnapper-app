@@ -39,7 +39,7 @@ export async function RefineMockUpData(): Promise<IMatchData[]> {
     matchData.push(match);
   });
 
-  let blobs = containerClient.listBlobsFlat();
+  const blobs = containerClient.listBlobsFlat();
   for await (const blob of blobs) {
     if (blob.name !== "matchData.json") {
       const blockBlobClient = containerClient.getBlockBlobClient(blob.name);
