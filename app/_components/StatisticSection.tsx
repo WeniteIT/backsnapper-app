@@ -4,10 +4,13 @@ import IconText from "./IconText";
 import StatisticCard from "./StatisticCard";
 import {
   RefineMockUpData,
+  collectScores,
   findBestWinLoseRatio,
   findMostLosses,
   findMostWins,
   findWorstWinLoseRatio,
+  findHighestScore,
+  findLowestScore
 } from "./StatisticUtils";
 import { _AnimatedNumber } from "./_AnimatedNumbers";
 
@@ -36,10 +39,14 @@ export default function StatisticSection({
     return true;
   });
 
+  const filteredScore = collectScores(filteredDataByDate);
+
   const mostWins = findMostWins(filteredDataByDate);
   const mostLoses = findMostLosses(filteredDataByDate);
   const highestWinLoseRatio = findBestWinLoseRatio(filteredDataByDate);
   const lowestWinLoseRatio = findWorstWinLoseRatio(filteredDataByDate);
+  const findHighestScore2 = findHighestScore(filteredScore);
+  const findLowestScore2 = findLowestScore(filteredScore);
 
   return (
     <BaseSection
@@ -57,23 +64,10 @@ export default function StatisticSection({
       />
       <StatisticCard label={"Most Wins"} result={mostWins} />
       <StatisticCard label={"Most Losses"} result={mostLoses} />
-      {/* <StatisticCard
-        label={"Most Matches played"}
-        content={
-          <>
-            <Link
-              href={`/${mostMatches.name}`}
-              passHref
-              className={"hover:underline "}
-            >
-              {mostMatches.name}
-            </Link>
-            <AN num={mostMatches.num} />
-          </>
-        }
-      /> */}
       <StatisticCard label={"Highest W/L"} result={highestWinLoseRatio} />
       <StatisticCard label={"Lowest W/L"} result={lowestWinLoseRatio} />
+      <StatisticCard label={"Highest Score"} result={findHighestScore2} />
+      <StatisticCard label={"Lowest Score"} result={findLowestScore2} />
     </BaseSection>
   );
 }

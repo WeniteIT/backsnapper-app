@@ -49,6 +49,55 @@ export function collectWins(matchData: IMatchData[]): Record<string, number> {
   return wins;
 }
 
+export function collectScores(matchData: IMatchData[]): Record<string, number> {
+  const SCORE_BASE = 1200;
+  const ADD = 20;
+
+  const scores: Record<string, number> = {};
+
+  matchData.forEach((match) => {
+    const p1 = scores[match.player1.name] || SCORE_BASE;
+    const p2 = scores[match.player2.name] || SCORE_BASE;
+
+    const E1 = 1 / (1 + 10 ** ((p2 - p1) / 400));
+    const E2 = 1 / (1 + 10 ** ((p1 - p2) / 400));
+
+    const S1 = match.player1.score > match.player2.score ? 1 : 0;
+    const S2 = match.player1.score < match.player2.score ? 1 : 0;
+
+    const newP1 = p1 + ADD * (S1 - E1);
+    const newP2 = p2 + ADD * (S2 - E2);
+
+    scores[match.player1.name] = newP1;
+    scores[match.player2.name] = newP2;
+  });
+
+  return scores;
+}
+
+export function findHighestScore(matchData: Record<string, number>): IResult {
+
+  const results = Object.entries(matchData).reduce(
+    (acc, [key, value]) => {
+      return value > acc[1] ? [key, value] : acc;
+    },
+    ["", 0]
+  );
+
+  return { name: [results[0]], num: +results[1].toFixed(0) };
+}
+
+export function findLowestScore(matchData: Record<string, number>): IResult {
+  const results = Object.entries(matchData).reduce(
+    (acc, [key, value]) => {
+      return value < acc[1] ? [key, value] : acc;
+    },
+    ["", 10000]
+  );
+
+  return { name: [results[0]], num: +results[1].toFixed(0) };
+}
+
 export function collectLosses(matchData: IMatchData[]): Record<string, number> {
   const losses: Record<string, number> = {};
 
