@@ -49,7 +49,7 @@ export function collectWins(matchData: IMatchData[]): Record<string, number> {
   return wins;
 }
 
-export function collectScores(matchData: IMatchData[]): Record<string, number> {
+export function calculateElo(matchData: IMatchData[]): Record<string, number> {
   const SCORE_BASE = 1200;
   const ADD = 20;
 
@@ -75,7 +75,7 @@ export function collectScores(matchData: IMatchData[]): Record<string, number> {
   return scores;
 }
 
-export function findHighestScore(matchData: Record<string, number>): IResult {
+export function findHighestElo(matchData: Record<string, number>): IResult {
 
   const results = Object.entries(matchData).reduce(
     (acc, [key, value]) => {
@@ -87,7 +87,7 @@ export function findHighestScore(matchData: Record<string, number>): IResult {
   return { name: [results[0]], num: +results[1].toFixed(0) };
 }
 
-export function findLowestScore(matchData: Record<string, number>): IResult {
+export function findLowestElo(matchData: Record<string, number>): IResult {
   const results = Object.entries(matchData).reduce(
     (acc, [key, value]) => {
       return value < acc[1] ? [key, value] : acc;

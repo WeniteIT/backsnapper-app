@@ -4,13 +4,13 @@ import IconText from "./IconText";
 import StatisticCard from "./StatisticCard";
 import {
   RefineMockUpData,
-  collectScores,
+  calculateElo,
   findBestWinLoseRatio,
   findMostLosses,
   findMostWins,
   findWorstWinLoseRatio,
-  findHighestScore,
-  findLowestScore,
+  findHighestElo,
+  findLowestElo,
 } from "./StatisticUtils";
 import { _AnimatedNumber } from "./_AnimatedNumbers";
 
@@ -41,14 +41,14 @@ export default function StatisticSection({
     return true;
   });
 
-  const filteredScore = collectScores(filteredDataByDate);
+  const filteredScore = calculateElo(filteredDataByDate);
 
   const mostWins = findMostWins(filteredDataByDate);
   const mostLoses = findMostLosses(filteredDataByDate);
   const highestWinLoseRatio = findBestWinLoseRatio(filteredDataByDate);
   const lowestWinLoseRatio = findWorstWinLoseRatio(filteredDataByDate);
-  const findHighestScore2 = findHighestScore(filteredScore);
-  const findLowestScore2 = findLowestScore(filteredScore);
+  const findHighestScore2 = findHighestElo(filteredScore);
+  const findLowestScore2 = findLowestElo(filteredScore);
 
   return (
     <BaseSection
@@ -68,8 +68,8 @@ export default function StatisticSection({
       <StatisticCard label={"Most Losses"} result={mostLoses} />
       <StatisticCard label={"Highest W/L"} result={highestWinLoseRatio} />
       <StatisticCard label={"Lowest W/L"} result={lowestWinLoseRatio} />
-      <StatisticCard label={"Highest Score"} result={findHighestScore2} />
-      <StatisticCard label={"Lowest Score"} result={findLowestScore2} />
+      <StatisticCard label={"Highest Elo"} result={findHighestScore2} />
+      <StatisticCard label={"Lowest Elo"} result={findLowestScore2} />
     </BaseSection>
   );
 }
