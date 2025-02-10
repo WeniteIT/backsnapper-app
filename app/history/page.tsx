@@ -4,8 +4,8 @@ import IconText from "../_components/IconText";
 import MatchCard from "../_components/MatchCard";
 import { RefineMockUpData } from "../_components/StatisticUtils";
 
-export default function Home() {
-  const data = RefineMockUpData();
+export default async function HistoryPage() {
+  const data = await RefineMockUpData();
 
   return (
     <div className="min-h-screen flex flex-col justify-center p-2 gap-4 sm:p-6 font-[family-name:var(--font-geist-sans)]">

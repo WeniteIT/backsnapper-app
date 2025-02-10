@@ -2,7 +2,7 @@ import { FaTrophy } from "react-icons/fa6";
 import BaseSection from "../_components/BaseSection";
 import IconText from "../_components/IconText";
 
-export default function Home() {
+export default function RankingsPage() {
   return (
     <div className="flex flex-col justify-center p-2 gap-4 sm:p-6 font-[family-name:var(--font-geist-sans)]">
       <div className="flex gap-6">
