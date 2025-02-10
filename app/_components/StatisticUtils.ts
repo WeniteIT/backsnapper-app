@@ -60,6 +60,7 @@ export async function RefineMockUpData(): Promise<IMatchData[]> {
   }
 
   return matchData
+    .filter((e) => e.comment?.toUpperCase() !== "DEBUG")
     .filter((e) => e.player1.score !== 0 || e.player2.score !== 0)
     .filter((e) => e.player1.name !== "" && e.player2.name !== "")
     .filter((e) => e.player1.score !== e.player2.score)
