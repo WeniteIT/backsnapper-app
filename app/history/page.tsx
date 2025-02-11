@@ -2,10 +2,10 @@ import { IoFootballSharp } from "react-icons/io5";
 import BaseSection from "../_components/BaseSection";
 import IconText from "../_components/IconText";
 import MatchCard from "../_components/MatchCard";
-import { RefineMockUpData } from "../_components/StatisticUtils";
+import { getMatchData } from "../_components/StatisticUtils";
 
 export default async function HistoryPage() {
-  const data = await RefineMockUpData();
+  const data = await getMatchData();
 
   return (
     <div className="min-h-screen flex flex-col justify-center p-2 gap-4 sm:p-6 font-[family-name:var(--font-geist-sans)]">

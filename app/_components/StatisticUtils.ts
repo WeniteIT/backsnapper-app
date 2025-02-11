@@ -1,5 +1,4 @@
 import { BlobServiceClient } from "@azure/storage-blob";
-import { cache } from 'react'
 import {
   IFormsPayload,
   IFormsPayloadAnswers,
@@ -7,7 +6,7 @@ import {
   IResult,
 } from "../interfaces";
 
-export async function RefineMockUpData(): Promise<IMatchData[]> {
+export async function getMatchData(): Promise<IMatchData[]> {
   const matchData: IMatchData[] = [];
 
   const connectionString = `DefaultEndpointsProtocol=https;AccountName=backsnapperblobb;AccountKey=Od3lZ5NmWuPZjLhhT9EEhoAVZT7zrlf9eUdnfUmkl0iBfIfRCAgDINcxvjDGMRJZijiO7pxgmsY/+AStV3FNew==;EndpointSuffix=core.windows.net`;

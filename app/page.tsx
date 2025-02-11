@@ -1,17 +1,15 @@
+import { unstable_cache } from "next/cache";
 import { IoPieChartSharp } from "react-icons/io5";
 import MatchSection from "./_components/MatchSection";
 import StatisticSection from "./_components/StatisticSection";
-import { RefineMockUpData } from "./_components/StatisticUtils";
-import { cache } from 'react'
- 
-export const revalidate = 60;
- 
-export const getItem = cache(async () => {
-  return  await RefineMockUpData();
-})
+import { getMatchData } from "./_components/StatisticUtils";
 
 export default async function Home() {
-  const data = await getItem();
+  const getData = unstable_cache(async () => getMatchData(), ["matchData"], {
+    revalidate: 60,
+  });
+
+  const data = await getData();
 
   const firstDayOfMonth = new Date();
   firstDayOfMonth.setDate(1);
