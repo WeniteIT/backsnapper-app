@@ -31,7 +31,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased secondary-root font-[family-name:var(--font-geist-sans)] h-full`}
+        className={`${geistSans.variable} ${geistMono.variable} antialiased secondary-root font-[family-name:var(--font-geist-sans)] h-full overflow-y-scroll`}
       >
         <Header />
         <div className="secondary-text container-background flex justify-center font-[family-name:var(--font-geist-sans)] h-full bg-cover bg-center bg-no-repeat">
