@@ -23,7 +23,7 @@ export default function MatchSection({ matchData }: IProps) {
       new Date(match.date).getMonth() !== new Date().getMonth()
   );
 
-  const MAX_ENTRIES = 13;
+  const MAX_ENTRIES = 14;
   const ALL_HISTORY = MAX_ENTRIES - todaysData.length;
   return (
     <>

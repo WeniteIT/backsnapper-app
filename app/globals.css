@@ -1,5 +1,11 @@
 @import "tailwindcss";
 
+.container-background{
+  background-image: url(/tp_table.jpg);
+  background-color: rgba(235,235,235,0.9);
+  background-blend-mode: lighten;
+}
+
 .primary {
   @apply bg-yellow-500 text-zinc-800;
 }
@@ -49,6 +55,13 @@
 }
 
 @media (prefers-color-scheme: dark) {
+
+  .container-background{
+    background-image: url(/tp_table.jpg);
+    background-color: rgba(0,0,0,0.9);
+    background-blend-mode: darken;
+  }
+
   .secondary-root {
     @apply bg-zinc-800 text-zinc-100;
   }

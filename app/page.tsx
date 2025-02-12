@@ -27,13 +27,12 @@ export default async function Home() {
 
   return (
     <div
-      className="secondary-text flex justify-center font-[family-name:var(--font-geist-sans)] h-full"
+      className="secondary-text container-background flex justify-center font-[family-name:var(--font-geist-sans)] h-full bg-cover bg-center bg-no-repeat"
     >
       <div
         className="flex gap-2 md:gap-4 flex-col-reverse p-2 sm:p-4 sm:px-10 2xl:flex-row w-550 h-full"
         style={{
-          backgroundColor: "rgba(0,0,0, 0.02)",
-          // height: "calc(100vh - 7rem)",
+          backgroundColor: "rgba(0,0,0, 0.04)",
         }}
       >
         <div className="flex flex-col gap-2 md:gap-4 flex-1 md:overflow-hidden h-full">
@@ -47,7 +46,7 @@ export default async function Home() {
           />
           <StatisticSection
             data={data}
-            leftLabel="All entries"
+            leftLabel="All Time"
             rightLabel={"since " + DateOfFirstGame.toLocaleDateString("de-DE")}
           />
         </div>
