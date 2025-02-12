@@ -30,9 +30,9 @@ export default async function Home() {
       className="secondary-text flex justify-center font-[family-name:var(--font-geist-sans)] h-full"
     >
       <div
-        className="flex gap-2 md:gap-4 flex-col-reverse p-2 sm:p-2 sm:px-10 2xl:flex-row w-550 h-full"
+        className="flex gap-2 md:gap-4 flex-col-reverse p-2 sm:p-4 sm:px-10 2xl:flex-row w-550 h-full"
         style={{
-          backgroundColor: "rgba(0,0,0, 0.05)",
+          backgroundColor: "rgba(0,0,0, 0.02)",
           // height: "calc(100vh - 7rem)",
         }}
       >
