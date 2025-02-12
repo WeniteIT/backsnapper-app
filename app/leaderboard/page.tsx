@@ -33,6 +33,7 @@ export default async function LeaderboardPage() {
               .sort((a, b) => elo[b] - elo[a])
               .map((player, index) => (
                 <StatisticCard
+                  key={player}
                   label={index + 1 + ". " + player}
                   content={<_AnimatedNumber num={+elo[player].toFixed(0)} />}
                 />
@@ -52,6 +53,7 @@ export default async function LeaderboardPage() {
               .sort((a, b) => wins[b] - wins[a])
               .map((player, index) => (
                 <StatisticCard
+                  key={player}
                   label={index + 1 + ". " + player}
                   content={<_AnimatedNumber num={wins[player]} />}
                 />
@@ -73,6 +75,7 @@ export default async function LeaderboardPage() {
               .sort((a, b) => ratio[b] - ratio[a])
               .map((player, index) => (
                 <StatisticCard
+                  key={player}
                   label={index + 1 + ". " + player}
                   content={<_AnimatedNumber num={+ratio[player].toFixed(2)} />}
                 />
