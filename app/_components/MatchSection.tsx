@@ -22,6 +22,9 @@ export default function MatchSection({ matchData }: IProps) {
       new Date(match.date).getDate() !== new Date().getDate() ||
       new Date(match.date).getMonth() !== new Date().getMonth()
   );
+
+  const MAX_ENTRIES = 13;
+  const ALL_HISTORY = MAX_ENTRIES - todaysData.length;
   return (
     <>
       {todaysData.length > 0 && (
@@ -35,43 +38,48 @@ export default function MatchSection({ matchData }: IProps) {
           info={`${todaysData.length} matches`}
         >
           <>
-            {todaysData.reverse().map((match, index) => (
-              <MatchCard key={index} match={match} />
-            ))}
+            {todaysData
+              .reverse()
+              .slice(0, MAX_ENTRIES)
+              .map((match, index) => (
+                <MatchCard key={index} match={match} />
+              ))}
           </>
         </BaseSection>
       )}
-      <BaseSection
-        label={
-          <IconText
-            icon={<IoFootballSharp className="primary-text" />}
-            text="Match History"
-          />
-        }
-        info={`${matchData.length} matches`}
-      >
-        <>
-          {dataWithoutToday
-            .reverse()
-            .slice(0, 12)
-            .map((match, index) => (
-              <MatchCard key={index} match={match} />
-            ))}
-          <div className="flex justify-center">
-            <RouteButton
-              label={
-                <>
-                  Show all
-                  <MdMoreTime />
-                </>
-              }
-              route="/history"
-              width="100"
-              color="secondary-light"
+      {ALL_HISTORY > 0 && (
+        <BaseSection
+          label={
+            <IconText
+              icon={<IoFootballSharp className="primary-text" />}
+              text="Match History"
             />
-          </div>
-        </>
-      </BaseSection>
+          }
+          info={`${matchData.length} matches`}
+        >
+          <>
+            {dataWithoutToday
+              .reverse()
+              .slice(0, ALL_HISTORY)
+              .map((match, index) => (
+                <MatchCard key={index} match={match} />
+              ))}
+            <div className="flex justify-center">
+              <RouteButton
+                label={
+                  <>
+                    Show all
+                    <MdMoreTime />
+                  </>
+                }
+                route="/history"
+                width="100"
+                color="secondary-light"
+              />
+            </div>
+          </>
+        </BaseSection>
+      )}
     </>
   );
 }
