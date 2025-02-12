@@ -190,6 +190,21 @@ export function findMostLosses(matchData: IMatchData[]): IResult {
   return { name: names, num: score };
 }
 
+export function collectWinLoseRatio(
+  matchData: IMatchData[]
+): Record<string, number> {
+  const wins = collectWins(matchData);
+  const losses = collectLosses(matchData);
+
+  const ratio: Record<string, number> = {};
+
+  Object.keys(wins).forEach((player) => {
+    ratio[player] = wins[player] / (losses[player] || 1);
+  });
+
+  return ratio;
+}
+
 export function findBestWinLoseRatio(matchData: IMatchData[]): IResult {
   const wins = collectWins(matchData);
   const losses = collectLosses(matchData);
