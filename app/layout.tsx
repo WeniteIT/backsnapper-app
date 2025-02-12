@@ -34,7 +34,16 @@ export default function RootLayout({
         className={`${geistSans.variable} ${geistMono.variable} antialiased secondary-root font-[family-name:var(--font-geist-sans)] h-full`}
       >
         <Header />
-        {children}
+        <div className="secondary-text container-background flex justify-center font-[family-name:var(--font-geist-sans)] h-full bg-cover bg-center bg-no-repeat">
+          <div
+            className="flex gap-2 md:gap-4 flex-col-reverse p-2 sm:p-4 sm:px-10 2xl:flex-row w-550 h-full"
+            style={{
+              backgroundColor: "rgba(0,0,0, 0.04)",
+            }}
+          >
+            {children}
+          </div>
+        </div>
       </body>
     </html>
   );

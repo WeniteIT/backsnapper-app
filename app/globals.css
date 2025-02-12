@@ -1,8 +1,8 @@
 @import "tailwindcss";
 
-.container-background{
+.container-background {
   background-image: url(/tp_table.jpg);
-  background-color: rgba(235,235,235,0.9);
+  background-color: rgba(235, 235, 235, 0.9);
   background-blend-mode: lighten;
 }
 
@@ -23,7 +23,7 @@
 }
 
 .secondary-no-mode {
-  @apply bg-zinc-900 text-zinc-100;
+  @apply bg-zinc-800 text-zinc-100;
 }
 
 .secondary {
@@ -55,10 +55,9 @@
 }
 
 @media (prefers-color-scheme: dark) {
-
-  .container-background{
+  .container-background {
     background-image: url(/tp_table.jpg);
-    background-color: rgba(0,0,0,0.9);
+    background-color: rgba(0, 0, 0, 0.9);
     background-blend-mode: darken;
   }
 

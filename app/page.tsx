@@ -26,34 +26,25 @@ export default async function Home() {
   const DateOfFirstGame = new Date(data[0].date);
 
   return (
-    <div
-      className="secondary-text container-background flex justify-center font-[family-name:var(--font-geist-sans)] h-full bg-cover bg-center bg-no-repeat"
-    >
-      <div
-        className="flex gap-2 md:gap-4 flex-col-reverse p-2 sm:p-4 sm:px-10 2xl:flex-row w-550 h-full"
-        style={{
-          backgroundColor: "rgba(0,0,0, 0.04)",
-        }}
-      >
-        <div className="flex flex-col gap-2 md:gap-4 flex-1 md:overflow-hidden h-full">
-          <StatisticSection
-            data={data}
-            from={firstDayOfMonth}
-            to={lastDayOfMonth}
-            leftLabel="Current Month"
-            rightLabel={currentMonthName + " " + currentYear}
-            altIcon={<IoPieChartSharp className="primary-text md:text-4xl" />}
-          />
-          <StatisticSection
-            data={data}
-            leftLabel="All Time"
-            rightLabel={"since " + DateOfFirstGame.toLocaleDateString("de-DE")}
-          />
-        </div>
-        <div className="flex flex-col gap-2 md:gap-4 flex-1 md:overflow-hidden h-full">
-          <MatchSection matchData={data} />
-        </div>
+    <>
+      <div className="flex flex-col gap-2 md:gap-4 flex-1 md:overflow-hidden h-full">
+        <StatisticSection
+          data={data}
+          from={firstDayOfMonth}
+          to={lastDayOfMonth}
+          leftLabel="Current Month"
+          rightLabel={currentMonthName + " " + currentYear}
+          altIcon={<IoPieChartSharp className="primary-text md:text-4xl" />}
+        />
+        <StatisticSection
+          data={data}
+          leftLabel="All Time"
+          rightLabel={"since " + DateOfFirstGame.toLocaleDateString("de-DE")}
+        />
       </div>
-    </div>
+      <div className="flex flex-col gap-2 md:gap-4 flex-1 md:overflow-hidden h-full">
+        <MatchSection matchData={data} />
+      </div>
+    </>
   );
 }

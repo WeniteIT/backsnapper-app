@@ -1,9 +1,9 @@
 import Link from "next/link";
 import { FaHouse, FaTrophy } from "react-icons/fa6";
 import { IoFootballSharp } from "react-icons/io5";
+import { MdAssignmentAdd } from "react-icons/md";
 import { TbSoccerField } from "react-icons/tb";
 import RouteButton from "./_RouteButton";
-import { MdAssignmentAdd } from "react-icons/md";
 
 function Title() {
   return (
@@ -26,7 +26,7 @@ export default function Header() {
       <div className="flex gap-4">
         <RouteButton
           label={<MdAssignmentAdd className="text-xl md:text-4xl" />}
-          route="https://forms.office.com/Pages/ResponsePage.aspx?id=YF-XUyTrDkOvIWPezrqWEOpwPysGtUJOu6GZIYbKuWxUREVVSkE5MTM3TzhDNlpUNTlGWlVaRTJKVi4u"
+          route="/form"
           hover="Formular"
           color="secondary-no-mode"
         />
@@ -38,8 +38,8 @@ export default function Header() {
         />
         <RouteButton
           label={<FaTrophy className="text-xl md:text-4xl" />}
-          route="/rankings"
-          hover="Rankings"
+          route="/leaderboard"
+          hover="Leaderboard"
           color="secondary-no-mode"
         />
         <RouteButton
