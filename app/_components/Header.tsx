@@ -7,13 +7,13 @@ import RouteButton from "./_RouteButton";
 
 function Title() {
   return (
-    <Link href="/">
+    <Link className="flex items-center" href="/">
       <div className="flex gap-1 md:gap-2 items-center">
         <div className="primary flex rounded-md px-2 py-1 gap-1 md:gap-4 items-center">
           <TbSoccerField /> Back
         </div>
         SNAPPER{" "}
-        <div className="secondary-text-light text-2xl self-end">v0.5e</div>
+        {/* <div className="secondary-text-light text self-end">v0.5e</div> */}
       </div>
     </Link>
   );
@@ -21,29 +21,29 @@ function Title() {
 
 export default function Header() {
   return (
-    <div className="secondary-no-mode flex flex-col md:flex-row text-xl md:text-5xl font-bold gap-3 p-3 md:p-4 justify-between">
+    <div className="secondary-no-mode flex flex-col md:flex-row text-large font-bold gap-3 p-3 md:p-4 justify-between">
       <Title />
       <div className="flex gap-4">
         <RouteButton
-          label={<MdAssignmentAdd className="text-xl md:text-4xl" />}
+          label={<MdAssignmentAdd className="text-normal" />}
           route="/form"
           hover="Formular"
           color="secondary-no-mode"
         />
         <RouteButton
-          label={<IoFootballSharp className="text-xl md:text-4xl" />}
+          label={<IoFootballSharp className="text-normal" />}
           route="/history"
           hover="Matches"
           color="secondary-no-mode"
         />
         <RouteButton
-          label={<FaTrophy className="text-xl md:text-4xl" />}
+          label={<FaTrophy className="text-normal" />}
           route="/leaderboard"
           hover="Leaderboard"
           color="secondary-no-mode"
         />
         <RouteButton
-          label={<FaHouse className="text-xl md:text-4xl" />}
+          label={<FaHouse className="text-normal" />}
           route="/"
           hover="Home"
           color="secondary-no-mode"

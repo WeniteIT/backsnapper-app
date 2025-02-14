@@ -39,7 +39,7 @@ export default function MatchCard({ match }: IProps) {
   );
 
   const scores = (
-    <div className="secondary flex items-center font-bold gap-1 md:gap-3 justify-center min-w-28 md:min-w-50 text-xl md:text-3xl relative ">
+    <div className="secondary flex items-center font-bold gap-1 md:gap-3 justify-center min-w-28 md:min-w-50 text-normal relative ">
       <div className="flex secondary px-4 skew-x-16 absolute -left-2 top-0 bottom-0" />
       <div
         className={
@@ -78,8 +78,8 @@ export default function MatchCard({ match }: IProps) {
 
   return (
     <div className="flex gap-4 secondary-lighter rounded-lg shadow-md flex-1 relative overflow-hidden justify-between">
-      <div className="flex text-xl md:text-3xl items-center grow p-3 pr-5 overflow-hidden">
-        <div className="flex pr-3 md:pr-8 secondary-text-lighter md:min-w-20">
+      <div className="flex text-normal items-center grow p-3 pr-5 overflow-hidden">
+        <div className="flex pr-3 secondary-text-lighter md:min-w-14">
           {match.id}
         </div>
         {names}

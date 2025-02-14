@@ -34,7 +34,7 @@ export default async function Home() {
           to={lastDayOfMonth}
           leftLabel="Current Month"
           rightLabel={currentMonthName + " " + currentYear}
-          altIcon={<IoPieChartSharp className="primary-text md:text-4xl" />}
+          altIcon={<IoPieChartSharp className="primary-text text-large" />}
         />
         <StatisticSection
           data={data}

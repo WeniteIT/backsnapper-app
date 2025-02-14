@@ -54,7 +54,7 @@ export default function StatisticSection({
     <BaseSection
       label={
         <IconText
-          icon={altIcon || <FaChartLine className="primary-text md:text-4xl" />}
+          icon={altIcon || <FaChartLine className="primary-text text-large" />}
           text={leftLabel}
         />
       }
