@@ -36,7 +36,7 @@ export default function RootLayout({
         <Header />
         <div className="secondary-text container-background flex justify-center font-[family-name:var(--font-geist-sans)] h-full bg-cover bg-center bg-no-repeat">
           <div
-            className="flex gap-2 md:gap-4 flex-col-reverse p-2 sm:p-4 sm:px-10 2xl:flex-row w-450 h-full"
+            className="flex gap-2 md:gap-4 flex-col-reverse p-2 sm:p-4 sm:px-10 2xl:flex-row w-450 h-full min-h-screen"
             style={{
               backgroundColor: "rgba(0,0,0, 0.04)",
             }}
