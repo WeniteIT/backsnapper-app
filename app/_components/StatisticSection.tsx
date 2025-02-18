@@ -13,7 +13,6 @@ import {
   findWorstWinLoseRatio,
 } from "./StatisticUtils";
 import { _AnimatedNumber } from "./_AnimatedNumbers";
-import { FaArrowUp } from "react-icons/fa6";
 
 
 interface IProps {
@@ -66,7 +65,7 @@ export default function StatisticSection({
         label="Total Matches"
         content={<_AnimatedNumber num={filteredDataByDate.length} />}
       />
-      <StatisticCard icon={<FaArrowUp/>} label={"Wins"} result={mostWins} />
+      <StatisticCard label={"Wins"} result={mostWins} />
       <StatisticCard label={"Most Losses"} result={mostLoses} />
       <StatisticCard label={"Highest W/L"} result={highestWinLoseRatio} />
       <StatisticCard label={"Lowest W/L"} result={lowestWinLoseRatio} />

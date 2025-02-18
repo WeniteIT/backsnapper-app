@@ -4,12 +4,12 @@ import { IResult } from "../interfaces";
 import { _AnimatedNumber } from "./_AnimatedNumbers";
 
 interface IProps {
-  label: string ;
+  label: string;
   content?: React.ReactNode;
   result?: IResult;
 }
 
-export default function StatisticCard({  result, label, content }: IProps) {
+export default function StatisticCard({ result, label, content }: IProps) {
   return (
     <div
       title={result?.name.join(",")}
