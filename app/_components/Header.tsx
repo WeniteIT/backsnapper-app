@@ -1,7 +1,6 @@
 import Link from "next/link";
 import { FaHouse, FaTrophy } from "react-icons/fa6";
-import { IoFootballSharp } from "react-icons/io5";
-import { MdAssignmentAdd } from "react-icons/md";
+import { MdAssignmentAdd, MdOutlineWorkHistory } from "react-icons/md";
 import { TbSoccerField } from "react-icons/tb";
 import RouteButton from "./_RouteButton";
 
@@ -21,7 +20,7 @@ function Title() {
 
 export default function Header() {
   return (
-    <div className="fixed top-0 left-0 right-0 bg-zinc-800 md:bg-transparent flex flex-col md:flex-row text-large font-bold gap-3 p-3 md:p-4 justify-between z-10">
+    <div className="fixed top-0 left-0 right-0 secondary-no-mode flex flex-col md:flex-row text-large font-bold gap-3 p-3 md:p-4 justify-between z-10">
       <Title />
       <div className="flex gap-4">
         <RouteButton
@@ -31,9 +30,9 @@ export default function Header() {
           color="secondary-no-mode"
         />
         <RouteButton
-          label={<IoFootballSharp className="text-normal" />}
+          label={<MdOutlineWorkHistory className="text-normal" />}
           route="/history"
-          hover="Matches"
+          hover="Complete Match History"
           color="secondary-no-mode"
         />
         <RouteButton

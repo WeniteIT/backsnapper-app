@@ -1,9 +1,8 @@
 import Link from "next/link";
 import { FaTrophy } from "react-icons/fa";
+import { RiSwordLine } from "react-icons/ri";
 import { IMatchData } from "../interfaces";
 import { _AnimatedNumber } from "./_AnimatedNumbers";
-import { RiSwordLine } from "react-icons/ri";
-
 
 interface IProps {
   match: IMatchData;
@@ -24,7 +23,9 @@ export default function MatchCard({ match }: IProps) {
       >
         {match.player1.name}
       </Link>
-      <div className="font-semibold"><RiSwordLine /></div>
+      <div className="font-semibold">
+        <RiSwordLine />
+      </div>
       <Link
         href={`/${match.player2.name}`}
         passHref

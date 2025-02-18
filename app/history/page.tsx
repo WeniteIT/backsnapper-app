@@ -1,4 +1,4 @@
-import { IoFootballSharp } from "react-icons/io5";
+import { MdOutlineWorkHistory } from "react-icons/md";
 import BaseSection from "../_components/BaseSection";
 import IconText from "../_components/IconText";
 import MatchCard from "../_components/MatchCard";
@@ -12,8 +12,8 @@ export default async function HistoryPage() {
       <BaseSection
         label={
           <IconText
-            icon={<IoFootballSharp className="primary-text" />}
-            text="Match History"
+            icon={<MdOutlineWorkHistory className="primary-text text-large" />}
+            text="Complete Match History"
           />
         }
         info={`${data.length} matches`}

@@ -1,5 +1,4 @@
-import { IoFootballSharp } from "react-icons/io5";
-import { MdMoreTime } from "react-icons/md";
+import { MdMoreTime, MdOutlineWorkHistory, MdToday } from "react-icons/md";
 import { IMatchData } from "../interfaces";
 import BaseSection from "./BaseSection";
 import IconText from "./IconText";
@@ -31,7 +30,7 @@ export default function MatchSection({ matchData }: IProps) {
         <BaseSection
           label={
             <IconText
-              icon={<IoFootballSharp className="primary-text" />}
+              icon={<MdToday className="primary-text text-large" />}
               text="Today's Matches"
             />
           }
@@ -51,7 +50,9 @@ export default function MatchSection({ matchData }: IProps) {
         <BaseSection
           label={
             <IconText
-              icon={<IoFootballSharp className="primary-text" />}
+              icon={
+                <MdOutlineWorkHistory className="primary-text text-large" />
+              }
               text="Match History"
             />
           }

@@ -4,7 +4,7 @@ import IconText from "../_components/IconText";
 
 export default function Formpage() {
   return (
-    <div className="flex flex-col gap-4 flex-1">
+    <div className="flex gap-4 flex-1 grow">
       <BaseSection
         label={
           <IconText
@@ -16,7 +16,8 @@ export default function Formpage() {
         <iframe
           src="https://forms.office.com/Pages/ResponsePage.aspx?id=YF-XUyTrDkOvIWPezrqWEOpwPysGtUJOu6GZIYbKuWxUREVVSkE5MTM3TzhDNlpUNTlGWlVaRTJKVi4u"
           width="100%"
-          height="1200px"
+          height="100%"
+          style={{ height: "calc(100vh-5rem)" }}
         ></iframe>
       </BaseSection>
     </div>

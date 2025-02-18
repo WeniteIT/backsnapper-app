@@ -14,7 +14,6 @@ import {
 } from "./StatisticUtils";
 import { _AnimatedNumber } from "./_AnimatedNumbers";
 
-
 interface IProps {
   from?: Date;
   to?: Date;
@@ -65,12 +64,12 @@ export default function StatisticSection({
         label="Total Matches"
         content={<_AnimatedNumber num={filteredDataByDate.length} />}
       />
-      <StatisticCard label={"Wins"} result={mostWins} />
+      <StatisticCard label={"Most Wins"} result={mostWins} />
       <StatisticCard label={"Most Losses"} result={mostLoses} />
       <StatisticCard label={"Highest W/L"} result={highestWinLoseRatio} />
       <StatisticCard label={"Lowest W/L"} result={lowestWinLoseRatio} />
-      <StatisticCard label={"Highest Elo"} result={findHighestScore2} />
-      <StatisticCard label={"Lowest Elo"} result={findLowestScore2} />
+      <StatisticCard label={"Highest Score"} result={findHighestScore2} />
+      <StatisticCard label={"Lowest Score"} result={findLowestScore2} />
     </BaseSection>
   );
 }

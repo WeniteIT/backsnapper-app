@@ -24,7 +24,7 @@ export default async function LeaderboardPage() {
           label={
             <IconText
               icon={<FaTrophy className="primary-text" />}
-              text="Highest Elo"
+              text="Score"
             />
           }
         >
@@ -40,11 +40,13 @@ export default async function LeaderboardPage() {
               ))}
           </>
         </BaseSection>
+      </div>
+      <div className="flex flex-col gap-2 md:gap-4 flex-1 md:overflow-hidden h-full">
         <BaseSection
           label={
             <IconText
               icon={<FaTrophy className="primary-text" />}
-              text="Most Wins"
+              text="Wins"
             />
           }
         >
@@ -66,7 +68,7 @@ export default async function LeaderboardPage() {
           label={
             <IconText
               icon={<FaTrophy className="primary-text" />}
-              text="Highest Win/Lose Ratio"
+              text="Win/Lose"
             />
           }
         >

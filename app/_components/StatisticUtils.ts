@@ -72,6 +72,8 @@ export function collectWins(matchData: IMatchData[]): Record<string, number> {
   const wins: Record<string, number> = {};
 
   matchData.forEach((match) => {
+    wins[match.player1.name] = wins[match.player1.name] || 0;
+    wins[match.player2.name] = wins[match.player2.name] || 0;
     if (match.player1.score > match.player2.score) {
       wins[match.player1.name] = (wins[match.player1.name] || 0) + 1;
     } else {
