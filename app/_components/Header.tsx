@@ -21,7 +21,7 @@ function Title() {
 
 export default function Header() {
   return (
-    <div className="secondary-no-mode flex flex-col md:flex-row text-large font-bold gap-3 p-3 md:p-4 justify-between">
+    <div className="fixed top-0 left-0 right-0 bg-zinc-800 md:bg-transparent flex flex-col md:flex-row text-large font-bold gap-3 p-3 md:p-4 justify-between z-10">
       <Title />
       <div className="flex gap-4">
         <RouteButton

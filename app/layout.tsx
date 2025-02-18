@@ -34,7 +34,7 @@ export default function RootLayout({
         className={`${geistSans.variable} ${geistMono.variable} antialiased secondary-root font-[family-name:var(--font-geist-sans)] h-full overflow-y-scroll`}
       >
         <Header />
-        <div className="secondary-text container-background flex justify-center h-full bg-cover bg-center bg-no-repeat">
+        <div className="secondary-text container-background flex justify-center h-full bg-cover bg-center bg-no-repeat pt-30 md:pt-20">
           <div
             className="flex gap-2 md:gap-4 flex-col-reverse p-2 sm:p-4 sm:px-10 2xl:flex-row w-450 h-full min-h-screen"
             style={{
