@@ -6,6 +6,10 @@
   background-blend-mode: lighten;
 }
 
+.text-smoll {
+  @apply text-xs md:text-base;
+}
+
 .text-normal {
   @apply text-xl md:text-2xl;
 }
@@ -100,10 +104,6 @@
   .secondary-border {
     @apply border-zinc-600;
   }
-}
-
-body {
-  font-family: Arial, Helvetica, sans-serif;
 }
 
 /* width */

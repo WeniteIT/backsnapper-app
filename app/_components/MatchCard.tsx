@@ -39,7 +39,7 @@ export default function MatchCard({ match }: IProps) {
   );
 
   const scores = (
-    <div className="secondary flex items-center font-bold gap-1 md:gap-3 justify-center min-w-28 md:min-w-50 text-normal relative ">
+    <div className="secondary flex items-center font-bold gap-1 md:gap-3 justify-center min-w-28 md:min-w-32 text-normal relative ">
       <div className="flex secondary px-4 skew-x-16 absolute -left-2 top-0 bottom-0" />
       <div
         className={
@@ -67,10 +67,10 @@ export default function MatchCard({ match }: IProps) {
     </div>
   );
 
-  const date = (
+  const comment = (
     <div
       title={match.comment}
-      className="hidden md:flex text-lg secondary-text-light justify-end flex-1 items-center gap-3 italic whitespace-nowrap text-ellipsis overflow-hidden"
+      className="hidden md:flex text-smoll secondary-text-light justify-end flex-1 items-center gap-3 italic whitespace-nowrap text-ellipsis overflow-hidden pr-1"
     >
       {match.comment && `"${match.comment}"`}
     </div>
@@ -79,11 +79,11 @@ export default function MatchCard({ match }: IProps) {
   return (
     <div className="flex gap-4 secondary-lighter rounded-lg shadow-md flex-1 relative overflow-hidden justify-between">
       <div className="flex text-normal items-center grow p-2 pr-5 overflow-hidden">
-        <div className="flex pr-3 secondary-text-lighter md:min-w-14">
+        <div className="flex pr-3 pl-2 secondary-text-lighter md:min-w-14">
           {match.id}
         </div>
         {names}
-        {date}
+        {comment}
       </div>
       {scores}
     </div>
