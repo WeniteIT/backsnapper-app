@@ -233,7 +233,7 @@ export function findWorstWinLoseRatio(matchData: IMatchData[]): IResult {
   let worstPlayer = "";
   Object.keys(wins).forEach((player) => {
     const ratio = wins[player] / (losses[player] || 1);
-    if (ratio < worstRatio) {
+    if (ratio < worstRatio && ratio !== 0) {
       worstRatio = ratio;
       worstPlayer = player;
     }
