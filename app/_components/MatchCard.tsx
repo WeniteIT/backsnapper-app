@@ -43,7 +43,7 @@ export default function MatchCard({ match }: IProps) {
 
   const scores = (
     <div className="secondary flex items-center font-bold gap-1 md:gap-3 justify-center min-w-28 md:min-w-32 text-normal relative ">
-      <div className="flex secondary px-4 skew-x-16 absolute -left-2 top-0 bottom-0" />
+      <div className="flex secondary px-2 skew-x-16 absolute -left-2 top-0 bottom-0" />
       <div
         className={
           match.player2.score < match.player1.score ? "primary-text" : ""
@@ -70,12 +70,13 @@ export default function MatchCard({ match }: IProps) {
     </div>
   );
 
+  const slice = 34;
   const comment = (
     <div
       title={match.comment}
       className="hidden md:flex text-smoll secondary-text-light justify-end flex-1 items-center gap-3 italic whitespace-nowrap text-ellipsis overflow-hidden pr-1"
     >
-      {match.comment && `"${match.comment}"`}
+      {match.comment && `"${match.comment.length > slice ? match.comment.slice(0, slice) + "..." : match.comment}"`}
     </div>
   );
 

@@ -28,7 +28,7 @@ export default function PlayerMatchCard({ match, player }: IProps) {
   );
 
   const scores = (
-    <div className="secondary flex items-center font-bold gap-1 md:gap-3 justify-center min-w-28 md:min-w-32 text-normal relative ">
+    <div className="secondary flex items-center font-bold gap-1 md:gap-3 justify-center min-w-22 md:min-w-24 text-normal relative ">
       <div
         className={`flex px-2 skew-x-16 absolute -left-2 top-0 bottom-0 ${
           isPlayerOne
@@ -44,25 +44,29 @@ export default function PlayerMatchCard({ match, player }: IProps) {
       />
       <div
         className={
-          match.player2.score < match.player1.score ? "primary-text" : ""
+          isPlayerOne
+            ? match.player1.score > match.player2.score
+              ? "primary-text"
+              : ""
+            : isPlayerTwo && match.player2.score > match.player1.score
+              ? "primary-text" 
+              : ""
         }
       >
-        {match.player2.score < match.player1.score ? (
-          <FaTrophy />
+        {isPlayerOne ? (
+          match.player1.score > match.player2.score ? (
+            <FaTrophy />
+          ) : (
+            <_AnimatedNumber num={match.player1.score} />
+          )
+        ) : isPlayerTwo ? (
+          match.player2.score > match.player1.score ? (
+            <FaTrophy />
+          ) : (
+            <_AnimatedNumber num={match.player2.score} />
+          )
         ) : (
-          <_AnimatedNumber num={match.player1.score} />
-        )}
-      </div>
-      <div>-</div>
-      <div
-        className={
-          match.player2.score > match.player1.score ? "primary-text" : ""
-        }
-      >
-        {match.player2.score > match.player1.score ? (
-          <FaTrophy />
-        ) : (
-          <_AnimatedNumber num={match.player2.score} />
+          <></>
         )}
       </div>
     </div>
