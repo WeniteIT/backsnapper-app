@@ -14,13 +14,13 @@ export default function MatchSection({ matchData }: IProps) {
     (match) =>
       new Date(match.date).getDate() === new Date().getDate() &&
       new Date(match.date).getMonth() === new Date().getMonth()
-  );
+  ).sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime());
 
   const dataWithoutToday = matchData.filter(
     (match) =>
       new Date(match.date).getDate() !== new Date().getDate() ||
       new Date(match.date).getMonth() !== new Date().getMonth()
-  );
+  ).sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime());
 
   const MAX_ENTRIES = 14;
   const ALL_HISTORY = MAX_ENTRIES - todaysData.length;
@@ -38,7 +38,6 @@ export default function MatchSection({ matchData }: IProps) {
         >
           <>
             {todaysData
-              .reverse()
               .slice(0, MAX_ENTRIES)
               .map((match, index) => (
                 <MatchCard key={index} match={match} />
@@ -60,7 +59,6 @@ export default function MatchSection({ matchData }: IProps) {
         >
           <>
             {dataWithoutToday
-              .reverse()
               .slice(0, ALL_HISTORY)
               .map((match, index) => (
                 <MatchCard key={index} match={match} />

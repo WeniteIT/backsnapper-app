@@ -69,7 +69,7 @@
 @media (prefers-color-scheme: dark) {
   .container-background {
     background-image: url(/tp_table.jpg);
-    background-color: rgba(0, 0, 0, 0.9);
+    background-color: rgba(0, 0, 0, 0.83);
     background-blend-mode: darken;
   }
 

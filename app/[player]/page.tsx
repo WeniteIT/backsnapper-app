@@ -4,6 +4,8 @@ import IconText from "../_components/IconText";
 import { MdOutlineWorkHistory } from "react-icons/md";
 import MatchCard from "../_components/MatchCard";
 import { getMatchData } from "../_components/StatisticUtils";
+import { unstable_cache } from "next/cache";
+import PlayerMatchCard from "../_components/PlayerMatchCard";
 
 export default async function PlayerPage({
   params,
@@ -12,11 +14,15 @@ export default async function PlayerPage({
 }) {
   const player = decodeURIComponent((await params).player);
 
-  const data = await getMatchData();
+  const getData = unstable_cache(async () => getMatchData(), ["matchData"], {
+    revalidate: 60,
+  });
 
+  const data = await getData();
+  
   const playersData = data.filter(
     (match) => match.player1.name === player || match.player2.name === player
-  );
+  ).sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime());
 
   if (playersData.length === 0) {
     return (
@@ -46,8 +52,8 @@ export default async function PlayerPage({
         info={`${playersData.length} matches`}
       >
         <>
-          {playersData.reverse().map((match, index) => (
-            <MatchCard key={index} match={match} />
+          {playersData.map((match, index) => (
+            <PlayerMatchCard key={index} match={match} player={player} />
           ))}
         </>
       </BaseSection>

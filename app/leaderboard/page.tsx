@@ -9,9 +9,14 @@ import {
   getMatchData,
 } from "../_components/StatisticUtils";
 import { _AnimatedNumber } from "../_components/_AnimatedNumbers";
+import { unstable_cache } from "next/cache";
 
 export default async function LeaderboardPage() {
-  const data = await getMatchData();
+  const getData = unstable_cache(async () => getMatchData(), ["matchData"], {
+    revalidate: 60,
+  });
+
+  const data = await getData();
 
   const wins = collectWins(data);
   const ratio = collectWinLoseRatio(data);
