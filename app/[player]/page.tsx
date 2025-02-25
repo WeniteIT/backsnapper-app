@@ -2,7 +2,6 @@ import { IoFootballSharp } from "react-icons/io5";
 import BaseSection from "../_components/BaseSection";
 import IconText from "../_components/IconText";
 import { MdOutlineWorkHistory } from "react-icons/md";
-import MatchCard from "../_components/MatchCard";
 import { getMatchData } from "../_components/StatisticUtils";
 import { unstable_cache } from "next/cache";
 import PlayerMatchCard from "../_components/PlayerMatchCard";

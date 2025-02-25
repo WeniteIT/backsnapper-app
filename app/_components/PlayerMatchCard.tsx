@@ -14,39 +14,34 @@ export default function PlayerMatchCard({ match, player }: IProps) {
   const isPlayerTwo = match.player2.name === player;
   const names = (
     <div className="flex gap-1 md:gap-3 flex-1 md:min-w-70 whitespace-norwrap overflow-hidden items-center">
-      <Link
-        href={`/${match.player1.name}`}
-        passHref
-        className={
-          "hover:underline " +
-          (match.player2.score < match.player1.score
-            ? "primary-text font-semibold"
-            : "")
-        }
-      >
-        {match.player1.name}
-      </Link>
       <div className="font-semibold">
         <RiSwordLine />
       </div>
       <Link
-        href={`/${match.player2.name}`}
+        href={`/${isPlayerOne ? match.player2.name : match.player1.name}`}
         passHref
-        className={
-          "hover:underline " +
-          (match.player2.score > match.player1.score
-            ? "primary-text font-semibold"
-            : "")
-        }
+        className={"hover:underline "}
       >
-        {match.player2.name}
+        {isPlayerOne ? match.player2.name : match.player1.name}
       </Link>
     </div>
   );
 
   const scores = (
     <div className="secondary flex items-center font-bold gap-1 md:gap-3 justify-center min-w-28 md:min-w-32 text-normal relative ">
-      <div className="flex secondary px-4 skew-x-16 absolute -left-2 top-0 bottom-0" />
+      <div
+        className={`flex px-2 skew-x-16 absolute -left-2 top-0 bottom-0 ${
+          isPlayerOne
+            ? match.player1.score > match.player2.score
+              ? "bg-green-900"
+              : "bg-red-900"
+            : isPlayerTwo
+            ? match.player2.score > match.player1.score
+              ? "bg-green-900"
+              : "bg-red-900"
+            : ""
+        }`}
+      />
       <div
         className={
           match.player2.score < match.player1.score ? "primary-text" : ""
