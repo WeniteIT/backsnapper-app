@@ -38,12 +38,10 @@ export default async function Home() {
           rightLabel={currentMonthName + " " + currentYear}
           infos={[
             StatisticInfo.MOST_WINS,
-            StatisticInfo.HIGHEST_WIN_LOSE_RATIO,
-            StatisticInfo.HIGHEST_SCORE,
             StatisticInfo.LONGEST_WIN_STREAK,
+            StatisticInfo.HIGHEST_WIN_LOSE_RATIO,
             StatisticInfo.MOST_LOSES,
             StatisticInfo.LOWEST_WIN_LOSE_RATIO,
-            StatisticInfo.LOWEST_SCORE,
           ]}
           altIcon={<IoPieChartSharp className="primary-text text-large" />}
         />
