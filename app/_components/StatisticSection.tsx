@@ -7,6 +7,7 @@ import {
   calculateElo,
   findBestWinLoseRatio,
   findHighestElo,
+  findLongestWinStreak,
   findLowestElo,
   findMostLosses,
   findMostWins,
@@ -14,6 +15,15 @@ import {
 } from "./StatisticUtils";
 import { _AnimatedNumber } from "./_AnimatedNumbers";
 
+export enum StatisticInfo {
+  MOST_WINS = "Most Wins",
+  MOST_LOSES = "Most Loses",
+  HIGHEST_WIN_LOSE_RATIO = "Highest W/L",
+  LOWEST_WIN_LOSE_RATIO = "Lowest W/L",
+  HIGHEST_SCORE = "Highest Score",
+  LOWEST_SCORE = "Lowest Score",
+  LONGEST_WIN_STREAK = "Longest Win Streak",
+}
 interface IProps {
   from?: Date;
   to?: Date;
@@ -21,6 +31,7 @@ interface IProps {
   rightLabel?: string;
   altIcon?: React.ReactNode;
   data: IMatchData[];
+  infos: StatisticInfo[];
 }
 
 export default function StatisticSection({
@@ -30,6 +41,7 @@ export default function StatisticSection({
   rightLabel,
   altIcon,
   data,
+  infos,
 }: IProps) {
   const filteredDataByDate = data.filter((match) => {
     if (from && to) {
@@ -49,6 +61,17 @@ export default function StatisticSection({
   const lowestWinLoseRatio = findWorstWinLoseRatio(filteredDataByDate);
   const findHighestScore2 = findHighestElo(filteredScore);
   const findLowestScore2 = findLowestElo(filteredScore);
+  const longestWinStreak = findLongestWinStreak(filteredDataByDate);
+
+  const StatisticInfoMap = {
+    [StatisticInfo.MOST_WINS]: mostWins,
+    [StatisticInfo.MOST_LOSES]: mostLoses,
+    [StatisticInfo.HIGHEST_WIN_LOSE_RATIO]: highestWinLoseRatio,
+    [StatisticInfo.LOWEST_WIN_LOSE_RATIO]: lowestWinLoseRatio,
+    [StatisticInfo.HIGHEST_SCORE]: findHighestScore2,
+    [StatisticInfo.LOWEST_SCORE]: findLowestScore2,
+    [StatisticInfo.LONGEST_WIN_STREAK]: longestWinStreak,
+  };
 
   return (
     <BaseSection
@@ -64,12 +87,14 @@ export default function StatisticSection({
         label="Total Matches"
         content={<_AnimatedNumber num={filteredDataByDate.length} />}
       />
-      <StatisticCard label={"Most Wins"} result={mostWins} />
-      <StatisticCard label={"Most Losses"} result={mostLoses} />
-      <StatisticCard label={"Highest W/L"} result={highestWinLoseRatio} />
-      <StatisticCard label={"Lowest W/L"} result={lowestWinLoseRatio} />
-      <StatisticCard label={"Highest Score"} result={findHighestScore2} />
-      <StatisticCard label={"Lowest Score"} result={findLowestScore2} />
+
+      {infos?.map((info) => (
+        <StatisticCard
+          key={info}
+          label={info}
+          result={StatisticInfoMap[info]}
+        />
+      ))}
     </BaseSection>
   );
 }

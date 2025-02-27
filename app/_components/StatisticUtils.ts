@@ -208,6 +208,65 @@ export function collectWinLoseRatio(
   return ratio;
 }
 
+export function getAllPlayers(matchData: IMatchData[]): string[] {
+  const players = new Set<string>();
+
+  matchData.forEach((match) => {
+    players.add(match.player1.name);
+    players.add(match.player2.name);
+  });
+
+  return Array.from(players);
+}
+
+export function findLongestWinStreak(matchData: IMatchData[]): IResult {
+  const players = getAllPlayers(matchData);
+  let playerWithLongest = "";
+  let streak = 0;
+  players.forEach((player) => {
+    const result = findLongestWinStreakByPlayer(matchData, player);
+    if (result.num > streak) {
+      streak = result.num;
+      playerWithLongest = player;
+    }
+  });
+
+  return { name: [playerWithLongest], num: streak };
+}
+
+export function findLongestWinStreakByPlayer(
+  matchData: IMatchData[],
+  player: string
+): IResult {
+  const streaks: number[] = [];
+
+  const filteredMatchData = matchData.filter(
+    (match) => match.player1.name === player || match.player2.name === player
+  ).sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime());
+
+  let streak = 0;
+  filteredMatchData.forEach((match) => {
+    if (
+      match.player1.name === player &&
+      match.player1.score > match.player2.score
+    ) {
+      streak++;
+    } else if (
+      match.player2.name === player &&
+      match.player2.score > match.player1.score
+    ) {
+      streak++;
+    } else {
+      if (streak > 0) streaks.push(streak);
+      streak = 0;
+    }
+  });
+
+  console.log(player, streaks);
+
+  return { name: [player], num: Math.max(...streaks) };
+}
+
 export function findBestWinLoseRatio(matchData: IMatchData[]): IResult {
   const wins = collectWins(matchData);
   const losses = collectLosses(matchData);
