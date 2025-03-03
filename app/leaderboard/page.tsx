@@ -10,6 +10,7 @@ import {
 } from "../_components/StatisticUtils";
 import { _AnimatedNumber } from "../_components/_AnimatedNumbers";
 import { unstable_cache } from "next/cache";
+import Link from "next/link";
 
 export default async function LeaderboardPage() {
   const getData = unstable_cache(async () => getMatchData(), ["matchData"], {
@@ -39,7 +40,20 @@ export default async function LeaderboardPage() {
               .map((player, index) => (
                 <StatisticCard
                   key={player}
-                  label={index + 1 + ". " + player}
+                  label={
+                    <div className="flex text-normal items-center grow p-2 pr-5 overflow-hidden">
+                      <div className="flex pr-3 pl-2 secondary-text-lighter md:min-w-14">
+                        {index}
+                      </div>
+                      <Link
+                        href={`/${player}`}
+                        passHref
+                        className={`hover:underline}`}
+                      >
+                        {player}
+                      </Link>
+                    </div>
+                  }
                   content={<_AnimatedNumber num={+elo[player].toFixed(0)} />}
                 />
               ))}
@@ -61,7 +75,20 @@ export default async function LeaderboardPage() {
               .map((player, index) => (
                 <StatisticCard
                   key={player}
-                  label={index + 1 + ". " + player}
+                  label={
+                    <div className="flex text-normal items-center grow p-2 pr-5 overflow-hidden">
+                      <div className="flex pr-3 pl-2 secondary-text-lighter md:min-w-14">
+                        {index}
+                      </div>
+                      <Link
+                        href={`/${player}`}
+                        passHref
+                        className={`hover:underline}`}
+                      >
+                        {player}
+                      </Link>
+                    </div>
+                  }
                   content={<_AnimatedNumber num={wins[player]} />}
                 />
               ))}
@@ -83,7 +110,20 @@ export default async function LeaderboardPage() {
               .map((player, index) => (
                 <StatisticCard
                   key={player}
-                  label={index + 1 + ". " + player}
+                  label={
+                    <div className="flex text-normal items-center grow p-2 pr-5 overflow-hidden">
+                      <div className="flex pr-3 pl-2 secondary-text-lighter md:min-w-14">
+                        {index}
+                      </div>
+                      <Link
+                        href={`/${player}`}
+                        passHref
+                        className={`hover:underline}`}
+                      >
+                        {player}
+                      </Link>
+                    </div>
+                  }
                   content={<_AnimatedNumber num={+ratio[player].toFixed(2)} />}
                 />
               ))}

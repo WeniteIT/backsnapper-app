@@ -4,7 +4,7 @@ import { IResult } from "../interfaces";
 import { _AnimatedNumber } from "./_AnimatedNumbers";
 
 interface IProps {
-  label: string;
+  label: string | React.ReactNode;
   content?: React.ReactNode;
   result?: IResult;
 }
