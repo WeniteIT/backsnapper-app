@@ -37,7 +37,7 @@ export default function RootLayout({
         <Header />
         <div className="secondary-text container-background flex justify-center h-full bg-cover bg-center bg-no-repeat pt-30 md:pt-6 px-2">
           <div
-            className="flex gap-2 md:gap-4 flex-col-reverse sm:px-10 2xl:flex-row w-450 h-full pt-4 md:pt-20 pb-6"
+            className="flex gap-2 md:gap-4 flex-col-reverse sm:px-10 2xl:flex-row w-450 h-full pt-4 md:pt-18 pb-6"
             style={{
               backgroundColor: "rgba(0,0,0, 0.1)",
               minHeight: "calc(100vh - 5rem)",

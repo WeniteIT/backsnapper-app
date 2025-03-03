@@ -35,11 +35,11 @@
 }
 
 .secondary-no-mode {
-  @apply bg-zinc-800 text-zinc-100;
+  @apply bg-zinc-700 text-zinc-100;
 }
 
 .secondary {
-  @apply bg-zinc-800 text-zinc-100;
+  @apply bg-zinc-600 text-zinc-100;
 }
 
 .secondary-light {
@@ -82,11 +82,11 @@
   }
 
   .secondary-light {
-    @apply bg-zinc-700 text-zinc-100;
+    @apply bg-zinc-800 text-zinc-100;
   }
 
   .secondary-lighter {
-    @apply bg-zinc-600 text-zinc-100;
+    @apply bg-zinc-700 text-zinc-100;
   }
 
   .secondary-text {

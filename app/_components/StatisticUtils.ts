@@ -163,7 +163,11 @@ export function collectLosses(matchData: IMatchData[]): Record<string, number> {
 //   return { name: data[0], num: data[1] };
 // }
 
-export function findMostWins(matchData: IMatchData[]): IResult {
+export function findMostWins(matchData: IMatchData[]): IResult {  
+  if (matchData.length === 0) {
+    return { name: ["-"], num: 0 };
+  }
+
   const wins = collectWins(matchData);
 
   const results: string[][] = [];
@@ -179,6 +183,10 @@ export function findMostWins(matchData: IMatchData[]): IResult {
 }
 
 export function findMostLosses(matchData: IMatchData[]): IResult {
+  if (matchData.length === 0) {
+    return { name: ["-"], num: 0 };
+  }
+
   const losses = collectLosses(matchData);
 
   const results: string[][] = [];
@@ -220,6 +228,10 @@ export function getAllPlayers(matchData: IMatchData[]): string[] {
 }
 
 export function findLongestWinStreak(matchData: IMatchData[]): IResult {
+  if (matchData.length === 0) {
+    return { name: ["-"], num: 0 };
+  }
+
   const players = getAllPlayers(matchData);
   let playerWithLongest = "";
   let streak = 0;
@@ -238,6 +250,10 @@ export function findLongestWinStreakByPlayer(
   matchData: IMatchData[],
   player: string
 ): IResult {
+  if (matchData.length === 0) {
+    return { name: ["-"], num: 0 };
+  }
+
   const streaks: number[] = [];
 
   const filteredMatchData = matchData.filter(
@@ -262,12 +278,14 @@ export function findLongestWinStreakByPlayer(
     }
   });
 
-  console.log(player, streaks);
-
   return { name: [player], num: Math.max(...streaks) };
 }
 
 export function findBestWinLoseRatio(matchData: IMatchData[]): IResult {
+  if (matchData.length === 0) {
+    return { name: ["-"], num: 0 };
+  }
+
   const wins = collectWins(matchData);
   const losses = collectLosses(matchData);
 
@@ -285,6 +303,10 @@ export function findBestWinLoseRatio(matchData: IMatchData[]): IResult {
 }
 
 export function findWorstWinLoseRatio(matchData: IMatchData[]): IResult {
+  if (matchData.length === 0) {
+    return { name: ["-"], num: 0 };
+  }
+
   const wins = collectWins(matchData);
   const losses = collectLosses(matchData);
 

@@ -1,10 +1,12 @@
+"use client";
+
 import { FaChartLine } from "react-icons/fa";
-import { IMatchData } from "../interfaces";
+import { IMatchData, IResult } from "../interfaces";
 import BaseSection from "./BaseSection";
 import IconText from "./IconText";
 import StatisticCard from "./StatisticCard";
 import {
-  calculateElo,
+  calculateElo as findScore,
   findBestWinLoseRatio,
   findHighestElo,
   findLongestWinStreak,
@@ -14,16 +16,9 @@ import {
   findWorstWinLoseRatio,
 } from "./StatisticUtils";
 import { _AnimatedNumber } from "./_AnimatedNumbers";
+import { useMemo } from "react";
 
-export enum StatisticInfo {
-  MOST_WINS = "Most Wins",
-  MOST_LOSES = "Most Loses",
-  HIGHEST_WIN_LOSE_RATIO = "Highest W/L",
-  LOWEST_WIN_LOSE_RATIO = "Lowest W/L",
-  HIGHEST_SCORE = "Highest Score",
-  LOWEST_SCORE = "Lowest Score",
-  LONGEST_WIN_STREAK = "Longest Win Streak",
-}
+export type TStatisticInfo = "Most Wins" | "Most Losses" | "Highest W/L" | "Lowest W/L" | "Highest Score" | "Lowest Score" | "Longest Win Streak";
 interface IProps {
   from?: Date;
   to?: Date;
@@ -31,7 +26,7 @@ interface IProps {
   rightLabel?: string;
   altIcon?: React.ReactNode;
   data: IMatchData[];
-  infos: StatisticInfo[];
+  infos: TStatisticInfo[];
 }
 
 export default function StatisticSection({
@@ -43,34 +38,55 @@ export default function StatisticSection({
   data,
   infos,
 }: IProps) {
-  const filteredDataByDate = data.filter((match) => {
-    if (from && to) {
-      return (
-        new Date(match.date).getTime() >= from.getTime() &&
-        new Date(match.date).getTime() <= to.getTime()
-      );
-    }
-    return true;
-  });
+  const {
+    totalMatches,
+    findHighestScore2,
+    findLowestScore2,
+    highestWinLoseRatio,
+    longestWinStreak,
+    lowestWinLoseRatio,
+    mostLosses,
+    mostWins,
+  } = useMemo(() => {
+    const filteredDataByDate = data.filter((match) => {
+      if (from && to) {
+        return (
+          new Date(match.date).getTime() >= from.getTime() &&
+          new Date(match.date).getTime() <= to.getTime()
+        );
+      }
+      return true;
+    });
 
-  const filteredScore = calculateElo(filteredDataByDate);
+    const filteredScore = findScore(filteredDataByDate);
+    const mostWins = findMostWins(filteredDataByDate);
+    const mostLosses = findMostLosses(filteredDataByDate);
+    const highestWinLoseRatio = findBestWinLoseRatio(filteredDataByDate);
+    const lowestWinLoseRatio = findWorstWinLoseRatio(filteredDataByDate);
+    const findHighestScore2 = findHighestElo(filteredScore);
+    const findLowestScore2 = findLowestElo(filteredScore);
+    const longestWinStreak = findLongestWinStreak(filteredDataByDate);
 
-  const mostWins = findMostWins(filteredDataByDate);
-  const mostLoses = findMostLosses(filteredDataByDate);
-  const highestWinLoseRatio = findBestWinLoseRatio(filteredDataByDate);
-  const lowestWinLoseRatio = findWorstWinLoseRatio(filteredDataByDate);
-  const findHighestScore2 = findHighestElo(filteredScore);
-  const findLowestScore2 = findLowestElo(filteredScore);
-  const longestWinStreak = findLongestWinStreak(filteredDataByDate);
+    return {
+      totalMatches: filteredDataByDate.length,
+      mostWins,
+      mostLosses,
+      highestWinLoseRatio,
+      lowestWinLoseRatio,
+      findHighestScore2,
+      findLowestScore2,
+      longestWinStreak,
+    };
+  }, [data, from, to]);
 
-  const StatisticInfoMap = {
-    [StatisticInfo.MOST_WINS]: mostWins,
-    [StatisticInfo.MOST_LOSES]: mostLoses,
-    [StatisticInfo.HIGHEST_WIN_LOSE_RATIO]: highestWinLoseRatio,
-    [StatisticInfo.LOWEST_WIN_LOSE_RATIO]: lowestWinLoseRatio,
-    [StatisticInfo.HIGHEST_SCORE]: findHighestScore2,
-    [StatisticInfo.LOWEST_SCORE]: findLowestScore2,
-    [StatisticInfo.LONGEST_WIN_STREAK]: longestWinStreak,
+  const StatisticInfoMap: Record<TStatisticInfo, IResult> = {
+    ["Most Wins"]: mostWins,
+    ["Most Losses"]: mostLosses,
+    ["Highest W/L"]: highestWinLoseRatio,
+    ["Lowest W/L"]: lowestWinLoseRatio,
+    ["Highest Score"]: findHighestScore2,
+    ["Lowest Score"]: findLowestScore2,
+    ["Longest Win Streak"]: longestWinStreak,
   };
 
   return (
@@ -85,7 +101,7 @@ export default function StatisticSection({
     >
       <StatisticCard
         label="Total Matches"
-        content={<_AnimatedNumber num={filteredDataByDate.length} />}
+        content={<_AnimatedNumber num={totalMatches} />}
       />
 
       {infos?.map((info) => (

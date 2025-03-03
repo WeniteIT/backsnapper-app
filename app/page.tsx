@@ -2,7 +2,6 @@ import { unstable_cache } from "next/cache";
 import { IoPieChartSharp } from "react-icons/io5";
 import MatchSection from "./_components/MatchSection";
 import StatisticSection, {
-  StatisticInfo,
 } from "./_components/StatisticSection";
 import { getMatchData } from "./_components/StatisticUtils";
 
@@ -36,21 +35,12 @@ export default async function Home() {
           to={lastDayOfMonth}
           leftLabel="Current Month"
           rightLabel={currentMonthName + " " + currentYear}
-          infos={[
-            StatisticInfo.MOST_WINS,
-            StatisticInfo.LONGEST_WIN_STREAK,
-            StatisticInfo.HIGHEST_WIN_LOSE_RATIO,
-            StatisticInfo.MOST_LOSES,
-            StatisticInfo.LOWEST_WIN_LOSE_RATIO,
-          ]}
+          infos={["Most Wins", "Longest Win Streak", "Highest W/L", "Most Losses", "Lowest W/L"]}
           altIcon={<IoPieChartSharp className="primary-text text-large" />}
         />
         <StatisticSection
           infos={[
-            StatisticInfo.MOST_WINS,
-            StatisticInfo.HIGHEST_WIN_LOSE_RATIO,
-            StatisticInfo.HIGHEST_SCORE,
-            StatisticInfo.LONGEST_WIN_STREAK,
+            "Most Wins", "Longest Win Streak", "Highest W/L", "Highest Score"
           ]}
           data={data}
           leftLabel="All Time"
