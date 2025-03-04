@@ -2,9 +2,9 @@ import { IoFootballSharp } from "react-icons/io5";
 import BaseSection from "../_components/BaseSection";
 import IconText from "../_components/IconText";
 import { MdOutlineWorkHistory } from "react-icons/md";
-import { getMatchData } from "../_components/StatisticUtils";
 import { unstable_cache } from "next/cache";
 import PlayerMatchCard from "../_components/PlayerMatchCard";
+import { getMatchData } from "../_components/getMatchData";
 
 export default async function PlayerPage({
   params,

@@ -3,7 +3,7 @@ import { IoPieChartSharp } from "react-icons/io5";
 import MatchSection from "./_components/MatchSection";
 import StatisticSection, {
 } from "./_components/StatisticSection";
-import { getMatchData } from "./_components/StatisticUtils";
+import { getMatchData } from "./_components/getMatchData";
 
 export default async function Home() {
   const getData = unstable_cache(async () => getMatchData(), ["matchData"], {
@@ -28,7 +28,7 @@ export default async function Home() {
 
   return (
     <>
-      <div className="flex flex-col gap-2 md:gap-4 flex-1 md:overflow-hidden h-full">
+      <div className="flex flex-col gap-2 md:gap-3 flex-1 md:overflow-hidden h-full">
         <StatisticSection
           data={data}
           from={firstDayOfMonth}
@@ -47,7 +47,7 @@ export default async function Home() {
           rightLabel={"since " + DateOfFirstGame.toLocaleDateString("de-DE")}
         />
       </div>
-      <div className="flex flex-col gap-2 md:gap-4 flex-1 md:overflow-hidden h-full">
+      <div className="flex flex-col gap-2 md:gap-3 flex-1 md:overflow-hidden h-full">
         <MatchSection matchData={data} />
       </div>
     </>

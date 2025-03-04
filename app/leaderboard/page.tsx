@@ -3,14 +3,14 @@ import BaseSection from "../_components/BaseSection";
 import IconText from "../_components/IconText";
 import StatisticCard from "../_components/StatisticCard";
 import {
-  calculateElo,
+  calculateScore,
   collectWinLoseRatio,
   collectWins,
-  getMatchData,
 } from "../_components/StatisticUtils";
 import { _AnimatedNumber } from "../_components/_AnimatedNumbers";
 import { unstable_cache } from "next/cache";
 import Link from "next/link";
+import { getMatchData } from "../_components/getMatchData";
 
 export default async function LeaderboardPage() {
   const getData = unstable_cache(async () => getMatchData(), ["matchData"], {
@@ -21,7 +21,7 @@ export default async function LeaderboardPage() {
 
   const wins = collectWins(data);
   const ratio = collectWinLoseRatio(data);
-  const elo = calculateElo(data);
+  const elo = calculateScore(data);
 
   return (
     <>
@@ -41,7 +41,7 @@ export default async function LeaderboardPage() {
                 <StatisticCard
                   key={player}
                   label={
-                    <div className="flex text-normal items-center grow p-2 pr-5 overflow-hidden">
+                    <div className="flex text-normal items-center grow p-2 overflow-hidden">
                       <div className="flex pr-3 pl-2 secondary-text-lighter md:min-w-14">
                         {index}
                       </div>

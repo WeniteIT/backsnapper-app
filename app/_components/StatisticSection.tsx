@@ -6,7 +6,7 @@ import BaseSection from "./BaseSection";
 import IconText from "./IconText";
 import StatisticCard from "./StatisticCard";
 import {
-  calculateElo as findScore,
+  calculateScore as findScore,
   findBestWinLoseRatio,
   findHighestElo,
   findLongestWinStreak,

@@ -35,7 +35,7 @@
 }
 
 .secondary-no-mode {
-  @apply bg-zinc-700 text-zinc-100;
+  @apply bg-zinc-800 text-zinc-100;
 }
 
 .secondary {
@@ -63,7 +63,11 @@
 }
 
 .secondary-border {
-  @apply border-zinc-300;
+  @apply border border-zinc-400;
+}
+
+.primary-border-color {
+  @apply border-yellow-600
 }
 
 @media (prefers-color-scheme: dark) {
@@ -102,7 +106,7 @@
   }
 
   .secondary-border {
-    @apply border-zinc-600;
+    @apply border border-zinc-700;
   }
 }
 

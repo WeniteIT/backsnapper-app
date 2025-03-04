@@ -2,8 +2,8 @@ import { MdOutlineWorkHistory } from "react-icons/md";
 import BaseSection from "../_components/BaseSection";
 import IconText from "../_components/IconText";
 import MatchCard from "../_components/MatchCard";
-import { getMatchData } from "../_components/StatisticUtils";
 import { unstable_cache } from "next/cache";
+import { getMatchData } from "../_components/getMatchData";
 
 export default async function HistoryPage() {
   const getData = unstable_cache(async () => getMatchData(), ["matchData"], {

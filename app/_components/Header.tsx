@@ -7,12 +7,11 @@ import RouteButton from "./_RouteButton";
 function Title() {
   return (
     <Link className="flex items-center" href="/">
-      <div className="flex gap-1 md:gap-2 items-center">
-        <div className="primary flex rounded-md px-2 py-1 gap-1 md:gap-4 items-center">
-          <TbSoccerField /> Back
+      <div className="flex gap-1 items-center">
+        <div className="primary flex rounded-md px-2 py-1 items-center ">
+          <TbSoccerField className="text-4xl" /> Back
         </div>
-        SNAPPER{" "}
-        {/* <div className="secondary-text-light text self-end">v0.5e</div> */}
+        <div className="text-3xl">SNAPPER</div>
       </div>
     </Link>
   );
@@ -20,7 +19,7 @@ function Title() {
 
 export default function Header() {
   return (
-    <div className="fixed top-0 left-0 right-0 secondary-no-mode flex flex-col md:flex-row text-large font-bold gap-3 p-3 md:p-4 justify-between z-10">
+    <div className="fixed top-0 left-0 right-0 secondary border-b primary-border-color flex flex-col md:flex-row text-large font-bold gap-3 p-3 md:p-3 justify-between z-10">
       <Title />
       <div className="flex gap-4">
         <RouteButton
