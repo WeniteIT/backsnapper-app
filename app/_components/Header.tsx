@@ -26,25 +26,25 @@ export default function Header() {
           label={<MdAssignmentAdd className="text-normal" />}
           route="/form"
           hover="Formular"
-          color="secondary-no-mode"
+          color="secondary"
         />
         <RouteButton
           label={<MdOutlineWorkHistory className="text-normal" />}
           route="/history"
           hover="Complete Match History"
-          color="secondary-no-mode"
+          color="secondary"
         />
         <RouteButton
           label={<FaTrophy className="text-normal" />}
           route="/leaderboard"
           hover="Leaderboard"
-          color="secondary-no-mode"
+          color="secondary"
         />
         <RouteButton
           label={<FaHouse className="text-normal" />}
           route="/"
           hover="Home"
-          color="secondary-no-mode"
+          color="secondary"
         />
       </div>
     </div>

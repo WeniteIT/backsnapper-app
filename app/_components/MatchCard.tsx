@@ -1,8 +1,7 @@
-import Link from "next/link";
 import { FaTrophy } from "react-icons/fa";
 import { RiSwordLine } from "react-icons/ri";
 import { IMatchData } from "../interfaces";
-import { _AnimatedNumber } from "./_AnimatedNumbers";
+import { PlayerLink } from "./PlayerLink";
 
 interface IProps {
   match: IMatchData;
@@ -11,33 +10,27 @@ interface IProps {
 export default function MatchCard({ match }: IProps) {
   const names = (
     <div className="flex gap-1 md:gap-3 flex-1 md:min-w-70 whitespace-norwrap overflow-hidden items-center">
-      <Link
-        href={`/${match.player1.name}`}
-        passHref
+      <PlayerLink
+        name={match.player1.name}
         className={
           "hover:underline " +
           (match.player2.score < match.player1.score
             ? "primary-text font-medium"
             : "")
         }
-      >
-        {match.player1.name}
-      </Link>
+      />
       <div className="font-semibold">
         <RiSwordLine />
       </div>
-      <Link
-        href={`/${match.player2.name}`}
-        passHref
+      <PlayerLink
+        name={match.player2.name}
         className={
           "hover:underline " +
           (match.player2.score > match.player1.score
             ? "primary-text font-medium"
             : "")
         }
-      >
-        {match.player2.name}
-      </Link>
+      />
     </div>
   );
 
@@ -52,7 +45,7 @@ export default function MatchCard({ match }: IProps) {
         {match.player2.score < match.player1.score ? (
           <FaTrophy />
         ) : (
-          <_AnimatedNumber num={match.player1.score} />
+          <div>{match.player1.score}</div>
         )}
       </div>
       <div>-</div>
@@ -64,7 +57,7 @@ export default function MatchCard({ match }: IProps) {
         {match.player2.score > match.player1.score ? (
           <FaTrophy />
         ) : (
-          <_AnimatedNumber num={match.player2.score} />
+          <div>{match.player2.score}</div>
         )}
       </div>
     </div>
@@ -73,10 +66,16 @@ export default function MatchCard({ match }: IProps) {
   const slice = 34;
   const comment = (
     <div
-      title={match.comment + " - " + match.date}
-      className="hidden md:flex text-smoll secondary-text-light justify-end flex-1 items-center gap-3 italic whitespace-nowrap text-ellipsis overflow-hidden pr-1"
+      title={match.comment + (match.comment && " - ") + match.date}
+      className="hidden md:flex text-smoll secondary-text-lighter justify-end flex-1 items-center gap-3 italic whitespace-nowrap text-ellipsis overflow-hidden pr-1"
     >
-      {match.comment && `"${match.comment.length > slice ? match.comment.slice(0, slice) + "..." : match.comment}"`}
+      {match.comment
+        ? `"${
+            match.comment.length > slice
+              ? match.comment.slice(0, slice) + "..."
+              : match.comment
+          }"`
+        : match.date}
     </div>
   );
 

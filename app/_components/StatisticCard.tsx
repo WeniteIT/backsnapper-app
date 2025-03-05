@@ -1,6 +1,6 @@
-import Link from "next/link";
 import React, { Fragment } from "react";
 import { IResult } from "../interfaces";
+import { PlayerLink } from "./PlayerLink";
 import { _AnimatedNumber } from "./_AnimatedNumbers";
 
 interface IProps {
@@ -27,15 +27,11 @@ export default function StatisticCard({ result, label, content }: IProps) {
                 {result.name?.map((n, i) => (
                   <Fragment key={n + result.num + i}>
                     {i > 0 && ","}
-                    <Link
-                      title={n}
-                      key={n + "_mw"}
-                      href={`/${n}`}
-                      passHref
-                      className={`hover:underline ${i != 0 && "pl-2"}`}
-                    >
-                      {result.name.length > 1 ? n.substring(0, 3) : n}
-                    </Link>
+                    <PlayerLink
+                      name={n}
+                      className={i !== 0 ? "pl-2" : ""}
+                      shorten={result.name.length > 1}
+                    />
                   </Fragment>
                 ))}
               </div>

@@ -6,6 +6,22 @@
   background-blend-mode: lighten;
 }
 
+.success {
+  @apply bg-green-600 text-zinc-800;
+}
+
+.failure {
+  @apply bg-red-600 text-zinc-800;
+}
+
+.outline-success {
+  @apply outline-green-600;
+}
+
+.outline-failure {
+  @apply outline-red-600;
+}
+
 .text-smoll {
   @apply text-xs md:text-base;
 }
@@ -20,6 +36,10 @@
 
 .primary {
   @apply bg-yellow-500 text-zinc-800;
+}
+
+.primary-transparent {
+  @apply bg-yellow-500/5 text-zinc-800;
 }
 
 .hover-primary {
@@ -39,7 +59,7 @@
 }
 
 .secondary {
-  @apply bg-zinc-600 text-zinc-100;
+  @apply bg-zinc-800 text-zinc-100;
 }
 
 .secondary-light {
@@ -59,7 +79,7 @@
 }
 
 .secondary-text-lighter {
-  @apply text-zinc-300;
+  @apply text-zinc-400;
 }
 
 .secondary-border {
@@ -67,14 +87,34 @@
 }
 
 .primary-border-color {
-  @apply border-yellow-600
+  @apply border-yellow-600;
 }
 
 @media (prefers-color-scheme: dark) {
   .container-background {
     background-image: url(/tp_table.jpg);
-    background-color: rgba(0, 0, 0, 0.78);
+    background-color: rgba(0, 0, 0, 0.88);
     background-blend-mode: darken;
+  }
+
+  .primary-transparent {
+    @apply bg-yellow-500/2 text-zinc-800;
+  }
+
+  .success {
+    @apply bg-green-900 text-zinc-100;
+  }
+
+  .failure {
+    @apply bg-red-900 text-zinc-100;
+  }
+
+  .outline-success {
+    @apply outline-green-900;
+  }
+
+  .outline-failure {
+    @apply outline-red-900;
   }
 
   .secondary-root {

@@ -1,8 +1,7 @@
-import Link from "next/link";
 import { FaTrophy } from "react-icons/fa";
 import { RiSwordLine } from "react-icons/ri";
 import { IMatchData } from "../interfaces";
-import { _AnimatedNumber } from "./_AnimatedNumbers";
+import { PlayerLink } from "./PlayerLink";
 
 interface IProps {
   match: IMatchData;
@@ -17,13 +16,9 @@ export default function PlayerMatchCard({ match, player }: IProps) {
       <div className="font-semibold">
         <RiSwordLine />
       </div>
-      <Link
-        href={`/${isPlayerOne ? match.player2.name : match.player1.name}`}
-        passHref
-        className={"hover:underline "}
-      >
-        {isPlayerOne ? match.player2.name : match.player1.name}
-      </Link>
+      <PlayerLink
+        name={isPlayerOne ? match.player1.name : match.player2.name}
+      />
     </div>
   );
 
@@ -33,12 +28,12 @@ export default function PlayerMatchCard({ match, player }: IProps) {
         className={`flex px-2 skew-x-16 absolute -left-2 top-0 bottom-0 ${
           isPlayerOne
             ? match.player1.score > match.player2.score
-              ? "bg-green-900"
-              : "bg-red-900"
+              ? "success"
+              : "failure"
             : isPlayerTwo
             ? match.player2.score > match.player1.score
-              ? "bg-green-900"
-              : "bg-red-900"
+              ? "success"
+              : "failure"
             : ""
         }`}
       />
@@ -49,21 +44,21 @@ export default function PlayerMatchCard({ match, player }: IProps) {
               ? "primary-text"
               : ""
             : isPlayerTwo && match.player2.score > match.player1.score
-              ? "primary-text" 
-              : ""
+            ? "primary-text"
+            : ""
         }
       >
         {isPlayerOne ? (
           match.player1.score > match.player2.score ? (
             <FaTrophy />
           ) : (
-            <_AnimatedNumber num={match.player1.score} />
+            <div>{match.player1.score}</div>
           )
         ) : isPlayerTwo ? (
           match.player2.score > match.player1.score ? (
             <FaTrophy />
           ) : (
-            <_AnimatedNumber num={match.player2.score} />
+            <div>{match.player2.score}</div>
           )
         ) : (
           <></>
@@ -86,12 +81,12 @@ export default function PlayerMatchCard({ match, player }: IProps) {
       className={`flex gap-4 secondary-lighter rounded-lg shadow-md flex-1 relative overflow-hidden justify-between max-h-12 outline outline-dashed ${
         isPlayerOne
           ? match.player1.score > match.player2.score
-            ? "outline-green-800"
-            : "outline-red-800"
+            ? "outline-success"
+            : "outline-failure"
           : isPlayerTwo
           ? match.player2.score > match.player1.score
-            ? "outline-green-800"
-            : "outline-red-800"
+            ? "outline-success"
+            : "outline-failure"
           : ""
       }`}
     >

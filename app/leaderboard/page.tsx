@@ -1,3 +1,5 @@
+import { unstable_cache } from "next/cache";
+import Link from "next/link";
 import { FaTrophy } from "react-icons/fa6";
 import BaseSection from "../_components/BaseSection";
 import IconText from "../_components/IconText";
@@ -8,8 +10,6 @@ import {
   collectWins,
 } from "../_components/StatisticUtils";
 import { _AnimatedNumber } from "../_components/_AnimatedNumbers";
-import { unstable_cache } from "next/cache";
-import Link from "next/link";
 import { getMatchData } from "../_components/getMatchData";
 
 export default async function LeaderboardPage() {
@@ -43,7 +43,7 @@ export default async function LeaderboardPage() {
                   label={
                     <div className="flex text-normal items-center grow p-2 overflow-hidden">
                       <div className="flex pr-3 pl-2 secondary-text-lighter md:min-w-14">
-                        {index}
+                        {index + 1}
                       </div>
                       <Link
                         href={`/${player}`}
@@ -78,7 +78,7 @@ export default async function LeaderboardPage() {
                   label={
                     <div className="flex text-normal items-center grow p-2 pr-5 overflow-hidden">
                       <div className="flex pr-3 pl-2 secondary-text-lighter md:min-w-14">
-                        {index}
+                        {index + 1}
                       </div>
                       <Link
                         href={`/${player}`}
@@ -113,7 +113,7 @@ export default async function LeaderboardPage() {
                   label={
                     <div className="flex text-normal items-center grow p-2 pr-5 overflow-hidden">
                       <div className="flex pr-3 pl-2 secondary-text-lighter md:min-w-14">
-                        {index}
+                        {index + 1}
                       </div>
                       <Link
                         href={`/${player}`}

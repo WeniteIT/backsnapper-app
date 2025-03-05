@@ -1,10 +1,10 @@
-import { IoFootballSharp } from "react-icons/io5";
-import BaseSection from "../_components/BaseSection";
-import IconText from "../_components/IconText";
-import { MdOutlineWorkHistory } from "react-icons/md";
 import { unstable_cache } from "next/cache";
-import PlayerMatchCard from "../_components/PlayerMatchCard";
-import { getMatchData } from "../_components/getMatchData";
+import { IoFootballSharp } from "react-icons/io5";
+import { MdOutlineWorkHistory } from "react-icons/md";
+import BaseSection from "../../_components/BaseSection";
+import IconText from "../../_components/IconText";
+import PlayerMatchCard from "../../_components/PlayerMatchCard";
+import { getMatchData } from "../../_components/getMatchData";
 
 export default async function PlayerPage({
   params,
@@ -18,10 +18,14 @@ export default async function PlayerPage({
   });
 
   const data = await getData();
-  
-  const playersData = data.filter(
-    (match) => match.player1.name === player || match.player2.name === player
-  ).sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime());
+
+  const playersData = data
+    .filter(
+      (match) =>
+        match.player1.name.toLowerCase() === player.toLowerCase() ||
+        match.player2.name.toLowerCase() === player.toLowerCase()
+    )
+    .sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime());
 
   if (playersData.length === 0) {
     return (
@@ -40,12 +44,21 @@ export default async function PlayerPage({
   }
 
   return (
-    <div className="flex flex-col gap-4 flex-1">
+    <div className="flex gap-4 flex-1">
       <BaseSection
         label={
           <IconText
             icon={<MdOutlineWorkHistory className="primary-text text-large" />}
-            text={player+`'s Match History`}
+            text={player}
+          />
+        }
+        info={``}
+      ></BaseSection>
+      <BaseSection
+        label={
+          <IconText
+            icon={<MdOutlineWorkHistory className="primary-text text-large" />}
+            text={player + `'s Match History`}
           />
         }
         info={`${playersData.length} matches`}
