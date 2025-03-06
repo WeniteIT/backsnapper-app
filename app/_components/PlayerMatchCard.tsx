@@ -1,5 +1,4 @@
 import { FaTrophy } from "react-icons/fa";
-import { RiSwordLine } from "react-icons/ri";
 import { IMatchData } from "../interfaces";
 import { PlayerLink } from "./PlayerLink";
 
