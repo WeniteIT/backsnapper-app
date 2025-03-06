@@ -2,7 +2,7 @@ import BaseSection from "@/app/_components/BaseSection";
 import IconText from "@/app/_components/IconText";
 import { MdOutlineWorkHistory } from "react-icons/md";
 
-export default async function PlayerPage({
+export default async function VersusPage({
   params,
 }: {
   params: Promise<{ player: string; playerTwo: string }>;

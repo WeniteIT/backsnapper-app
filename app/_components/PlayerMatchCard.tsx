@@ -9,15 +9,11 @@ interface IProps {
 }
 
 export default function PlayerMatchCard({ match, player }: IProps) {
-  const isPlayerOne = match.player1.name === player;
-  const isPlayerTwo = match.player2.name === player;
+  const isPlayerOne = match.player1.name.toLowerCase() === player.toLowerCase();
   const names = (
     <div className="flex gap-1 md:gap-3 flex-1 md:min-w-70 whitespace-norwrap overflow-hidden items-center">
-      <div className="font-semibold">
-        <RiSwordLine />
-      </div>
       <PlayerLink
-        name={isPlayerOne ? match.player1.name : match.player2.name}
+        name={isPlayerOne ? match.player2.name : match.player1.name}
       />
     </div>
   );
@@ -30,11 +26,9 @@ export default function PlayerMatchCard({ match, player }: IProps) {
             ? match.player1.score > match.player2.score
               ? "success"
               : "failure"
-            : isPlayerTwo
-            ? match.player2.score > match.player1.score
-              ? "success"
-              : "failure"
-            : ""
+            : match.player2.score > match.player1.score
+            ? "success"
+            : "failure"
         }`}
       />
       <div
@@ -43,7 +37,7 @@ export default function PlayerMatchCard({ match, player }: IProps) {
             ? match.player1.score > match.player2.score
               ? "primary-text"
               : ""
-            : isPlayerTwo && match.player2.score > match.player1.score
+            : match.player2.score > match.player1.score
             ? "primary-text"
             : ""
         }
@@ -54,25 +48,28 @@ export default function PlayerMatchCard({ match, player }: IProps) {
           ) : (
             <div>{match.player1.score}</div>
           )
-        ) : isPlayerTwo ? (
-          match.player2.score > match.player1.score ? (
-            <FaTrophy />
-          ) : (
-            <div>{match.player2.score}</div>
-          )
+        ) : match.player2.score > match.player1.score ? (
+          <FaTrophy />
         ) : (
-          <></>
+          <div>{match.player2.score}</div>
         )}
       </div>
     </div>
   );
-
+  
+  const slice = 34;
   const comment = (
     <div
-      title={match.comment}
-      className="hidden md:flex text-smoll secondary-text-light justify-end flex-1 items-center gap-3 italic whitespace-nowrap text-ellipsis overflow-hidden pr-1"
+      title={match.comment + (match.comment && " - ") + match.date}
+      className="hidden md:flex text-smoll secondary-text-lighter justify-end flex-1 items-center gap-3 italic whitespace-nowrap text-ellipsis overflow-hidden pr-1"
     >
-      {match.comment && `"${match.comment}"`}
+      {match.comment
+        ? `"${
+            match.comment.length > slice
+              ? match.comment.slice(0, slice) + "..."
+              : match.comment
+          }"`
+        : new Date(match.date).toLocaleDateString("de-DE")}
     </div>
   );
 
@@ -83,11 +80,9 @@ export default function PlayerMatchCard({ match, player }: IProps) {
           ? match.player1.score > match.player2.score
             ? "outline-success"
             : "outline-failure"
-          : isPlayerTwo
-          ? match.player2.score > match.player1.score
-            ? "outline-success"
-            : "outline-failure"
-          : ""
+          : match.player2.score > match.player1.score
+          ? "outline-success"
+          : "outline-failure"
       }`}
     >
       <div className="flex text-normal items-center grow p-2 pr-5 overflow-hidden">

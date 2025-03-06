@@ -75,7 +75,7 @@ export default function MatchCard({ match }: IProps) {
               ? match.comment.slice(0, slice) + "..."
               : match.comment
           }"`
-        : match.date}
+        : new Date(match.date).toLocaleDateString("de-DE")}
     </div>
   );
 

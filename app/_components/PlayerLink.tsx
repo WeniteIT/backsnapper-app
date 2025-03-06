@@ -10,7 +10,7 @@ export function PlayerLink({ name, className, shorten }: IProps) {
   return (
     <Link
       title={name}
-      href={`/player/${name}`}
+      href={`/player/${name.toLowerCase()}`}
       passHref
       className={`hover:underline ${className}`}
     >
