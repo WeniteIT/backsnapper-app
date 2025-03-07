@@ -73,7 +73,7 @@ export default function MatchSection({ matchData }: IProps) {
                 }
                 route="/history"
                 width="100"
-                color="secondary-light"
+                color="secondary"
               />
             </div>
           </>

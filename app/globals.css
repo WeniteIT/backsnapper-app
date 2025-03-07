@@ -2,7 +2,7 @@
 
 .container-background {
   background-image: url(/tp_table.jpg);
-  background-color: rgba(235, 235, 235, 0.8);
+  background-color: rgba(235, 235, 235, 0.85);
   background-blend-mode: lighten;
 }
 
@@ -63,7 +63,7 @@
 }
 
 .secondary-light {
-  @apply bg-zinc-200 text-zinc-800;
+  @apply bg-linear-to-bl from-zinc-100 to-zinc-300 text-zinc-800;
 }
 
 .secondary-lighter {
@@ -87,7 +87,7 @@
 }
 
 .primary-border-color {
-  @apply border-yellow-600;
+  @apply border-yellow-400;
 }
 
 @media (prefers-color-scheme: dark) {
@@ -99,6 +99,10 @@
 
   .primary-transparent {
     @apply bg-yellow-500/2 text-zinc-800;
+  }
+
+  .primary-border-color {
+    @apply border-yellow-600;
   }
 
   .success {
@@ -126,7 +130,7 @@
   }
 
   .secondary-light {
-    @apply bg-zinc-800 text-zinc-100;
+    @apply bg-linear-to-bl from-zinc-700 to-zinc-900 text-zinc-100;
   }
 
   .secondary-lighter {

@@ -59,7 +59,7 @@ export default function PlayerMatchCard({ match, player }: IProps) {
   const slice = 34;
   const comment = (
     <div
-      title={match.comment + (match.comment && " - ") + match.date}
+      title={match.comment + (match.comment && " - ") + new Date(match.date).toLocaleString("de-DE")}
       className="hidden md:flex text-smoll secondary-text-lighter justify-end flex-1 items-center gap-3 italic whitespace-nowrap text-ellipsis overflow-hidden pr-1"
     >
       {match.comment
@@ -68,7 +68,7 @@ export default function PlayerMatchCard({ match, player }: IProps) {
               ? match.comment.slice(0, slice) + "..."
               : match.comment
           }"`
-        : new Date(match.date).toLocaleDateString("de-DE")}
+        : new Date(match.date).toLocaleString("de-DE")}
     </div>
   );
 

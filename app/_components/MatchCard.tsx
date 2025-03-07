@@ -35,11 +35,12 @@ export default function MatchCard({ match }: IProps) {
   );
 
   const scores = (
-    <div className="secondary flex items-center font-medium gap-1 md:gap-3 justify-center min-w-28 md:min-w-32 text-normal relative ">
+    <div className="secondary flex items-center font-medium gap-1 md:gap-3 justify-center min-w-28 md:min-w-32 text-normal relative">
       <div className="flex secondary px-2 skew-x-16 absolute -left-2 top-0 bottom-0" />
       <div
         className={
-          match.player2.score < match.player1.score ? "primary-text" : ""
+          "min-w-6 flex justify-center " +
+          (match.player2.score < match.player1.score ? "primary-text" : "")
         }
       >
         {match.player2.score < match.player1.score ? (
@@ -51,7 +52,8 @@ export default function MatchCard({ match }: IProps) {
       <div>-</div>
       <div
         className={
-          match.player2.score > match.player1.score ? "primary-text" : ""
+          "min-w-6 flex justify-center " +
+          (match.player2.score > match.player1.score ? "primary-text" : "")
         }
       >
         {match.player2.score > match.player1.score ? (
@@ -66,7 +68,11 @@ export default function MatchCard({ match }: IProps) {
   const slice = 34;
   const comment = (
     <div
-      title={match.comment + (match.comment && " - ") + match.date}
+      title={
+        match.comment +
+        (match.comment && " - ") +
+        new Date(match.date).toLocaleString("de-DE")
+      }
       className="hidden md:flex text-smoll secondary-text-lighter justify-end flex-1 items-center gap-3 italic whitespace-nowrap text-ellipsis overflow-hidden pr-1"
     >
       {match.comment
@@ -75,7 +81,7 @@ export default function MatchCard({ match }: IProps) {
               ? match.comment.slice(0, slice) + "..."
               : match.comment
           }"`
-        : new Date(match.date).toLocaleDateString("de-DE")}
+        : new Date(match.date).toLocaleString("de-DE")}
     </div>
   );
 
