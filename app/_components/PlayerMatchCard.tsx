@@ -4,13 +4,16 @@ import { PlayerLink } from "./PlayerLink";
 
 interface IProps {
   match: IMatchData;
+  prevMatch: IMatchData;
   player: string;
 }
 
-export default function PlayerMatchCard({ match, player }: IProps) {
+export default function PlayerMatchCard({ match, player, prevMatch }: IProps) {
   const isPlayerOne = match.player1.name.toLowerCase() === player.toLowerCase();
+  const isPrevPlayerOne =
+    prevMatch?.player1.name.toLowerCase() === player.toLowerCase();
   const names = (
-    <div className="flex gap-1 md:gap-3 flex-1 md:min-w-70 whitespace-norwrap overflow-hidden items-center">
+    <div className="flex gap-1 md:gap-3 min-w-20 md:min-w-32 whitespace-norwrap overflow-hidden items-center">
       <PlayerLink
         name={isPlayerOne ? match.player2.name : match.player1.name}
       />
@@ -18,7 +21,7 @@ export default function PlayerMatchCard({ match, player }: IProps) {
   );
 
   const scores = (
-    <div className="secondary flex items-center font-bold gap-1 md:gap-3 justify-center min-w-22 md:min-w-24 text-normal relative ">
+    <div className="secondary flex items-center font-bold gap-1 md:gap-3 justify-center min-w-14 md:min-w-24 text-normal relative ">
       <div
         className={`flex px-2 skew-x-16 absolute -left-2 top-0 bottom-0 ${
           isPlayerOne
@@ -55,11 +58,15 @@ export default function PlayerMatchCard({ match, player }: IProps) {
       </div>
     </div>
   );
-  
+
   const slice = 34;
   const comment = (
     <div
-      title={match.comment + (match.comment && " - ") + new Date(match.date).toLocaleString("de-DE")}
+      title={
+        match.comment +
+        (match.comment && " - ") +
+        new Date(match.date).toLocaleString("de-DE")
+      }
       className="hidden md:flex text-smoll secondary-text-lighter justify-end flex-1 items-center gap-3 italic whitespace-nowrap text-ellipsis overflow-hidden pr-1"
     >
       {match.comment
@@ -72,9 +79,51 @@ export default function PlayerMatchCard({ match, player }: IProps) {
     </div>
   );
 
+  const points = (
+    <div className={`flex gap-1 md:gap-3 md:min-w-15`}>
+      <div className="md:min-w-13">
+        {isPlayerOne
+          ? match.player2.points.toFixed(0)
+          : match.player1.points.toFixed(0)}
+      </div>
+      <div className="md:min-w-15">
+        {isPlayerOne
+          ? match.player1.points.toFixed(0)
+          : match.player2.points.toFixed(0)}
+      </div>
+      <div
+        className={`${
+          isPlayerOne
+            ? match.player1.score > match.player2.score
+              ? "text-success"
+              : "text-failure"
+            : match.player2.score > match.player1.score
+            ? "text-success"
+            : "text-failure"
+        }`}
+      >{` ${
+        prevMatch
+          ? isPlayerOne
+            ? (
+                match.player1.points -
+                (isPrevPlayerOne
+                  ? prevMatch.player1.points
+                  : prevMatch.player2.points)
+              ).toFixed(0)
+            : (
+                match.player2.points -
+                (isPrevPlayerOne
+                  ? prevMatch.player1.points
+                  : prevMatch.player2.points)
+              ).toFixed(0)
+          : ""
+      }`}</div>
+    </div>
+  );
+
   return (
     <div
-      className={`flex gap-4 secondary-lighter rounded-lg shadow-md flex-1 relative overflow-hidden justify-between max-h-12 outline outline-dashed ${
+      className={`flex gap-1 secondary-lighter rounded-lg shadow-md flex-1 relative overflow-hidden justify-between max-h-12 outline ${
         isPlayerOne
           ? match.player1.score > match.player2.score
             ? "outline-success"
@@ -84,11 +133,23 @@ export default function PlayerMatchCard({ match, player }: IProps) {
           : "outline-failure"
       }`}
     >
-      <div className="flex text-normal items-center grow p-2 pr-5 overflow-hidden">
-        <div className="flex pr-3 pl-2 secondary-text-lighter md:min-w-14">
+      <div
+        className={`flex h-20 w-3 ${
+          isPlayerOne
+            ? match.player1.score > match.player2.score
+              ? "success"
+              : "failure"
+            : match.player2.score > match.player1.score
+            ? "success"
+            : "failure"
+        }`}
+      ></div>
+      <div className="flex text-normal items-center grow md:p-2 pr-5 overflow-hidden gap-1 md:gap-2">
+        <div className="flex secondary-text-lighter md:min-w-12">
           {match.id}
         </div>
         {names}
+        {points}
         {comment}
       </div>
       {scores}

@@ -4,10 +4,12 @@ export interface IMatchData {
   player1: {
     name: string;
     score: number;
+    points: number;
   };
   player2: {
     name: string;
     score: number;
+    points: number;
   };
   comment: string;
 }

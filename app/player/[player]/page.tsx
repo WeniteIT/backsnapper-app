@@ -80,13 +80,12 @@ export default async function PlayerPage({
         >
           <>
             {slicedData.map((match, index) => (
-              <PlayerMatchCard key={index} match={match} player={player} />
+              <PlayerMatchCard key={index} match={match} player={player} prevMatch={slicedData[index+1]}/>
             ))}
             <div className="flex justify-center">
               <button
                 className={`secondary hover-primary flex gap-3 justify-center p-3 rounded-md text-xl w-${100} items-center
        transition-colors duration-300 ease-in-out focus:outline-none cursor-pointer`}
-                // onClick={() => 0}
               >
                 {
                   <>

@@ -1,7 +1,4 @@
-import {
-  IMatchData,
-  IResult,
-} from "../interfaces";
+import { IMatchData, IResult } from "../interfaces";
 
 export function collectWins(matchData: IMatchData[]): Record<string, number> {
   const wins: Record<string, number> = {};
@@ -19,9 +16,11 @@ export function collectWins(matchData: IMatchData[]): Record<string, number> {
   return wins;
 }
 
-export function calculateScore(matchData: IMatchData[]): Record<string, number> {
+export function calculateScore(
+  matchData: IMatchData[]
+): Record<string, number> {
   const SCORE_BASE = 1200;
-  const ADD = 20;
+  const ADD = 16;
 
   const scores: Record<string, number> = {};
 
@@ -40,6 +39,8 @@ export function calculateScore(matchData: IMatchData[]): Record<string, number> 
 
     scores[match.player1.name] = newP1;
     scores[match.player2.name] = newP2;
+    match.player1.points = newP1;
+    match.player2.points = newP2;
   });
 
   return scores;
@@ -81,7 +82,7 @@ export function collectLosses(matchData: IMatchData[]): Record<string, number> {
   return losses;
 }
 
-export function findMostWins(matchData: IMatchData[]): IResult {  
+export function findMostWins(matchData: IMatchData[]): IResult {
   if (matchData.length === 0) {
     return { name: ["-"], num: 0 };
   }
@@ -174,9 +175,11 @@ export function findLongestWinStreakByPlayer(
 
   const streaks: number[] = [];
 
-  const filteredMatchData = matchData.filter(
-    (match) => match.player1.name === player || match.player2.name === player
-  ).sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime());
+  const filteredMatchData = matchData
+    .filter(
+      (match) => match.player1.name === player || match.player2.name === player
+    )
+    .sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime());
 
   let streak = 0;
   filteredMatchData.forEach((match) => {
