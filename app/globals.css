@@ -6,6 +6,18 @@
   background-blend-mode: lighten;
 }
 
+.text-gold {
+  @apply text-yellow-500;
+}
+
+.text-silver {
+  @apply text-zinc-400;
+}
+
+.text-bronze {
+  @apply text-amber-800;
+}
+
 .success {
   @apply bg-green-600 text-zinc-800;
 }
@@ -40,6 +52,10 @@
 
 .text-large {
   @apply text-xl md:text-3xl;
+}
+
+.text-biig {
+  @apply text-2xl md:text-4xl;
 }
 
 .primary {
@@ -124,11 +140,11 @@
   .text-success {
     @apply text-green-700;
   }
-  
+
   .text-failure {
     @apply text-red-700;
   }
-  
+
   .outline-success {
     @apply outline-green-900;
   }

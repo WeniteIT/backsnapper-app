@@ -1,7 +1,19 @@
 import { unstable_cache } from "next/cache";
-import { FaTrophy } from "react-icons/fa6";
+import { GiPickle } from "react-icons/gi";
+import {
+  PiRankingDuotone,
+  PiRankingFill,
+  PiRankingLight,
+} from "react-icons/pi";
+
+import {
+  TbHexagonLetterAFilled,
+  TbHexagonLetterBFilled,
+  TbHexagonLetterCFilled,
+} from "react-icons/tb";
 import BaseSection from "../_components/BaseSection";
 import IconText from "../_components/IconText";
+import { PlayerLink } from "../_components/PlayerLink";
 import StatisticCard from "../_components/StatisticCard";
 import {
   calculateScore,
@@ -11,7 +23,6 @@ import {
 } from "../_components/StatisticUtils";
 import { _AnimatedNumber } from "../_components/_AnimatedNumbers";
 import { getMatchData } from "../_components/getMatchData";
-import { PlayerLink } from "../_components/PlayerLink";
 
 export default async function LeaderboardPage() {
   const getData = unstable_cache(async () => getMatchData(), ["matchData"], {
@@ -23,7 +34,7 @@ export default async function LeaderboardPage() {
   const wins = collectWins(data);
   const loses = collectLosses(data);
   const ratio = collectWinLoseRatio(data);
-  const elo = calculateScore(data);
+  const rating = calculateScore(data);
 
   return (
     <>
@@ -31,14 +42,14 @@ export default async function LeaderboardPage() {
         <BaseSection
           label={
             <IconText
-              icon={<FaTrophy className="primary-text" />}
-              text="Score"
+              icon={<PiRankingFill className="primary-text" />}
+              text="BS-League-Rating"
             />
           }
         >
           <>
-            {Object.keys(elo)
-              .sort((a, b) => elo[b] - elo[a])
+            {Object.keys(rating)
+              .sort((a, b) => rating[b] - rating[a])
               .map((player, index) => (
                 <StatisticCard
                   key={player}
@@ -50,7 +61,46 @@ export default async function LeaderboardPage() {
                       <PlayerLink name={player} />
                     </div>
                   }
-                  content={<_AnimatedNumber num={+elo[player].toFixed(0)} />}
+                  content={
+                    <div className="flex w-full justify-between">
+                      <_AnimatedNumber num={+rating[player].toFixed(0)} />
+                      <span className="secondary-text-lighter flex">
+                        {(() => {
+                          const score = rating[player];
+                          if (score >= 1300) {
+                            return (
+                              <TbHexagonLetterAFilled
+                                title="A-League"
+                                className="text-biig text-gold"
+                              />
+                            );
+                          }
+                          if (score >= 1200) {
+                            return (
+                              <TbHexagonLetterBFilled
+                                title="B-League"
+                                className="text-biig text-silver"
+                              />
+                            );
+                          }
+                          if (score >= 1100) {
+                            return (
+                              <TbHexagonLetterCFilled
+                                title="C-League"
+                                className="text-biig text-bronze"
+                              />
+                            );
+                          }
+                          return (
+                            <GiPickle
+                              title="Cucumber-League"
+                              className="text-biig text-success"
+                            />
+                          );
+                        })()}
+                      </span>
+                    </div>
+                  }
                 />
               ))}
           </>
@@ -60,7 +110,7 @@ export default async function LeaderboardPage() {
         <BaseSection
           label={
             <IconText
-              icon={<FaTrophy className="primary-text" />}
+              icon={<PiRankingLight className="primary-text" />}
               text="Win/Lose"
             />
           }
@@ -87,7 +137,8 @@ export default async function LeaderboardPage() {
                           if (name === player) {
                             return win;
                           }
-                        })}/
+                        })}
+                        /
                         {Object.entries(loses).map(([name, lose]) => {
                           if (name === player) {
                             return lose;
@@ -105,7 +156,7 @@ export default async function LeaderboardPage() {
         <BaseSection
           label={
             <IconText
-              icon={<FaTrophy className="primary-text" />}
+              icon={<PiRankingDuotone className="primary-text" />}
               text="Wins"
             />
           }
@@ -126,15 +177,15 @@ export default async function LeaderboardPage() {
                   }
                   content={
                     <div className="flex w-full justify-between">
-                    <_AnimatedNumber num={+wins[player].toFixed(0)} />
-                    <span className="secondary-text-lighter">
-                      {Object.entries(loses).map(([name, lose]) => {
-                        if (name === player) {
-                          return lose;
-                        }
-                      })}
-                    </span>
-                  </div>
+                      <_AnimatedNumber num={+wins[player].toFixed(0)} />
+                      <span className="secondary-text-lighter">
+                        {Object.entries(loses).map(([name, lose]) => {
+                          if (name === player) {
+                            return lose;
+                          }
+                        })}
+                      </span>
+                    </div>
                   }
                 />
               ))}
