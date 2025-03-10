@@ -29,7 +29,7 @@ export default async function PlayerPage({
     )
     .sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime());
 
-  const slicedData = playersData.slice(0, 16);
+  // const slicedData = playersData.slice(0, 16);
 
   if (playersData.length === 0) {
     return (
