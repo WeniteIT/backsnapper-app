@@ -54,8 +54,8 @@ export default async function LeaderboardPage() {
                 <StatisticCard
                   key={player}
                   label={
-                    <div className="flex text-normal items-center grow p-2 overflow-hidden">
-                      <div className="flex pr-3 pl-2 secondary-text-lighter md:min-w-14">
+                    <div className="flex text-normal items-center grow p-1 overflow-hidden">
+                      <div className="flex secondary-text-lighter md:min-w-10">
                         {index + 1}
                       </div>
                       <PlayerLink name={player} />
@@ -122,8 +122,8 @@ export default async function LeaderboardPage() {
                 <StatisticCard
                   key={player}
                   label={
-                    <div className="flex text-normal items-center grow p-2 pr-5 overflow-hidden">
-                      <div className="flex pr-3 pl-2 secondary-text-lighter md:min-w-14">
+                    <div className="flex text-normal items-center grow p-1 overflow-hidden">
+                      <div className="flex secondary-text-lighter md:min-w-10">
                         {index + 1}
                       </div>
                       <PlayerLink name={player} />
@@ -168,8 +168,8 @@ export default async function LeaderboardPage() {
                 <StatisticCard
                   key={player}
                   label={
-                    <div className="flex text-normal items-center grow p-2 pr-5 overflow-hidden">
-                      <div className="flex pr-3 pl-2 secondary-text-lighter md:min-w-14">
+                    <div className="flex text-normal items-center grow p-1 overflow-hidden">
+                      <div className="flex secondary-text-lighter md:min-w-10">
                         {index + 1}
                       </div>
                       <PlayerLink name={player} />

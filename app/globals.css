@@ -4,6 +4,7 @@
   background-image: url(/tp_table.jpg);
   background-color: rgba(235, 235, 235, 0.85);
   background-blend-mode: lighten;
+  background-attachment: fixed;
 }
 
 .text-gold {

@@ -1,6 +1,6 @@
 import { unstable_cache } from "next/cache";
 import { IoFootballSharp } from "react-icons/io5";
-import { MdMoreTime, MdOutlineWorkHistory } from "react-icons/md";
+import { MdOutlineWorkHistory } from "react-icons/md";
 import BaseSection from "../../_components/BaseSection";
 import IconText from "../../_components/IconText";
 import PlayerMatchCard from "../../_components/PlayerMatchCard";
@@ -79,10 +79,15 @@ export default async function PlayerPage({
           info={`${playersData.length} matches`}
         >
           <>
-            {slicedData.map((match, index) => (
-              <PlayerMatchCard key={index} match={match} player={player} prevMatch={slicedData[index+1]}/>
+            {playersData.map((match, index) => (
+              <PlayerMatchCard
+                key={index}
+                match={match}
+                player={player}
+                prevMatch={playersData[index + 1]}
+              />
             ))}
-            <div className="flex justify-center">
+            {/* <div className="flex justify-center">
               <button
                 className={`secondary hover-primary flex gap-3 justify-center p-3 rounded-md text-xl w-${100} items-center
        transition-colors duration-300 ease-in-out focus:outline-none cursor-pointer`}
@@ -94,7 +99,7 @@ export default async function PlayerPage({
                   </>
                 }
               </button>
-            </div>
+            </div> */}
           </>
         </BaseSection>
       </div>

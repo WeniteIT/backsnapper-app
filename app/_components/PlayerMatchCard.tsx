@@ -13,10 +13,17 @@ export default function PlayerMatchCard({ match, player, prevMatch }: IProps) {
   const isPrevPlayerOne =
     prevMatch?.player1.name.toLowerCase() === player.toLowerCase();
   const names = (
-    <div className="flex gap-1 md:gap-3 min-w-20 md:min-w-32 whitespace-norwrap overflow-hidden items-center">
+    <div className="flex gap-1 min-w-20 md:min-w-40 whitespace-norwrap overflow-hidden items-center">
       <PlayerLink
         name={isPlayerOne ? match.player2.name : match.player1.name}
       />
+      <div className="md:min-w-13">
+        {`(${
+          isPlayerOne
+            ? match.player2.points.toFixed(0)
+            : match.player1.points.toFixed(0)
+        })`}
+      </div>
     </div>
   );
 
@@ -81,11 +88,6 @@ export default function PlayerMatchCard({ match, player, prevMatch }: IProps) {
 
   const points = (
     <div className={`flex gap-1 md:gap-3 md:min-w-15`}>
-      <div className="md:min-w-13">
-        {isPlayerOne
-          ? match.player2.points.toFixed(0)
-          : match.player1.points.toFixed(0)}
-      </div>
       <div className="md:min-w-15">
         {isPlayerOne
           ? match.player1.points.toFixed(0)
@@ -144,7 +146,7 @@ export default function PlayerMatchCard({ match, player, prevMatch }: IProps) {
             : "failure"
         }`}
       ></div>
-      <div className="flex text-normal items-center grow md:p-2 pr-5 overflow-hidden gap-1 md:gap-2">
+      <div className="flex text-normal items-center grow md:p-2 pr-5 overflow-hidden gap-1 md:gap-3">
         <div className="flex secondary-text-lighter md:min-w-12">
           {match.id}
         </div>
