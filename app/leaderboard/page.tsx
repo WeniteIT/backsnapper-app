@@ -1,20 +1,10 @@
 import { unstable_cache } from "next/cache";
-import { GiPickle } from "react-icons/gi";
+import { FaInfoCircle } from "react-icons/fa";
 import {
   PiRankingDuotone,
   PiRankingFill,
   PiRankingLight,
 } from "react-icons/pi";
-
-import {
-  TbHexagonLetterAFilled,
-  TbHexagonLetterBFilled,
-  TbHexagonLetterCFilled,
-} from "react-icons/tb";
-import { TbHexagonLetterA } from "react-icons/tb";
-import { TbHexagonLetterB } from "react-icons/tb";
-import { TbHexagonLetterC } from "react-icons/tb";
-
 import BaseSection from "../_components/BaseSection";
 import IconText from "../_components/IconText";
 import { PlayerLink } from "../_components/PlayerLink";
@@ -27,7 +17,6 @@ import {
 } from "../_components/StatisticUtils";
 import { _AnimatedNumber } from "../_components/_AnimatedNumbers";
 import { getMatchData } from "../_components/getMatchData";
-import { FaInfoCircle } from "react-icons/fa";
 import { LeagueInfoTitle, getLeague } from "./leagueUtils";
 
 export default async function LeaderboardPage() {

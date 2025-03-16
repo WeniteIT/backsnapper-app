@@ -1,13 +1,13 @@
 import React from "react";
 import { GiPickle } from "react-icons/gi";
 import {
+  TbHexagonLetterA,
   TbHexagonLetterAFilled,
+  TbHexagonLetterB,
   TbHexagonLetterBFilled,
+  TbHexagonLetterC,
   TbHexagonLetterCFilled,
 } from "react-icons/tb";
-import { TbHexagonLetterA } from "react-icons/tb";
-import { TbHexagonLetterB } from "react-icons/tb";
-import { TbHexagonLetterC } from "react-icons/tb";
 
 interface ILeague {
   title: string;
