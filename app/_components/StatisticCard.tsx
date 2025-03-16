@@ -19,8 +19,8 @@ export default function StatisticCard({ result, label, content }: IProps) {
         <div className="text-normal grow p-2 md:p-2 md:px-5 whitespace-nowrap flex-1 overflow-hidden">
           {label}
         </div>
-        <div className="flex text-normal secondary font-medium flex-1 px-4 md:px-5 items-center relative justify-between">
-          <div className="flex secondary px-4 skew-x-16 absolute -left-4 top-0 bottom-0" />
+        <div className="flex text-normal secondary font-medium flex-1 pl-2 pr-4 md:pr-5 items-center relative justify-between">
+          <div className="flex secondary px-2 skew-x-16 absolute -left-2 top-0 bottom-0" />
           {result ? (
             <>
               <div className="flex max-w-40 overflow-hidden">

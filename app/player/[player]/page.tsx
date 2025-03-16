@@ -1,3 +1,7 @@
+import StatisticCard from "@/app/_components/StatisticCard";
+import { collectLosses, collectWins } from "@/app/_components/StatisticUtils";
+import { _AnimatedNumber } from "@/app/_components/_AnimatedNumbers";
+import { getLeague } from "@/app/leaderboard/leagueUtils";
 import { unstable_cache } from "next/cache";
 import { IoFootballSharp } from "react-icons/io5";
 import { MdOutlineWorkHistory } from "react-icons/md";
@@ -29,6 +33,16 @@ export default async function PlayerPage({
     )
     .sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime());
 
+  const wins = collectWins(playersData)[playerWithFirstLetterCapitalized];
+  const losses = collectLosses(playersData)[playerWithFirstLetterCapitalized];
+  const wl = wins / losses;
+
+  const rating = (
+    playersData[0].player1.name.toLowerCase() === player.toLowerCase()
+      ? playersData[0].player1.points
+      : playersData[0].player2.points
+  ).toFixed(0);
+
   // const slicedData = playersData.slice(0, 16);
 
   if (playersData.length === 0) {
@@ -56,13 +70,37 @@ export default async function PlayerPage({
               icon={
                 <MdOutlineWorkHistory className="primary-text text-large" />
               }
-              text={playerWithFirstLetterCapitalized}
+              text={"Player Stats"}
             />
           }
           info={``}
         >
-          <div className="flex justify-center items-center min-h-100 text-large">
-            Under construction
+          <div className="flex flex-col gap-3">
+            <StatisticCard
+              label={
+                <div className="text-large p-1">
+                  {playerWithFirstLetterCapitalized}
+                </div>
+              }
+              content={
+                <div className="flex w-full justify-between text-large">
+                  <_AnimatedNumber num={+rating} />
+                  <span className="secondary-text-lighter flex">
+                    {(() => {
+                      return getLeague(+rating).icon;
+                    })()}
+                  </span>
+                </div>
+              }
+            />
+            <div className="flex gap-3">
+              <StatisticCard label="Matches" content={playersData.length} />
+              <StatisticCard label="W/L" content={wl.toFixed(2)} />
+            </div>
+            <div className="flex gap-3">
+              <StatisticCard label="Wins" content={wins} />
+              <StatisticCard label="Losses" content={losses} />
+            </div>
           </div>
         </BaseSection>
       </div>
