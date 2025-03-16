@@ -11,6 +11,10 @@ import {
   TbHexagonLetterBFilled,
   TbHexagonLetterCFilled,
 } from "react-icons/tb";
+import { TbHexagonLetterA } from "react-icons/tb";
+import { TbHexagonLetterB } from "react-icons/tb";
+import { TbHexagonLetterC } from "react-icons/tb";
+
 import BaseSection from "../_components/BaseSection";
 import IconText from "../_components/IconText";
 import { PlayerLink } from "../_components/PlayerLink";
@@ -23,6 +27,8 @@ import {
 } from "../_components/StatisticUtils";
 import { _AnimatedNumber } from "../_components/_AnimatedNumbers";
 import { getMatchData } from "../_components/getMatchData";
+import { FaInfoCircle } from "react-icons/fa";
+import { LeagueInfoTitle, getLeague } from "./leagueUtils";
 
 export default async function LeaderboardPage() {
   const getData = unstable_cache(async () => getMatchData(), ["matchData"], {
@@ -46,6 +52,9 @@ export default async function LeaderboardPage() {
               text="BS-League-Rating"
             />
           }
+          info={
+            <FaInfoCircle className="text-normal" title={LeagueInfoTitle} />
+          }
         >
           <>
             {Object.keys(rating)
@@ -67,36 +76,7 @@ export default async function LeaderboardPage() {
                       <span className="secondary-text-lighter flex">
                         {(() => {
                           const score = rating[player];
-                          if (score >= 1300) {
-                            return (
-                              <TbHexagonLetterAFilled
-                                title="A-League"
-                                className="text-biig text-gold"
-                              />
-                            );
-                          }
-                          if (score >= 1200) {
-                            return (
-                              <TbHexagonLetterBFilled
-                                title="B-League"
-                                className="text-biig text-silver"
-                              />
-                            );
-                          }
-                          if (score >= 1100) {
-                            return (
-                              <TbHexagonLetterCFilled
-                                title="C-League"
-                                className="text-biig text-bronze"
-                              />
-                            );
-                          }
-                          return (
-                            <GiPickle
-                              title="Cucumber-League"
-                              className="text-biig text-success"
-                            />
-                          );
+                          return getLeague(score).icon;
                         })()}
                       </span>
                     </div>
