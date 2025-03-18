@@ -15,19 +15,7 @@ export default async function Home() {
 
   const data = await getData();
 
-  const toni = data.filter(
-    (match) => match.player1.name === "Toni" || match.player2.name === "Toni"
-  );
-  const lastMatch = toni[toni.length - 1];
-  const toniplayer =
-    lastMatch.player1.name === "Toni" ? lastMatch.player1 : lastMatch.player2;
-
-  const points = +toniplayer.points.toFixed(0);
-
-  const news =
-    points >= 1100
-      ? ` ist nur noch ${points - 1100} Punkte davon entfernt, zur neuen Speerspitze der Gurken-Liga aufzusteigen.`
-      : ` hat es mit einer Wertung von ${points} geschafft. Er ist die neue Speerspitze der Gurken-Liga!`;
+  const news = "Spielt fair und macht viele Backsnapper!";
 
   const firstDayOfMonth = new Date();
   firstDayOfMonth.setDate(1);
@@ -50,7 +38,7 @@ export default async function Home() {
           label={
             <IconText
               icon={<FaNewspaper className="primary-text text-large" />}
-              text={"Breaking News"}
+              text={"Message"}
             />
           }
           info={new Date().toLocaleDateString("de-DE")}
