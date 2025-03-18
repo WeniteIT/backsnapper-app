@@ -46,8 +46,7 @@ export default async function Home() {
           <div className="text-sm md:text-2xl">
             <div className="flex gap-4 secondary-lighter rounded-lg shadow-md flex-1 relative overflow-hidden justify-between p-4">
               <span>
-                <b><PlayerLink name={"Toni"} /></b>
-                {` ${news}`}
+                {news}
               </span>
             </div>
           </div>
