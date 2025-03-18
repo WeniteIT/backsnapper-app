@@ -26,7 +26,7 @@ export default async function Home() {
 
   const news =
     points >= 1100
-      ? ` ist nur noch ${points - 1100} Punkte davon entfernt zur neuen Speerspitze der Gurken-Liga aufzusteigen`
+      ? ` ist nur noch ${points - 1100} Punkte davon entfernt, zur neuen Speerspitze der Gurken-Liga aufzusteigen.`
       : ` hat es mit einer Wertung von ${points} geschafft. Er ist die neue Speerspitze der Gurken-Liga!`;
 
   const firstDayOfMonth = new Date();
