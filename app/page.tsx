@@ -6,7 +6,6 @@ import { getMatchData } from "./_components/getMatchData";
 import BaseSection from "./_components/BaseSection";
 import { FaNewspaper } from "react-icons/fa6";
 import IconText from "./_components/IconText";
-import { PlayerLink } from "./_components/PlayerLink";
 
 export default async function Home() {
   const getData = unstable_cache(async () => getMatchData(), ["matchData"], {
