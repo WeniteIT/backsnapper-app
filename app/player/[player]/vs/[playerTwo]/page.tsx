@@ -3,7 +3,6 @@ import IconText from "@/app/_components/common/IconText";
 import { getMatchData } from "@/app/_components/getMatchData";
 import MatchCard from "@/app/_components/match/MatchCard";
 import { PlayerSummaryCard } from "@/app/_components/player/PlaySummaryCard";
-import PlayerMatchCard from "@/app/_components/player/PlayerMatchCard";
 import { unstable_cache } from "next/cache";
 import { MdOutlineWorkHistory } from "react-icons/md";
 
