@@ -1,5 +1,4 @@
 import { collectLosses, collectWins } from "@/app/_components/StatisticUtils";
-import { _AnimatedNumber } from "@/app/_components/common/_AnimatedNumbers";
 import { unstable_cache } from "next/cache";
 import { IoFootballSharp } from "react-icons/io5";
 import { MdOutlineWorkHistory } from "react-icons/md";
@@ -15,8 +14,6 @@ export default async function PlayerPage({
   params: Promise<{ player: string }>;
 }) {
   const player = decodeURIComponent((await params).player);
-  const playerWithFirstLetterCapitalized =
-    player.charAt(0).toUpperCase() + player.slice(1);
 
   const getData = unstable_cache(async () => getMatchData(), ["matchData"], {
     revalidate: 60,
@@ -31,19 +28,7 @@ export default async function PlayerPage({
         match.player2.name.toLowerCase() === player.toLowerCase()
     )
     .sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime());
-
-  const wins = collectWins(playersData)[playerWithFirstLetterCapitalized];
-  const losses = collectLosses(playersData)[playerWithFirstLetterCapitalized];
-  const wl = wins / losses;
-
-  const rating = (
-    playersData[0].player1.name.toLowerCase() === player.toLowerCase()
-      ? playersData[0].player1.points
-      : playersData[0].player2.points
-  ).toFixed(0);
-
-  // const slicedData = playersData.slice(0, 16);
-
+  
   if (playersData.length === 0) {
     return (
       <div className="flex flex-col gap-4 flex-1">
