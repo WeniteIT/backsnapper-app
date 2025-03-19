@@ -1,4 +1,3 @@
-import { collectLosses, collectWins } from "@/app/_components/StatisticUtils";
 import { unstable_cache } from "next/cache";
 import { IoFootballSharp } from "react-icons/io5";
 import { MdOutlineWorkHistory } from "react-icons/md";
