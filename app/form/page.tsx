@@ -1,6 +1,6 @@
 import { MdAssignmentAdd } from "react-icons/md";
-import BaseSection from "../_components/BaseSection";
-import IconText from "../_components/IconText";
+import BaseSection from "../_components/common/BaseSection";
+import IconText from "../_components/common/IconText";
 
 export default function Formpage() {
   return (

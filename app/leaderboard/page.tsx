@@ -5,17 +5,17 @@ import {
   PiRankingFill,
   PiRankingLight,
 } from "react-icons/pi";
-import BaseSection from "../_components/BaseSection";
-import IconText from "../_components/IconText";
-import { PlayerLink } from "../_components/PlayerLink";
-import StatisticCard from "../_components/StatisticCard";
+import BaseSection from "../_components/common/BaseSection";
+import IconText from "../_components/common/IconText";
+import { PlayerLink } from "../_components/common/PlayerLink";
+import StatisticCard from "../_components/statistic/StatisticCard";
 import {
   calculateScore,
   collectLosses,
   collectWinLoseRatio,
   collectWins,
 } from "../_components/StatisticUtils";
-import { _AnimatedNumber } from "../_components/_AnimatedNumbers";
+import { _AnimatedNumber } from "../_components/common/_AnimatedNumbers";
 import { getMatchData } from "../_components/getMatchData";
 import { LeagueInfoTitle, getLeague } from "./leagueUtils";
 

@@ -1,6 +1,6 @@
 import { FaTrophy } from "react-icons/fa";
-import { IMatchData } from "../interfaces";
-import { PlayerLink } from "./PlayerLink";
+import { IMatchData } from "../../interfaces";
+import { PlayerLink } from "../common/PlayerLink";
 
 interface IProps {
   match: IMatchData;

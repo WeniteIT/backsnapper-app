@@ -1,7 +1,7 @@
 import React, { Fragment } from "react";
-import { IResult } from "../interfaces";
-import { PlayerLink } from "./PlayerLink";
-import { _AnimatedNumber } from "./_AnimatedNumbers";
+import { IResult } from "../../interfaces";
+import { PlayerLink } from "../common/PlayerLink";
+import { _AnimatedNumber } from "../common/_AnimatedNumbers";
 
 interface IProps {
   label: string | React.ReactNode;

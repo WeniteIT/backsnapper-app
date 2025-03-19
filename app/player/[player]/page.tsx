@@ -1,14 +1,15 @@
-import StatisticCard from "@/app/_components/StatisticCard";
+import StatisticCard from "@/app/_components/statistic/StatisticCard";
 import { collectLosses, collectWins } from "@/app/_components/StatisticUtils";
-import { _AnimatedNumber } from "@/app/_components/_AnimatedNumbers";
+import { _AnimatedNumber } from "@/app/_components/common/_AnimatedNumbers";
 import { getLeague } from "@/app/leaderboard/leagueUtils";
 import { unstable_cache } from "next/cache";
 import { IoFootballSharp } from "react-icons/io5";
 import { MdOutlineWorkHistory } from "react-icons/md";
-import BaseSection from "../../_components/BaseSection";
-import IconText from "../../_components/IconText";
-import PlayerMatchCard from "../../_components/PlayerMatchCard";
+import BaseSection from "../../_components/common/BaseSection";
+import IconText from "../../_components/common/IconText";
+import PlayerMatchCard from "../../_components/player/PlayerMatchCard";
 import { getMatchData } from "../../_components/getMatchData";
+import { PlayerSummaryCard } from "@/app/_components/player/PlaySummaryCard";
 
 export default async function PlayerPage({
   params,
@@ -63,47 +64,7 @@ export default async function PlayerPage({
 
   return (
     <>
-      <div className="flex flex-col gap-2 md:gap-3 flex-1 md:overflow-hidden h-full">
-        <BaseSection
-          label={
-            <IconText
-              icon={
-                <MdOutlineWorkHistory className="primary-text text-large" />
-              }
-              text={"Player Stats"}
-            />
-          }
-          info={``}
-        >
-          <div className="flex flex-col gap-3">
-            <StatisticCard
-              label={
-                <div className="text-large p-1">
-                  {playerWithFirstLetterCapitalized}
-                </div>
-              }
-              content={
-                <div className="flex w-full justify-between text-large">
-                  <_AnimatedNumber num={+rating} />
-                  <span className="secondary-text-lighter flex">
-                    {(() => {
-                      return getLeague(+rating).icon;
-                    })()}
-                  </span>
-                </div>
-              }
-            />
-            <div className="flex gap-3">
-              <StatisticCard label="Matches" content={playersData.length} />
-              <StatisticCard label="W/L" content={wl.toFixed(2)} />
-            </div>
-            <div className="flex gap-3">
-              <StatisticCard label="Wins" content={wins} />
-              <StatisticCard label="Losses" content={losses} />
-            </div>
-          </div>
-        </BaseSection>
-      </div>
+      <PlayerSummaryCard playerName={player} playersData={playersData} />
       <div className="flex flex-col gap-2 md:gap-3 flex-1 md:overflow-hidden h-full">
         <BaseSection
           label={
@@ -125,19 +86,6 @@ export default async function PlayerPage({
                 prevMatch={playersData[index + 1]}
               />
             ))}
-            {/* <div className="flex justify-center">
-              <button
-                className={`secondary hover-primary flex gap-3 justify-center p-3 rounded-md text-xl w-${100} items-center
-       transition-colors duration-300 ease-in-out focus:outline-none cursor-pointer`}
-              >
-                {
-                  <>
-                    Show all
-                    <MdMoreTime />
-                  </>
-                }
-              </button>
-            </div> */}
           </>
         </BaseSection>
       </div>

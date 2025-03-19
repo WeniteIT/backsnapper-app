@@ -1,11 +1,11 @@
 import { unstable_cache } from "next/cache";
 import { IoPieChartSharp } from "react-icons/io5";
-import MatchSection from "./_components/MatchSection";
-import StatisticSection from "./_components/StatisticSection";
+import MatchSection from "./_components/match/MatchSection";
+import StatisticSection from "./_components/statistic/StatisticSection";
 import { getMatchData } from "./_components/getMatchData";
-import BaseSection from "./_components/BaseSection";
+import BaseSection from "./_components/common/BaseSection";
 import { FaNewspaper } from "react-icons/fa6";
-import IconText from "./_components/IconText";
+import IconText from "./_components/common/IconText";
 
 export default async function Home() {
   const getData = unstable_cache(async () => getMatchData(), ["matchData"], {

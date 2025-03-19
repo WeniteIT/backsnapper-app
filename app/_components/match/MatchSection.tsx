@@ -1,9 +1,9 @@
 import { MdMoreTime, MdOutlineWorkHistory, MdToday } from "react-icons/md";
-import { IMatchData } from "../interfaces";
-import BaseSection from "./BaseSection";
-import IconText from "./IconText";
+import { IMatchData } from "../../interfaces";
+import BaseSection from "../common/BaseSection";
+import IconText from "../common/IconText";
 import MatchCard from "./MatchCard";
-import RouteButton from "./_RouteButton";
+import RouteButton from "../common/_RouteButton";
 
 interface IProps {
   matchData: IMatchData[];

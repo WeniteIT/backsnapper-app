@@ -1,7 +1,8 @@
 import { FaTrophy } from "react-icons/fa";
 import { RiSwordLine } from "react-icons/ri";
-import { IMatchData } from "../interfaces";
-import { PlayerLink } from "./PlayerLink";
+import { IMatchData } from "../../interfaces";
+import { PlayerLink } from "../common/PlayerLink";
+import Link from "next/link";
 
 interface IProps {
   match: IMatchData;
@@ -20,7 +21,7 @@ export default function MatchCard({ match }: IProps) {
         }
       />
       <div className="font-semibold">
-        <RiSwordLine />
+        <Link href={`player/${match.player1.name.toLowerCase()}/vs/${match.player2.name.toLowerCase()}`}><RiSwordLine /></Link>
       </div>
       <PlayerLink
         name={match.player2.name}

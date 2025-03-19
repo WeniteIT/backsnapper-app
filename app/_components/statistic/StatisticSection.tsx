@@ -1,9 +1,9 @@
 "use client";
 
 import { FaChartLine } from "react-icons/fa";
-import { IMatchData, IResult } from "../interfaces";
-import BaseSection from "./BaseSection";
-import IconText from "./IconText";
+import { IMatchData, IResult } from "../../interfaces";
+import BaseSection from "../common/BaseSection";
+import IconText from "../common/IconText";
 import StatisticCard from "./StatisticCard";
 import {
   calculateScore as findScore,
@@ -14,8 +14,8 @@ import {
   findMostLosses,
   findMostWins,
   findWorstWinLoseRatio,
-} from "./StatisticUtils";
-import { _AnimatedNumber } from "./_AnimatedNumbers";
+} from "../StatisticUtils";
+import { _AnimatedNumber } from "../common/_AnimatedNumbers";
 import { useMemo } from "react";
 
 export type TStatisticInfo = "Most Wins" | "Most Losses" | "Highest W/L" | "Lowest W/L" | "Highest Score" | "Lowest Score" | "Longest Win Streak";
