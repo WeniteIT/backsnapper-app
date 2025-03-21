@@ -52,7 +52,7 @@ export default async function LeaderboardPage() {
                 <StatisticCard
                   key={player}
                   label={
-                    <div className="flex text-normal items-center grow p-1 overflow-hidden">
+                    <div className="flex text-normal items-center grow p-1 gap-2 overflow-hidden">
                       <div className="flex secondary-text-lighter md:min-w-10">
                         {index + 1}
                       </div>
@@ -75,7 +75,7 @@ export default async function LeaderboardPage() {
           </>
         </BaseSection>
       </div>
-      <div className="flex flex-col gap-2 md:gap-4 flex-1 md:overflow-hidden h-full">
+      <div className="flex flex-col gap-2 md:gap-4 flex-1 md:overflow-hidden  h-full">
         <BaseSection
           label={
             <IconText
@@ -91,7 +91,7 @@ export default async function LeaderboardPage() {
                 <StatisticCard
                   key={player}
                   label={
-                    <div className="flex text-normal items-center grow p-1 overflow-hidden">
+                    <div className="flex text-normal items-center grow p-1 gap-2 overflow-hidden">
                       <div className="flex secondary-text-lighter md:min-w-10">
                         {index + 1}
                       </div>
@@ -121,7 +121,7 @@ export default async function LeaderboardPage() {
           </>
         </BaseSection>
       </div>
-      <div className="flex flex-col gap-2 md:gap-4 flex-1 md:overflow-hidden h-full">
+      <div className="flex flex-col gap-2 md:gap-4 flex-1 md:overflow-hidden h-full ">
         <BaseSection
           label={
             <IconText
@@ -137,7 +137,7 @@ export default async function LeaderboardPage() {
                 <StatisticCard
                   key={player}
                   label={
-                    <div className="flex text-normal items-center grow p-1 overflow-hidden">
+                    <div className="flex text-normal items-center grow p-1 overflow-hidden gap-2">
                       <div className="flex secondary-text-lighter md:min-w-10">
                         {index + 1}
                       </div>

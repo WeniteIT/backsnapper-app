@@ -36,7 +36,7 @@ export default function MatchCard({ match }: IProps) {
   );
 
   const scores = (
-    <div className="secondary flex items-center font-medium gap-1 md:gap-3 justify-center min-w-28 md:min-w-32 text-normal relative">
+    <div className="secondary flex items-center font-medium gap-1 md:gap-3 justify-center min-w-22 md:min-w-30 text-normal relative">
       <div className="flex secondary px-2 skew-x-16 absolute -left-2 top-0 bottom-0" />
       <div
         className={

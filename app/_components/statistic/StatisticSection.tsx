@@ -18,7 +18,7 @@ import {
 import { _AnimatedNumber } from "../common/_AnimatedNumbers";
 import { useMemo } from "react";
 
-export type TStatisticInfo = "Most Wins" | "Most Losses" | "Highest W/L" | "Lowest W/L" | "Highest Score" | "Lowest Score" | "Longest Win Streak";
+export type TStatisticInfo = "Most Wins" | "Most Losses" | "Highest W/L" | "Lowest W/L" | "Highest Score" | "Lowest Score" | "Win Streak";
 interface IProps {
   from?: Date;
   to?: Date;
@@ -86,7 +86,7 @@ export default function StatisticSection({
     ["Lowest W/L"]: lowestWinLoseRatio,
     ["Highest Score"]: findHighestScore2,
     ["Lowest Score"]: findLowestScore2,
-    ["Longest Win Streak"]: longestWinStreak,
+    ["Win Streak"]: longestWinStreak,
   };
 
   return (

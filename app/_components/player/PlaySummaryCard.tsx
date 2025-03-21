@@ -1,7 +1,7 @@
 "use client";
 
 import { getLeague } from "@/app/leaderboard/leagueUtils";
-import { MdOutlineWorkHistory } from "react-icons/md";
+import { RiGameFill } from "react-icons/ri";
 import BaseSection from "../common/BaseSection";
 import IconText from "../common/IconText";
 import { _AnimatedNumber } from "../common/_AnimatedNumbers";
@@ -36,8 +36,8 @@ export function PlayerSummaryCard({
       <BaseSection
         label={
           <IconText
-            icon={<MdOutlineWorkHistory className="primary-text text-large" />}
-            text={"Player Stats"}
+            icon={<RiGameFill className="primary-text text-large" />}
+            text={"Player Card"}
           />
         }
         info={``}

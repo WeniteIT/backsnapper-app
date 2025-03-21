@@ -42,7 +42,7 @@ export default async function Home() {
           }
           info={new Date().toLocaleDateString("de-DE")}
         >
-          <div className="text-sm md:text-2xl">
+          <div className="text-lg md:text-2xl">
             <div className="flex gap-4 secondary-lighter rounded-lg shadow-md flex-1 relative overflow-hidden justify-between p-4">
               <span>
                 {news}
@@ -58,7 +58,7 @@ export default async function Home() {
           rightLabel={currentMonthName + " " + currentYear}
           infos={[
             "Most Wins",
-            "Longest Win Streak",
+            "Win Streak",
             "Highest W/L",
             "Most Losses",
             "Lowest W/L",
@@ -68,7 +68,7 @@ export default async function Home() {
         <StatisticSection
           infos={[
             "Most Wins",
-            "Longest Win Streak",
+            "Win Streak",
             "Highest W/L",
             "Highest Score",
           ]}

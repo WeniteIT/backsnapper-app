@@ -48,7 +48,7 @@
 }
 
 .text-normal {
-  @apply text-xl md:text-2xl;
+  @apply text-lg md:text-2xl;
 }
 
 .text-large {
