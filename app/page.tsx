@@ -14,7 +14,7 @@ export default async function Home() {
 
   const data = await getData();
 
-  const news = "Spielt fair und macht viele Backsnapper!";
+  const news = "BS-Regel#1: Wer einen BS praktiziert, ist dazu angehalten, das Offensichtliche lautstark zu verkünden";
 
   const firstDayOfMonth = new Date();
   firstDayOfMonth.setDate(1);
