@@ -14,7 +14,8 @@ export default async function Home() {
 
   const data = await getData();
 
-  const news = "BS-Regel#1: Wer einen BS praktiziert, ist dazu angehalten, das Offensichtliche lautstark zu verkünden";
+  const newsHeader ="BS-Regel#1: "
+  const news = "Wer einen Backsnapper praktiziert, ist dazu angehalten, das Offensichtliche lautstark zu verkünden";
 
   const firstDayOfMonth = new Date();
   firstDayOfMonth.setDate(1);
@@ -37,14 +38,15 @@ export default async function Home() {
           label={
             <IconText
               icon={<FaNewspaper className="primary-text text-large" />}
-              text={"Message"}
+              text={"News"}
             />
           }
           info={new Date().toLocaleDateString("de-DE")}
         >
           <div className="text-lg md:text-2xl">
-            <div className="flex gap-4 secondary-lighter rounded-lg shadow-md flex-1 relative overflow-hidden justify-between p-4">
-              <span>
+            <div className="flex flex-col gap-1 secondary-lighter rounded-lg shadow-md flex-1 relative overflow-hidden justify-between p-3">
+              <div className="font-bold">{newsHeader}</div>
+              <span style={{ lineHeight: "2.3rem" }}>
                 {news}
               </span>
             </div>
@@ -57,20 +59,20 @@ export default async function Home() {
           leftLabel="Current Month"
           rightLabel={currentMonthName + " " + currentYear}
           infos={[
+            "Highest W/L",
             "Most Wins",
             "Win Streak",
-            "Highest W/L",
-            "Most Losses",
             "Lowest W/L",
+            "Most Losses",
           ]}
           altIcon={<IoPieChartSharp className="primary-text text-large" />}
         />
         <StatisticSection
           infos={[
+            "Highest Score",
+            "Highest W/L",
             "Most Wins",
             "Win Streak",
-            "Highest W/L",
-            "Highest Score",
           ]}
           data={data}
           leftLabel="All Time"

@@ -2,7 +2,7 @@
 
 .container-background {
   background-image: url(/tp_table.jpg);
-  background-color: rgba(235, 235, 235, 0.85);
+  background-color: rgba(235, 235, 235, 0.95);
   background-blend-mode: lighten;
   background-attachment: fixed;
 }
@@ -67,6 +67,10 @@
   @apply bg-yellow-500/5 text-zinc-800;
 }
 
+.secondary-transparent {
+  @apply bg-zinc-800/5 text-zinc-100;
+}
+
 .hover-primary {
   @apply hover:bg-yellow-500 hover:text-zinc-800;
 }
@@ -118,12 +122,16 @@
 @media (prefers-color-scheme: dark) {
   .container-background {
     background-image: url(/tp_table.jpg);
-    background-color: rgba(0, 0, 0, 0.88);
+    background-color: rgba(0, 0, 0, 0.95);
     background-blend-mode: darken;
   }
 
   .primary-transparent {
     @apply bg-yellow-500/2 text-zinc-800;
+  }
+
+  .secondary-transparent {
+    @apply bg-zinc-100/6 text-zinc-100;
   }
 
   .primary-border-color {

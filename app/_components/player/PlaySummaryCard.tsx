@@ -32,21 +32,16 @@ export function PlayerSummaryCard({
   ).toFixed(0);
 
   return (
-    <div className="flex flex-col gap-2 md:gap-3 flex-1 md:overflow-hidden h-full">
-      <BaseSection
-        label={
-          <IconText
-            icon={<RiGameFill className="primary-text text-large" />}
-            text={"Player Card"}
-          />
-        }
-        info={``}
-      >
+    <div className="flex flex-col gap-2 md:gap-3 flex-1 md:overflow-hidden h-55">
+      <BaseSection>
         <div className="flex flex-col gap-3">
           <StatisticCard
             label={
               <div className="text-large p-1">
-                {playerWithFirstLetterCapitalized}
+                <IconText
+                  icon={<RiGameFill className="primary-text text-large" />}
+                  text={playerWithFirstLetterCapitalized}
+                />
               </div>
             }
             content={

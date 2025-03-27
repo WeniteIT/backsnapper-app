@@ -23,7 +23,7 @@ export default function StatisticCard({ result, label, content }: IProps) {
           <div className="flex secondary px-2 skew-x-16 absolute -left-2 top-0 bottom-0" />
           {result ? (
             <>
-              <div className="flex max-w-40 overflow-hidden">
+              <div className="flex max-w-40 overflow-hidden pl-1">
                 {result.name?.map((n, i) => (
                   <Fragment key={n + result.num + i}>
                     {i > 0 && ","}
@@ -38,7 +38,7 @@ export default function StatisticCard({ result, label, content }: IProps) {
               <_AnimatedNumber num={result.num} />
             </>
           ) : (
-            content
+              <div className="pl-1 w-full">{content}</div>
           )}
         </div>
       </div>
