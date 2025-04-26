@@ -1,16 +1,13 @@
 "use client";
 
-import { unstable_cache } from "next/cache";
 import { IoFootballSharp } from "react-icons/io5";
 import { MdMoreTime, MdOutlineWorkHistory } from "react-icons/md";
 import BaseSection from "../../_components/common/BaseSection";
 import IconText from "../../_components/common/IconText";
 import PlayerMatchCard from "../../_components/player/PlayerMatchCard";
-import { getMatchData } from "../../_components/getMatchData";
 import { PlayerSummaryCard } from "@/app/_components/player/PlaySummaryCard";
 import BreadCrump from "@/app/_components/common/BreadCrump";
 import { IMatchData } from "@/app/interfaces";
-import RouteButton from "@/app/_components/common/_RouteButton";
 import Button from "@/app/_components/common/_Button";
 import { useState } from "react";
 

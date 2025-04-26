@@ -2,7 +2,6 @@ import { FaTrophy } from "react-icons/fa";
 import { RiSwordLine } from "react-icons/ri";
 import { IMatchData } from "../../interfaces";
 import { PlayerLink } from "../common/PlayerLink";
-import Link from "next/link";
 
 interface IProps {
   match: IMatchData;
