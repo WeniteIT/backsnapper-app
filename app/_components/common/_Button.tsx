@@ -1,6 +1,5 @@
 "use client";
 
-import { RedirectType, redirect } from "next/navigation";
 import React from "react";
 
 interface IProps {

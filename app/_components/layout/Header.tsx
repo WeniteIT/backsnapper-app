@@ -5,7 +5,6 @@ import { FaTrophy } from "react-icons/fa6";
 import { MdAssignmentAdd, MdOutlineWorkHistory } from "react-icons/md";
 import { TbSoccerField } from "react-icons/tb";
 import RouteButton from "../common/_RouteButton";
-import ThemeToggle from "@/app/theme/theme-toggle";
 
 function Title() {
   return (
