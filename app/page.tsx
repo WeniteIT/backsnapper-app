@@ -15,7 +15,7 @@ export default async function Home() {
   const data = await getData();
 
   const newsHeader ="BS-Regel#1: "
-  const news = "Wer einen Backsnapper praktiziert, ist dazu angehalten, das Offensichtliche lautstark zu verkünden";
+  const news = "Wer einen Backsnapper praktiziert, ist dazu angehalten, das Offensichtliche lautstark zu verkünden.";
 
   const firstDayOfMonth = new Date();
   firstDayOfMonth.setDate(1);
@@ -43,10 +43,10 @@ export default async function Home() {
           }
           info={new Date().toLocaleDateString("de-DE")}
         >
-          <div className="text-lg md:text-2xl">
-            <div className="flex flex-col gap-1 secondary-lighter rounded-lg shadow-md flex-1 relative overflow-hidden justify-between p-3">
+          <div className="text-lg md:text-xl">
+            <div className="flex flex-col gap-1 secondary-lighter rounded-lg shadow-md flex-1 relative overflow-hidden justify-between p-3 pl-4">
               <div className="font-bold">{newsHeader}</div>
-              <span style={{ lineHeight: "2.3rem" }}>
+              <span style={{ lineHeight: "1.7rem" }}>
                 {news}
               </span>
             </div>

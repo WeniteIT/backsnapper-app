@@ -3,6 +3,7 @@ import { Geist, Geist_Mono } from "next/font/google";
 import Footer from "./_components/layout/Footer";
 import Header from "./_components/layout/Header";
 import "./globals.css";
+import Theme from "./theme/theme";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -30,22 +31,24 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
+    <html lang="en" suppressHydrationWarning>
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased secondary-root font-[family-name:var(--font-geist-sans)] h-full overflow-y-scroll`}
       >
-        <Header />
-        <div className="secondary-text container-background flex justify-center h-full bg-cover bg-center bg-no-repeat pt-13 md:pt-6 px-1 md:px-2 ">
-          <div
-            className="flex gap-2 md:gap-3 flex-col sm:px-10 2xl:flex-row w-450 h-full pt-4 md:pt-14 pb-6 secondary-transparent"
-            style={{
-              minHeight: "calc(100vh - 5rem)",
-            }}
-          >
-            {children}
+        <Theme>
+          <Header />
+          <div className="secondary-text container-background flex justify-center h-full bg-cover bg-center bg-no-repeat pt-13 md:pt-6 px-1 md:px-2 ">
+            <div
+              className="flex gap-2 md:gap-3 flex-col px-1 sm:px-10 2xl:flex-row w-450 h-full pt-4 md:pt-14 pb-6 secondary-transparent"
+              style={{
+                minHeight: "calc(100vh - 5rem)",
+              }}
+            >
+              {children}
+            </div>
           </div>
-        </div>
-        <Footer />
+          <Footer />
+        </Theme>
       </body>
     </html>
   );

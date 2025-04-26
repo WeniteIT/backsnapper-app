@@ -1,8 +1,11 @@
+'use client'
+
 import Link from "next/link";
 import { FaTrophy } from "react-icons/fa6";
 import { MdAssignmentAdd, MdOutlineWorkHistory } from "react-icons/md";
 import { TbSoccerField } from "react-icons/tb";
 import RouteButton from "../common/_RouteButton";
+import ThemeToggle from "@/app/theme/theme-toggle";
 
 function Title() {
   return (
@@ -41,7 +44,9 @@ export default function Header() {
           color="secondary"
         />
       </div>
-      <div className="flex-1 hidden md:flex"></div>
+      <div className="flex-1 hidden md:flex justify-end">
+        {/* <ThemeToggle /> */}
+      </div>
     </div>
   );
 }

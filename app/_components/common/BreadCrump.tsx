@@ -7,7 +7,7 @@ interface IProps extends PropsWithChildren {
 
 export default function BreadCrump({ label }: IProps) {
   return (
-    <div className="text-lg flex gap-3 items-center">
+    <div className="text-lg flex gap-3 items-center px-2">
       {label.map((item, index) => (
         <>
           <div key={index}>{item}</div>

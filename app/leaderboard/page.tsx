@@ -36,7 +36,7 @@ export default async function LeaderboardPage() {
   
       <div className="flex flex-col w-full gap-4">
         <BreadCrump label={["Home", "Leaderboard"]} />
-        <div className="flex flex-row w-full gap-2 md:gap-4 ">
+        <div className="flex flex-col lg:flex-row w-full gap-2 md:gap-4 ">
           <div className="flex flex-col flex-1 md:overflow-hidden h-full">
             <BaseSection
               label={

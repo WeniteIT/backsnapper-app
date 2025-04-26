@@ -119,7 +119,7 @@
   @apply border-yellow-400;
 }
 
-@media (prefers-color-scheme: dark) {
+/* @media (prefers-color-scheme: dark) { */
   .container-background {
     background-image: url(/tp_table.jpg);
     background-color: rgba(0, 0, 0, 0.95);
@@ -132,6 +132,10 @@
 
   .secondary-transparent {
     @apply bg-zinc-100/6 text-zinc-100;
+  }
+
+  .secondary-dark {
+    @apply bg-zinc-800 text-zinc-100;
   }
 
   .primary-border-color {
@@ -193,7 +197,7 @@
   .secondary-border {
     @apply border border-zinc-700;
   }
-}
+/* } */
 
 /* width */
 ::-webkit-scrollbar {

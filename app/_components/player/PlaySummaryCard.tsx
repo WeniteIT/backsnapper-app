@@ -32,7 +32,7 @@ export function PlayerSummaryCard({
   ).toFixed(0);
 
   return (
-    <div className="flex flex-col gap-2 md:gap-3 flex-1 md:overflow-hidden h-55">
+    <div className="flex flex-col gap-2 md:gap-3 md:overflow-hidden">
       <BaseSection>
         <div className="flex flex-col gap-3">
           <StatisticCard

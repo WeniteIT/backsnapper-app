@@ -21,7 +21,8 @@ export default function MatchCard({ match }: IProps) {
         }
       />
       <div className="font-semibold">
-        <Link href={`player/${match.player1.name.toLowerCase()}/vs/${match.player2.name.toLowerCase()}`}><RiSwordLine /></Link>
+        <RiSwordLine />
+        {/* <Link href={`player/${match.player1.name.toLowerCase()}/vs/${match.player2.name.toLowerCase()}`}><RiSwordLine /></Link> */}
       </div>
       <PlayerLink
         name={match.player2.name}

@@ -136,10 +136,10 @@ export default function PlayerMatchCard({ match, player, prevMatch }: IProps) {
         isPlayerOne
           ? match.player1.score > match.player2.score
             ? "outline-success"
-            : "outline-failure"
+            : "outline-failure ml-3"
           : match.player2.score > match.player1.score
           ? "outline-success"
-          : "outline-failure"
+          : "outline-failure ml-3"
       }`}
     >
       <div

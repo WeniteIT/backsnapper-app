@@ -12,7 +12,7 @@ export default function BaseSection({ children, label, info }: IProps) {
         <div className="flex font-bold">{label}</div>
         <div className="flex secondary-text-light">{info}</div>
       </div>}
-      <div className="flex gap-3 flex-col h-full">{children}</div>
+      <div className="flex gap-2 flex-col h-full">{children}</div>
     </div>
   );
 }
