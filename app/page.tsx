@@ -34,7 +34,7 @@ export default async function Home() {
   return (
     <>
       <div className="flex flex-col gap-2 md:gap-3 flex-1 md:overflow-hidden h-full">
-        <BaseSection
+        {/* <BaseSection
           label={
             <IconText
               icon={<FaNewspaper className="primary-text text-large" />}
@@ -51,7 +51,7 @@ export default async function Home() {
               </span>
             </div>
           </div>
-        </BaseSection>
+        </BaseSection> */}
         <StatisticSection
           data={data}
           from={firstDayOfMonth}
