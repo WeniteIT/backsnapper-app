@@ -3,9 +3,9 @@ import { IoPieChartSharp } from "react-icons/io5";
 import MatchSection from "./_components/match/MatchSection";
 import StatisticSection from "./_components/statistic/StatisticSection";
 import { getMatchData } from "./_components/getMatchData";
-import BaseSection from "./_components/common/BaseSection";
-import { FaNewspaper } from "react-icons/fa6";
-import IconText from "./_components/common/IconText";
+// import BaseSection from "./_components/common/BaseSection";
+// import { FaNewspaper } from "react-icons/fa6";
+// import IconText from "./_components/common/IconText";
 
 export default async function Home() {
   const getData = unstable_cache(async () => getMatchData(), ["matchData"], {
@@ -14,8 +14,8 @@ export default async function Home() {
 
   const data = await getData();
 
-  const newsHeader ="BS-Regel#1: "
-  const news = "Wer einen Backsnapper praktiziert, ist dazu angehalten, das Offensichtliche lautstark zu verkünden.";
+  // const newsHeader ="BS-Regel#1: "
+  // const news = "Wer einen Backsnapper praktiziert, ist dazu angehalten, das Offensichtliche lautstark zu verkünden.";
 
   const firstDayOfMonth = new Date();
   firstDayOfMonth.setDate(1);
