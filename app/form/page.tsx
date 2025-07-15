@@ -8,6 +8,7 @@ export default function Formpage() {
     <div className="flex flex-col gap-4 flex-1">
       <BreadCrump label={["Home", "Record your match"]} />
       <BaseSection
+        className="h-full"
         label={
           <IconText
             icon={<MdAssignmentAdd className="primary-text" />}
@@ -19,7 +20,6 @@ export default function Formpage() {
           src="https://forms.office.com/Pages/ResponsePage.aspx?id=YF-XUyTrDkOvIWPezrqWEOpwPysGtUJOu6GZIYbKuWxUREVVSkE5MTM3TzhDNlpUNTlGWlVaRTJKVi4u"
           width="100%"
           height="100%"
-          // style={{ height: "calc(100vh-5rem)" }}
         ></iframe>
       </BaseSection>
     </div>
