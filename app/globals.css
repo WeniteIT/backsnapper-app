@@ -63,6 +63,10 @@
   @apply bg-yellow-500 text-zinc-800;
 }
 
+.primary-light {
+  @apply bg-yellow-300 text-zinc-800;
+}
+
 .primary-transparent {
   @apply bg-yellow-500/5 text-zinc-800;
 }
